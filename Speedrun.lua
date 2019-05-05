@@ -8,66 +8,66 @@ Speedrun.name = "Speedrun"
 Speedrun.version = "0.1"
 
 Speedrun.raidList = {
-    [638] = {
-        name = "AA",
-        id = 638,
-        bestTimer,
-        timerEtapes = {},
+    	[1] = {
+		name = "AA",
+		id = 638,
+		bestTimer,
+		timerSteps = {},
 	},
-	[636] = {
-        name = "HRC",
-        id = 636,
-        bestTimer,
-        timerEtapes = {},
+	[2] = {
+		name = "HRC",
+		id = 636,
+		bestTimer,
+		timerSteps = {},
 	},
-	[639] = {
-        name = "SO",
-        id = 639,
-        bestTimer,
-        timerEtapes = {},
+	[3] = {
+		name = "SO",
+		id = 639,
+		bestTimer,
+		timerSteps = {},
 	},
-	[725] = {
-        name = "MoL",
-        id = 725,
-        bestTimer,
-        timerEtapes = {},
+	[4] = {
+		name = "MoL",
+		id = 725,
+		bestTimer,
+		timerSteps = {},
 	},
-	[975] = {
-        name = "HoF",
-        id = 975,
-        bestTimer,
-        timerEtapes = {},
+	[5] = {
+		name = "HoF",
+		id = 975,
+		bestTimer,
+		timerSteps = {},
 	},
-	[1000] = {
-        name = "SO",
-        id = 1000,
-        bestTimer,
-        timerEtapes = {},
+	[6] = {
+		name = "SO",
+		id = 1000,
+		bestTimer,
+		timerSteps = {},
 	},
-	[1051] = {
-        name = "CR",
-        id = 1051,
-        bestTimer,
-        timerEtapes = {},
+	[7] = {
+		name = "CR",
+		id = 1051,
+		bestTimer,
+		timerSteps = {},
 	},
-	[1082] = {
-        name = "BRP",
-        id = 1082,
-        bestTimer,
-        timerEtapes = {},
+	[8] = {
+		name = "BRP",
+		id = 1082,
+		bestTimer,
+		timerSteps = {},
 	},
-	[677] = {
-        name = "MA",
-        id = 677,
-        bestTimer,
-        timerEtapes = {},
+	[9] = {
+		name = "MA",
+		id = 677,
+		bestTimer,
+		timerSteps = {},
 	},
-	[635] = {
-        name = "DSA",
-        id = 635,
-        bestTimer,
-        timerEtapes = {},
-    },
+	[10] = {
+		name = "DSA",
+		id = 635,
+		bestTimer,
+		timerSteps = {},
+    	},
 }
 
 ---------------------------
@@ -111,22 +111,70 @@ end
 -------------------
 ---- Functions ----
 -------------------
-
 function Speedrun.Test()
-	if IsRaidInProgress() then
-		d("|cffffffTest: |r" .. GetRaidDuration())
+	--if IsRaidInProgress() then
+	--	d("|cffffffTest: |r" .. math.floor(GetRaidDuration() / 1000))
+	--end
+	if DoesUnitExist("reticleover") then
+		local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("reticleover", POWERTYPE_HEALTH)
+		if currentTargetHP <= 0 then
+			d("Test 0 HP")
+		else 
+			d("Test en Vie")
+		end
+	end
+end
+
+function Speedrun.GetScore(timer, vitality, raidID)
+	if raidID == 638 then --AA
+		return (124300 + (1000 * vitality)) * (1 + (900 - timer) / 10000)
+	elseif raidID == 636 then --HRC
+		return (133100 + (1000 * vitality)) * (1 + (900 - timer) / 10000)
+	elseif raidID == 639 then --SO
+		return (142700 + (1000 * vitality)) * (1 + (1500 - timer) / 10000)
+	elseif raidID == 725 then --MoL
+		return (108150 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
+	elseif raidID == 975 then --HoF
+		return (160100 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
+	elseif raidID == 1000 then --AS
+		return (70000 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
+	elseif raidID == 1051 then --CR
+		if Speedrun.addsOnCR == 1 then
+			return (85750 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
+		else
+			return (88000 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
+		end
+	elseif raidID == 1082 then --BRP
+		return (75000 + (1000 * vitality)) * (1 + (2400 - timer) / 10000)
+	elseif raidID == 677 then --MA
+		return (426000 + (1000 * vitality)) * (1 + (5400 - timer) / 10000)
+	elseif raidID == 635 then --DSA
+		return (20000 + (1000 * vitality)) * (1 + (3600 - timer) / 10000)
+	end	
+end
+
+function Speedrun.UpdateWaypoint(waypoint)
+	for i=1, Speedrun.raidList.getn() do
+		local raid = Speedrun.raidList[i]
+		if raid.id == GetZoneId(GetUnitZoneIndex("player")) then
+			--TODO Speedrun.UpdateWindowPanel
+			if raid.timerSteps.waypoint > math.floor(GetRaidDuration() / 1000) then
+				raid.timerSteps.waypoint = math.floor(GetRaidDuration() / 1000)
+			end
+			return
+		end
 	end
 end
 
 function Speedrun.Main()
 	for i = 1, MAX_BOSSES do
-		if DoesUnitExist("boss" .. i) then --TODO : test if UnitExist when dead
+		if DoesUnitExist("boss" .. i) then
 			if IsUnitInCombat("player") then    
-				--Debut combat avec tel ou tel boss
+				--Begin fight with a boss
 			else
 				local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-				if currentTargetHP == 0 then
-				--Fin combat avec tel ou tel boss
+				if currentTargetHP <= 0 then
+				--End fight with a boss
 				end
 			end
 		end
@@ -138,13 +186,20 @@ function Speedrun.Reset()
 	--When EVENT_BOSSES_CHANGED and EVENT_PLAYER_COMBAT_STATE proc
 	--Maybe EVENT_PLAYER_ACTIVATED also
 
-	if IsRaidInProgress() then --if in vet trial
-		EVENT_MANAGER:RegisterForUpdate(Speedrun.name,EVENT_BOSSES_CHANGED, Speedrun.Main) 
-		EVENT_MANAGER:RegisterForUpdate(Speedrun.name,EVENT_PLAYER_COMBAT_STATE, Speedrun.Main)
-    	else 
-		EVENT_MANAGER:UnregisterForUpdate(Speedrun.name,EVENT_BOSSES_CHANGED, Speedrun.Main)
-		EVENT_MANAGER:UnregisterForUpdate(Speedrun.name,EVENT_PLAYER_COMBAT_STATE, Speedrun.Main)
-   	end
+	for i=1, Speedrun.raidList.getn() do
+		if Speedrun.raidList[i].id == GetZoneId(GetUnitZoneIndex("player")) then --if in trial zone
+			if IsRaidInProgress() then --if vet trial started
+				EVENT_MANAGER:RegisterForEvent(Speedrun.name,EVENT_BOSSES_CHANGED, Speedrun.Main) 
+				EVENT_MANAGER:RegisterForEvent(Speedrun.name,EVENT_PLAYER_COMBAT_STATE, Speedrun.Main)
+				EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
+				return
+			end
+		else 
+			EVENT_MANAGER:UnregisterForEvent(Speedrun.name,EVENT_BOSSES_CHANGED, Speedrun.Main)
+			EVENT_MANAGER:UnregisterForEvent(Speedrun.name,EVENT_PLAYER_COMBAT_STATE, Speedrun.Main)
+			EVENT_MANAGER:UnregisterForUpdate(Speedrun.name)
+		end 
+	end
 end
 
 function Speedrun:Initialize()
@@ -155,8 +210,8 @@ function Speedrun:Initialize()
 	Speedrun.savedVariables = ZO_SavedVars:New("SpeedrunVariables", 1, nil, Speedrun.Default)
 
 	--EVENT_MANAGER
-	EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 100, Speedrun.Test)
-	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_BOSSES_CHANGED, Speedrun.Test)
+	EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 500, Speedrun.Test)
+	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_ZONE_CHANGED, Speedrun.Reset)
 	EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
 	
 end
