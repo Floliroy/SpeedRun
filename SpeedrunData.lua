@@ -67,6 +67,40 @@ Speedrun.raidList = {
     },
 }
 
+-----------------------
+---- Custom Timers ----
+-----------------------
+Speedrun.customTimerSteps = {
+    [638] = { --AA
+        [1] = "",
+        [2] = "",
+        [3] = "",
+        [4] = "",
+        [5] = "",
+        [6] = "",
+        [7] = "",
+        [8] = ""
+    },
+    [636] = { --HRC
+    },
+    [639] = { --SO
+    },
+    [725] = { --MoL
+    },
+    [975] = { --HoF
+    },
+    [1000] = { --AS
+    },
+    [1051] = { --CR
+    },
+    [1082] = { --BRP
+    },
+    [677] = { --MA
+    },
+    [635] = { --DSA
+    },
+}
+
 -------------------
 ---- Step List ----
 -------------------
@@ -145,3 +179,13 @@ Speedrun.stepList = {
         --TODO (flemme)
     },
 }
+
+--TEST
+Speedrun.raidList[1].timerSteps[1] = 10
+Speedrun.raidList[1].timerSteps[2] = 20
+Speedrun.raidList[1].timerSteps[3] = 30
+Speedrun.raidList[1].timerSteps[4] = 40
+Speedrun.raidList[1].timerSteps[5] = 50
+Speedrun.raidList[1].timerSteps[6] = 60
+Speedrun.raidList[1].timerSteps[7] = 70
+Speedrun.raidList[1].timerSteps[8] = 80
