@@ -1,4 +1,3 @@
-local LAM2 = LibStub:GetLibrary("LibAddonMenu-2.0")
 -----------------
 ---- Globals ----
 -----------------
@@ -15,45 +14,26 @@ Speedrun.Step = 1
 ---- Variables Default ----
 ---------------------------
 Speedrun.Default = {
+	customTimerSteps = {}
 }
-
--------------------------
----- Settings Window ----
--------------------------
-function Speedrun.CreateSettingsWindow()
-	--TODO switch in settings window in another file and complete it
-	local panelData = {
-		type = "panel",
-		name = "Speedrun",
-		displayName = "SpeedRun",
-		author = "Floliroy",
-		version = Speedrun.version,
-		slashCommand = "/speedrun",
-		registerForRefresh = true,
-		registerForDefaults = true,
-	}
-	
-	local cntrlOptionsPanel = LAM2:RegisterAddonPanel("Speedrun_Settings", panelData)
-	
-	local optionsData = {
-		[1] = {
-			type = "header",
-			name = "Header",
-		},
-		[2] = {
-			type = "description",
-			text = "Description",
-		},
-	}
-	
-	LAM2:RegisterOptionControls("Speedrun_Settings", optionsData)
-end
+Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 
 -------------------
 ---- Functions ----
 -------------------
 function Speedrun.Test()
 	d("SUPER CHIBRE")
+end
+
+function Speedrun.FormatRaidTimer(timer)
+	local raidDurationSec = math.floor( timer / 1000)
+		
+	return string.format(
+	    "%02d:%02d:%02d",
+	    math.floor(raidDurationSec / 3600),
+	    math.floor((raidDurationSec / 60) % 60),
+	    raidDurationSec % 60
+	)
 end
 
 function Speedrun.GetScore(timer, vitality, raidID)
@@ -86,12 +66,12 @@ end
 
 function Speedrun.UpdateWaypoint()
 	local waypoint = Speedrun.Step
-	for i=1, Speedrun.raidList.getn() do
+	for i=1, table.getn(Speedrun.raidList) do
 		local raid = Speedrun.raidList[i]
 		if raid.id == GetZoneId(GetUnitZoneIndex("player")) then
 			--TODO Speedrun.UpdateWindowPanel
-			if raid.timerSteps.waypoint < math.floor(GetRaidDuration() / 1000) then
-				raid.timerSteps.waypoint = math.floor(GetRaidDuration() / 1000)
+			if raid.timerSteps[waypoint] < math.floor(GetRaidDuration() / 1000) then
+				raid.timerSteps[waypoint] = math.floor(GetRaidDuration() / 1000)
 			end
 			d("SR:debug " .. waypoint)
 			Speedrun.Step = Speedrun.Step + 1
@@ -191,10 +171,6 @@ function Speedrun.MainBoss()
 	end
 end
 
-function Speedrun.Main()
-	
-end
-
 function Speedrun.Reset()
 	--TODO : test
 	--When EVENT_BOSSES_CHANGED and EVENT_PLAYER_COMBAT_STATE proc
@@ -227,6 +203,7 @@ function Speedrun:Initialize()
 	
 	--Saved Variables
 	Speedrun.savedVariables = ZO_SavedVars:NewAccountWide("SpeedrunVariables", 1, nil, Speedrun.Default)
+	Speedrun.customTimerSteps = Speedrun.savedVariables.customTimerSteps
 
 	--EVENT_MANAGER
 	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.Reset)
