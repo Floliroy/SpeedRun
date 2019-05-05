@@ -1,4 +1,4 @@
-﻿## Title: |cffd708Speedrun|r
+## Title: |cffd708Speedrun|r
 ## APIVersion: 100026
 ## Author: Floliroy
 ## Version: 0.1
@@ -15,4 +15,6 @@ Lib/LibCustomTitles/LibTitleLocale.lua
 Lib/LibCustomTitles/LibCustomTitles.lua
 Lib/LibCustomTitles/Titles/Floliroy.lua
 
+SpeedrunData.lua
 Speedrun.lua
+SpeedrunMenu.lua
