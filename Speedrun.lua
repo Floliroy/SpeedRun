@@ -2,76 +2,15 @@ local LAM2 = LibStub:GetLibrary("LibAddonMenu-2.0")
 -----------------
 ---- Globals ----
 -----------------
+Speedrun = Speedrun or { }
+local Speedrun = Speedrun
 
-Speedrun = {}
 Speedrun.name = "Speedrun"
 Speedrun.version = "0.1"
 
-Speedrun.raidList = {
-    	[1] = {
-		name = "AA",
-		id = 638,
-		bestTimer,
-		timerSteps = {},
-	},
-	[2] = {
-		name = "HRC",
-		id = 636,
-		bestTimer,
-		timerSteps = {},
-	},
-	[3] = {
-		name = "SO",
-		id = 639,
-		bestTimer,
-		timerSteps = {},
-	},
-	[4] = {
-		name = "MoL",
-		id = 725,
-		bestTimer,
-		timerSteps = {},
-	},
-	[5] = {
-		name = "HoF",
-		id = 975,
-		bestTimer,
-		timerSteps = {},
-	},
-	[6] = {
-		name = "SO",
-		id = 1000,
-		bestTimer,
-		timerSteps = {},
-	},
-	[7] = {
-		name = "CR",
-		id = 1051,
-		bestTimer,
-		timerSteps = {},
-	},
-	[8] = {
-		name = "BRP",
-		id = 1082,
-		bestTimer,
-		timerSteps = {},
-	},
-	[9] = {
-		name = "MA",
-		id = 677,
-		bestTimer,
-		timerSteps = {},
-	},
-	[10] = {
-		name = "DSA",
-		id = 635,
-		bestTimer,
-		timerSteps = {},
-    	},
-}
-
 Speedrun.lastBossName = ""
 Speedrun.Step = 1
+
 ---------------------------
 ---- Variables Default ----
 ---------------------------
@@ -114,24 +53,7 @@ end
 ---- Functions ----
 -------------------
 function Speedrun.Test()
-	-- if IsRaidInProgress() then
-	--	d("|cffffffTest: |r" .. math.floor(GetRaidDuration() / 1000))
-	-- end
-	-- for i = 1, MAX_BOSSES do
-	-- 	if DoesUnitExist("boss" .. i) then
-	-- 		local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-	-- 		if currentTargetHP <= 0 then
-	-- 			d("Test 0 HP")
-	-- 			d("|cffffffGetUnitName: |r" .. GetUnitName("boss" .. i))
-	-- 		else 
-	-- 			d("Test en Vie")
-	-- 			d("|cffffffGetUnitName: |r" .. GetUnitName("boss" .. i))
-	-- 		end
-	-- 	end
-	-- end
-
-	-- d("|cffffffGetUnitZoneIndex: |r" .. GetUnitZoneIndex("player"))
-	
+	d("SUPER CHIBRE")
 end
 
 function Speedrun.GetScore(timer, vitality, raidID)
@@ -178,24 +100,99 @@ function Speedrun.UpdateWaypoint()
 	end
 end
 
-function Speedrun.Main()
+function Speedrun.MainCloudrest()
+	for i = 1, MAX_BOSSES do
+		if DoesUnitExist("boss" .. i) then
+			local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
+			if Speedrun.Step == 1 then --start fight with boss
+				Speedrun.UpdateWaypoint()
+				Speedrun.lastBossName = GetUnitName("boss" .. i)
+			end
+			if IsUnitInCombat("player") then    
+				local percentageHP = currentTargetHP / maxTargetHP 
+				if percentageHP <= 0.75 and Speedrun.Step == 2 then
+					Speedrun.UpdateWaypoint()
+				end
+				if percentageHP <= 0.5 and Speedrun.Step == 3 then
+					Speedrun.UpdateWaypoint()
+				end
+				if percentageHP <= 0.25 and Speedrun.Step == 4 then
+					Speedrun.UpdateWaypoint()
+				end		
+				if GetUnitName("boss" .. i) ~= Speedrun.lastBossName and Speedrun.Step == 5 then
+					--ZMaja Shadow
+					Speedrun.UpdateWaypoint()
+				end	
+			else
+				if currentTargetHP <= 0 and Speedrun.Step == 6 then 
+					--boss dead
+					Speedrun.UpdateWaypoint()
+				elseif currentTargetHP > 0 then
+					Speedrun.lastBossName = ""
+					Speedrun.Step = 1
+				end
+			end
+		end
+	end
+end
+
+function Speedrun.MainAsylum()
+	for i = 1, MAX_BOSSES do
+		if DoesUnitExist("boss" .. i) then
+			local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
+			if Speedrun.Step == 1 then --start fight with boss
+				Speedrun.UpdateWaypoint()
+			end
+			if IsUnitInCombat("player") then    
+				local percentageHP = currentTargetHP / maxTargetHP 
+				if percentageHP <= 0.9 and Speedrun.Step == 2 then
+					Speedrun.UpdateWaypoint()
+				end
+				if percentageHP <= 0.75 and Speedrun.Step == 3 then
+					Speedrun.UpdateWaypoint()
+				end
+				if percentageHP <= 0.5 and Speedrun.Step == 4 then
+					Speedrun.UpdateWaypoint()
+				end
+				if percentageHP <= 0.25 and Speedrun.Step == 5 then
+					Speedrun.UpdateWaypoint()
+				end				
+			else
+				if currentTargetHP <= 0 then 
+					--boss dead
+					Speedrun.UpdateWaypoint()
+				else
+					Speedrun.Step = 1
+				end
+			end
+		end
+	end
+end
+
+function Speedrun.MainBoss()
 	for i = 1, MAX_BOSSES do
 		if DoesUnitExist("boss" .. i) then
 			if IsUnitInCombat("player") then    
 				--begin fight with a boss
 				if Speedrun.lastBossName ~= GetUnitName("boss" .. i) then
-					Speedrun.UpdateWaypoint()
 					Speedrun.lastBossName = GetUnitName("boss" .. i)
+					Speedrun.UpdateWaypoint()
+					return
 				end
 			else
 				local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
 				if currentTargetHP <= 0 then 
 					--boss dead
 					Speedrun.UpdateWaypoint()
+					return
 				end
 			end
 		end
 	end
+end
+
+function Speedrun.Main()
+	
 end
 
 function Speedrun.Reset()
@@ -203,21 +200,25 @@ function Speedrun.Reset()
 	--When EVENT_BOSSES_CHANGED and EVENT_PLAYER_COMBAT_STATE proc
 	--Maybe EVENT_PLAYER_ACTIVATED also
 
-	--for i=1, Speedrun.raidList.getn() do
-	--	if Speedrun.raidList[i].id == GetZoneId(GetUnitZoneIndex("player")) then --if in trial zone
 	if IsRaidInProgress() then --if vet trial started
-		EVENT_MANAGER:RegisterForEvent(Speedrun.name,EVENT_BOSSES_CHANGED, Speedrun.Main) 
-		EVENT_MANAGER:RegisterForEvent(Speedrun.name,EVENT_PLAYER_COMBAT_STATE, Speedrun.Main)
-		EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
-	--			return
-	--		end
+		if GetZoneId(GetUnitZoneIndex("player")) == 1000 then --AS
+			EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 333, Speedrun.MainAsylum) 
+			EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
+		elseif GetZoneId(GetUnitZoneIndex("player")) == 1051 then --CR
+			EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 333, Speedrun.MainCloudrest) 
+			EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
+		else --Other Raids
+			EVENT_MANAGER:RegisterForEvent(Speedrun.name,EVENT_BOSSES_CHANGED, Speedrun.MainBoss) 
+			EVENT_MANAGER:RegisterForEvent(Speedrun.name,EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBoss)
+			EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
+		end
 	else 
-		EVENT_MANAGER:UnregisterForEvent(Speedrun.name,EVENT_BOSSES_CHANGED, Speedrun.Main)
-		EVENT_MANAGER:UnregisterForEvent(Speedrun.name,EVENT_PLAYER_COMBAT_STATE, Speedrun.Main)
-		EVENT_MANAGER:UnregisterForUpdate(Speedrun.name)
+		EVENT_MANAGER:UnregisterForEvent(Speedrun.name,EVENT_BOSSES_CHANGED)
+		EVENT_MANAGER:UnregisterForEvent(Speedrun.name,EVENT_PLAYER_COMBAT_STATE)
+		EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "Update")
+		Speedrun.lastBossName = ""
 		Speedrun.Step = 1
 	end 
---	end
 end
 
 function Speedrun:Initialize()
@@ -229,8 +230,9 @@ function Speedrun:Initialize()
 
 	--EVENT_MANAGER
 	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.Reset)
+	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.Reset)
 	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.Reset)
-	EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 333, Speedrun.Test)
+	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.Test)
 	EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
 	
 end
