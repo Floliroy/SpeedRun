@@ -21,11 +21,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpeedrunMenu.lua" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SpeedrunMenu.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SpeedrunMenu.lua">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="935">
               <caret line="55" column="161" lean-forward="false" selection-start-line="55" selection-start-column="161" selection-end-line="55" selection-end-column="161" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitattributes" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitattributes">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="6" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -71,31 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.lua" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/main.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="561" column="100" lean-forward="false" selection-start-line="561" selection-start-column="95" selection-end-line="561" selection-end-column="100" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Speedrun.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../SpeedRun/Speedrun.lua">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
               <caret line="75" column="88" lean-forward="true" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="88" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DebuffMe.lua" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../DebuffMe/DebuffMe.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="404" column="47" lean-forward="true" selection-start-line="404" selection-start-column="47" selection-end-line="404" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -115,7 +115,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>WM</find>
       <find>xml</find>
       <find>ui</find>
       <find>GuiRoot</find>
@@ -145,6 +144,7 @@
       <find>RestorePosition</find>
       <find>for</find>
       <find>Color</find>
+      <find>GetTime</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -167,6 +167,7 @@
         <option value="$PROJECT_DIR$/ui.xml" />
         <option value="$PROJECT_DIR$/Speedrun.lua" />
         <option value="$PROJECT_DIR$/SpeedrunMenu.lua" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -343,12 +344,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557071603693</updated>
-      <workItem from="1557071606756" duration="24229000" />
+      <workItem from="1557071606756" duration="24843000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24229000" />
+    <option name="totallyTimeSpent" value="24843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-42" width="2576" height="1056" extended-state="6" />
@@ -596,6 +597,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="55" column="161" lean-forward="false" selection-start-line="55" selection-start-column="161" selection-end-line="55" selection-end-column="161" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitattributes">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="6" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
           <folding />
         </state>
       </provider>
