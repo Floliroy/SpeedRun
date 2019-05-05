@@ -18,3 +18,5 @@ Lib/LibCustomTitles/Titles/Floliroy.lua
 SpeedrunData.lua
 Speedrun.lua
 SpeedrunMenu.lua
+
+ui.xml

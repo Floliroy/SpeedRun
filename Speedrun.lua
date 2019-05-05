@@ -1,14 +1,19 @@
 -----------------
 ---- Globals ----
 -----------------
+
 Speedrun = Speedrun or { }
 local Speedrun = Speedrun
+local WM = GetWindowManager()
+local globalTimer
+local currentRaid
 
 Speedrun.name = "Speedrun"
 Speedrun.version = "0.1"
 
 Speedrun.lastBossName = ""
 Speedrun.Step = 1
+Speedrun.segments = {}
 
 ---------------------------
 ---- Variables Default ----
@@ -22,18 +27,23 @@ Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 ---- Functions ----
 -------------------
 function Speedrun.Test()
-	d("SUPER CHIBRE")
+    SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration(), true))
 end
 
-function Speedrun.FormatRaidTimer(timer)
-	local raidDurationSec = math.floor( timer / 1000)
-		
-	return string.format(
-	    "%02d:%02d:%02d",
-	    math.floor(raidDurationSec / 3600),
-	    math.floor((raidDurationSec / 60) % 60),
-	    raidDurationSec % 60
-	)
+function Speedrun.FormatRaidTimer(timer, ms)
+    local raidDurationSec
+    if ms then
+        raidDurationSec = math.floor( timer / 1000);
+    else
+        raidDurationSec = timer
+    end
+
+    return string.format(
+        "%02d:%02d:%02d",
+        math.floor(raidDurationSec / 3600),
+        math.floor((raidDurationSec / 60) % 60),
+        raidDurationSec % 60
+    );
 end
 
 function Speedrun.GetScore(timer, vitality, raidID)
@@ -63,21 +73,48 @@ function Speedrun.GetScore(timer, vitality, raidID)
 		return (20000 + (1000 * vitality)) * (1 + (3600 - timer) / 10000)
 	end	
 end
+function Speedrun.CreateRaidSegment(id)
+    local raid = Speedrun.raidList[id]
+    for i, x in ipairs(Speedrun.stepList[raid.id]) do
+        local segmentRow = WM:CreateControlFromVirtual("SpeedRun_Segment", SpeedRun_Timer_Container, "SpeedRun_Segment", i)
+        segmentRow:GetNamedChild('_Name'):SetText(x);
+        --TODO display NA if none is available
+        segmentRow:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(raid.timerSteps[i], true))
+        segmentRow:SetAnchor(TOPLEFT, SpeedRun_Timer_Container, TOPLEFT, 0, i*20)
+        segmentRow:SetHidden(false)
+        Speedrun.segments[i] = segmentRow;
+    end
+end
+
+function Speedrun.UpdateSegment(step, raidID)
+
+    --TODO if raid already has steptimer
+    local difference = GetRaidDuration() - Speedrun.raidList[raidID].timerSteps[step]
+
+    local segment = Speedrun.segments[Speedrun.Step]:GetNamedChild('_Diff')
+    segment:SetText(Speedrun.FormatRaidTimer(difference, true))
+    if difference > 0 then
+        segment:SetColor(unpack{1,0,0})
+    else
+        segment:SetColor(unpack{0,1,0})
+    end
+end
 
 function Speedrun.UpdateWaypoint()
-	local waypoint = Speedrun.Step
-	for i=1, table.getn(Speedrun.raidList) do
-		local raid = Speedrun.raidList[i]
-		if raid.id == GetZoneId(GetUnitZoneIndex("player")) then
-			--TODO Speedrun.UpdateWindowPanel
-			if raid.timerSteps[waypoint] < math.floor(GetRaidDuration() / 1000) then
-				raid.timerSteps[waypoint] = math.floor(GetRaidDuration() / 1000)
-			end
-			d("SR:debug " .. waypoint)
-			Speedrun.Step = Speedrun.Step + 1
-			return
-		end
-	end
+    local waypoint = Speedrun.Step
+    for i=1, table.getn(Speedrun.raidList) do
+        local raid = Speedrun.raidList[i]
+        if raid.id == GetZoneId(GetUnitZoneIndex("player")) then
+            --TODO Speedrun.UpdateWindowPanel
+            if raid.timerSteps[waypoint] < math.floor(GetRaidDuration() / 1000) then
+                raid.timerSteps[waypoint] = math.floor(GetRaidDuration() / 1000)
+            end
+            d("SR:debug " .. waypoint)
+            Speedrun.UpdateSegment(waypoint, i)
+            Speedrun.Step = Speedrun.Step + 1
+            return
+        end
+    end
 end
 
 function Speedrun.MainCloudrest()
@@ -205,12 +242,17 @@ function Speedrun:Initialize()
 	Speedrun.savedVariables = ZO_SavedVars:NewAccountWide("SpeedrunVariables", 1, nil, Speedrun.Default)
 	Speedrun.customTimerSteps = Speedrun.savedVariables.customTimerSteps
 
+    --Ui
+    globalTimer = WM:CreateControlFromVirtual("SpeedRun_Segment",   SpeedRun_Timer_Container, "SpeedRun_Segment")
+    --Create HRC SEGMENT Speedrun.CreateRaidSegment(2)
+
 	--EVENT_MANAGER
 	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.Reset)
 	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.Reset)
 	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.Reset)
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.Test)
 	EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
+    SLASH_COMMANDS["/speedrun"] = function()Speedrun.UpdateWaypoint() end
 	
 end
 

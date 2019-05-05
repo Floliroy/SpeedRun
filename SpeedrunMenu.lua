@@ -3,20 +3,22 @@ local Speedrun = Speedrun
 
 local LAM2 = LibStub:GetLibrary("LibAddonMenu-2.0")
 
-function Speedrun.GetTime(seconds)		
-    if seconds < 3600 then
-        return string.format(
-            "%02d:%02d",
-            math.floor((seconds / 60) % 60),
-            seconds % 60
-        )
-    else
-        return string.format(
-            "%02d:%02d:%02d",
-            math.floor(seconds / 3600),
-            math.floor((seconds / 60) % 60),
-            seconds % 60
-        )
+function Speedrun.GetTime(seconds)
+    if seconds then
+        if seconds < 3600 then
+            return string.format(
+                "%02d:%02d",
+                math.floor((seconds / 60) % 60),
+                seconds % 60
+            )
+        else
+            return string.format(
+                "%02d:%02d:%02d",
+                math.floor(seconds / 3600),
+                math.floor((seconds / 60) % 60),
+                seconds % 60
+            )
+        end
     end
 end
 -------------------------
@@ -28,7 +30,7 @@ function Speedrun.CreateSettingsWindow()
 		type = "panel",
 		name = "Speedrun",
 		displayName = "SpeedRun",
-		author = "Floliroy",
+		author = "Floliroy & Panaa",
 		version = Speedrun.version,
 		slashCommand = "/speedrun",
 		registerForRefresh = true,
