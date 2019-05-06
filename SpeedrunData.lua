@@ -5,61 +5,61 @@ local Speedrun = Speedrun
 ---- Raid List ----
 -------------------
 Speedrun.raidList = {
-    [1] = {
+    [638] = {
         name = "AA",
         id = 638,
         bestTimer,
         timerSteps = {},
     },
-    [2] = {
+    [636] = {
         name = "HRC",
         id = 636,
         bestTimer,
         timerSteps = {},
     },
-    [3] = {
+    [639] = {
         name = "SO",
         id = 639,
         bestTimer,
         timerSteps = {},
     },
-    [4] = {
+    [725] = {
         name = "MoL",
         id = 725,
         bestTimer,
         timerSteps = {},
     },
-    [5] = {
+    [975] = {
         name = "HoF",
         id = 975,
         bestTimer,
         timerSteps = {},
     },
-    [6] = {
+    [1000] = {
         name = "AS",
         id = 1000,
         bestTimer,
         timerSteps = {},
     },
-    [7] = {
+    [1051] = {
         name = "CR",
         id = 1051,
         bestTimer,
         timerSteps = {},
     },
-    [8] = {
+    [1082] = {
         name = "BRP",
         id = 1082,
         bestTimer,
         timerSteps = {},
     },
-    [9] = {
+    [677] = {
         name = "MA",
         id = 677,
         bestTimer,
         timerSteps = {},
     },
-    [10] = {
+    [635] = {
         name = "DSA",
         id = 635,
         bestTimer,
@@ -181,9 +181,20 @@ Speedrun.stepList = {
 }
 
 --TEST
-Speedrun.raidList[2].timerSteps[1] = 1800000
-Speedrun.raidList[2].timerSteps[2] = 40600000
-Speedrun.raidList[2].timerSteps[3] = 2200000
-Speedrun.raidList[2].timerSteps[4] = 2400000
-Speedrun.raidList[2].timerSteps[5] = 3000000
-Speedrun.raidList[2].timerSteps[6] = 3600000
+Speedrun.raidList[639].timerSteps[1] = 1000
+Speedrun.raidList[639].timerSteps[2] = 1200000
+Speedrun.raidList[639].timerSteps[3] = 2200000
+Speedrun.raidList[639].timerSteps[4] = 2400000
+Speedrun.raidList[639].timerSteps[5] = 3000000
+Speedrun.raidList[639].timerSteps[6] = 3600000
+Speedrun.raidList[639].timerSteps[7] = 4600000
+Speedrun.raidList[639].timerSteps[8] = 5600000
+
+Speedrun.raidList[638].timerSteps[1] = 1800000
+Speedrun.raidList[638].timerSteps[2] = 1900000
+Speedrun.raidList[638].timerSteps[3] = 2200000
+Speedrun.raidList[638].timerSteps[4] = 2400000
+Speedrun.raidList[638].timerSteps[5] = 3000000
+Speedrun.raidList[638].timerSteps[6] = 3600000
+Speedrun.raidList[638].timerSteps[7] = 4600000
+Speedrun.raidList[638].timerSteps[8] = 5600000
