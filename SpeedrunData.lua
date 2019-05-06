@@ -181,11 +181,9 @@ Speedrun.stepList = {
 }
 
 --TEST
-Speedrun.raidList[1].timerSteps[1] = 10
-Speedrun.raidList[1].timerSteps[2] = 20
-Speedrun.raidList[1].timerSteps[3] = 30
-Speedrun.raidList[1].timerSteps[4] = 40
-Speedrun.raidList[1].timerSteps[5] = 50
-Speedrun.raidList[1].timerSteps[6] = 60
-Speedrun.raidList[1].timerSteps[7] = 70
-Speedrun.raidList[1].timerSteps[8] = 80
+Speedrun.raidList[2].timerSteps[1] = 1800000
+Speedrun.raidList[2].timerSteps[2] = 40600000
+Speedrun.raidList[2].timerSteps[3] = 2200000
+Speedrun.raidList[2].timerSteps[4] = 2400000
+Speedrun.raidList[2].timerSteps[5] = 3000000
+Speedrun.raidList[2].timerSteps[6] = 3600000
