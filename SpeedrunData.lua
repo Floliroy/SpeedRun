@@ -8,61 +8,51 @@ Speedrun.raidList = {
     [638] = {
         name = "AA",
         id = 638,
-        bestTimer,
         timerSteps = {},
     },
     [636] = {
         name = "HRC",
         id = 636,
-        bestTimer,
         timerSteps = {},
     },
     [639] = {
         name = "SO",
         id = 639,
-        bestTimer,
         timerSteps = {},
     },
     [725] = {
         name = "MoL",
         id = 725,
-        bestTimer,
         timerSteps = {},
     },
     [975] = {
         name = "HoF",
         id = 975,
-        bestTimer,
         timerSteps = {},
     },
     [1000] = {
         name = "AS",
         id = 1000,
-        bestTimer,
         timerSteps = {},
     },
     [1051] = {
         name = "CR",
         id = 1051,
-        bestTimer,
         timerSteps = {},
     },
     [1082] = {
         name = "BRP",
         id = 1082,
-        bestTimer,
         timerSteps = {},
     },
     [677] = {
         name = "MA",
         id = 677,
-        bestTimer,
         timerSteps = {},
     },
     [635] = {
         name = "DSA",
         id = 635,
-        bestTimer,
         timerSteps = {},
     },
 }
@@ -82,22 +72,67 @@ Speedrun.customTimerSteps = {
         [8] = ""
     },
     [636] = { --HRC
+        [1] = "",
+        [2] = "",
+        [3] = "",
+        [4] = "",
+        [5] = "",
+        [6] = ""
     },
     [639] = { --SO
+        [1] = "",
+        [2] = "",
+        [3] = "",
+        [4] = "",
+        [5] = "",
+        [6] = "",
+        [7] = "",
+        [8] = ""
     },
     [725] = { --MoL
+        [1] = "",
+        [2] = "",
+        [3] = "",
+        [4] = "",
+        [5] = "",
+        [6] = ""
     },
     [975] = { --HoF
+        [1] = "",
+        [2] = "",
+        [3] = "",
+        [4] = "",
+        [5] = "",
+        [6] = "",
+        [7] = "",
+        [8] = "",
+        [9] = "",
+        [10] = ""
     },
     [1000] = { --AS
+        [1] = "",
+        [2] = "",
+        [3] = "",
+        [4] = "",
+        [5] = "",
+        [6] = ""
     },
     [1051] = { --CR
+        [1] = "",
+        [2] = "",
+        [3] = "",
+        [4] = "",
+        [5] = "",
+        [6] = ""
     },
     [1082] = { --BRP
+        --Comment ce comportera l'addon sur le 4eme stage ?
     },
     [677] = { --MA
+        --TODO (flemme)
     },
     [635] = { --DSA
+        --TODO (flemme)
     },
 }
 
@@ -181,20 +216,20 @@ Speedrun.stepList = {
 }
 
 --TEST
-Speedrun.raidList[639].timerSteps[1] = 1000
-Speedrun.raidList[639].timerSteps[2] = 1200000
-Speedrun.raidList[639].timerSteps[3] = 2200000
-Speedrun.raidList[639].timerSteps[4] = 2400000
-Speedrun.raidList[639].timerSteps[5] = 3000000
-Speedrun.raidList[639].timerSteps[6] = 3600000
-Speedrun.raidList[639].timerSteps[7] = 4600000
-Speedrun.raidList[639].timerSteps[8] = 5600000
+-- Speedrun.raidList[639].timerSteps[1] = 1000
+-- Speedrun.raidList[639].timerSteps[2] = 1200000
+-- Speedrun.raidList[639].timerSteps[3] = 2200000
+-- Speedrun.raidList[639].timerSteps[4] = 2400000
+-- Speedrun.raidList[639].timerSteps[5] = 3000000
+-- Speedrun.raidList[639].timerSteps[6] = 3600000
+-- Speedrun.raidList[639].timerSteps[7] = 4600000
+-- Speedrun.raidList[639].timerSteps[8] = 5600000
 
-Speedrun.raidList[638].timerSteps[1] = 1800000
-Speedrun.raidList[638].timerSteps[2] = 1900000
-Speedrun.raidList[638].timerSteps[3] = 2200000
-Speedrun.raidList[638].timerSteps[4] = 2400000
-Speedrun.raidList[638].timerSteps[5] = 3000000
-Speedrun.raidList[638].timerSteps[6] = 3600000
-Speedrun.raidList[638].timerSteps[7] = 4600000
-Speedrun.raidList[638].timerSteps[8] = 5600000
+--Speedrun.raidList[638].timerSteps[1] = 1800000
+--Speedrun.raidList[638].timerSteps[2] = 1900000
+--Speedrun.raidList[638].timerSteps[3] = 2200000
+--Speedrun.raidList[638].timerSteps[4] = 2400000
+--Speedrun.raidList[638].timerSteps[5] = 3000000
+--Speedrun.raidList[638].timerSteps[6] = 3600000
+--Speedrun.raidList[638].timerSteps[7] = 4600000
+--Speedrun.raidList[638].timerSteps[8] = 5600000

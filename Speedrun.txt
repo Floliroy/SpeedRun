@@ -1,6 +1,6 @@
-## Title: |cffd708Speedrun|r
+## Title: |cd7d7d7Speedrun|r
 ## APIVersion: 100026
-## Author: Floliroy
+## Author: Floliroy, Panaa
 ## Version: 0.1
 ## DependsOn: LibStub LibAddonMenu-2.0
 ## SavedVariables: SpeedrunVariables

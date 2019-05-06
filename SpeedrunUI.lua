@@ -25,6 +25,7 @@ function Speedrun.UpdateWindowPanel(waypoint, raid)
     end
     Speedrun.UpdateGlobalTimer()
 end
+
 function Speedrun.CreateRaidSegment(id)
     --TODO make initialize function
 
@@ -55,7 +56,7 @@ end
 function Speedrun.UpdateSegment(step, raid)
 
     --TODO if raid already has steptimer
-    d("UpdateSegmenet")
+    --d("UpdateSegment")
     local difference
     if raid.timerSteps[step] then
         difference = GetRaidDuration() - raid.timerSteps[step]
