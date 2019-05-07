@@ -33,7 +33,6 @@ end
 ---- Settings Window ----
 -------------------------
 function Speedrun.CreateSettingsWindow()
-	--TODO switch in settings window in another file and complete it
 	local panelData = {
 		type = "panel",
 		name = "Speedrun",

@@ -94,14 +94,13 @@ function Speedrun.UpdateWaypoint()
 	local raid = Speedrun.raidList[Speedrun.raidID]
     local waypoint = Speedrun.Step
 	if raid then
-            --TODO Speedrun.UpdateWindowPanel
-
 			Speedrun.UpdateWindowPanel(waypoint, raid)
+			
 			if raid.timerSteps[waypoint] == nil or raid.timerSteps[waypoint] < math.floor(GetRaidDuration()) then
 				raid.timerSteps[waypoint] = GetRaidDuration()
 				Speedrun.savedVariables.raidList = Speedrun.raidList
             end
-            d("SR:debug " .. waypoint)
+            d("SR:waypoint " .. waypoint)
 			Speedrun.Step = Speedrun.Step + 1
 			Speedrun.savedVariables.Step = Speedrun.Step
             return
@@ -238,6 +237,11 @@ function Speedrun.Reset()
 	end 
 end
 
+function Speedrun.OnPlayerActivated()
+    Speedrun.Reset()
+    --ajout hiden
+end
+
 function Speedrun:Initialize()
 	--Settings
 	Speedrun.CreateSettingsWindow()
@@ -251,14 +255,16 @@ function Speedrun:Initialize()
 	Speedrun.raidList = Speedrun.savedVariables.raidList
 
 	--EVENT_MANAGER
+	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated) 
+
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.Reset) --start vet trial
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.Reset) --finish vet trial
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.Reset) --reset vet trial
-	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.Reset) --reloadui / restart game
+
 	
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_ZONE_CHANNEL_CHANGED, Speedrun.Test)
 	EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
-    SLASH_COMMANDS["/speedrun"] = function()Speedrun.UpdateWaypoint() end
+    SLASH_COMMANDS["/srwaypoint"] = function()Speedrun.UpdateWaypoint() end
 	
 end
 
