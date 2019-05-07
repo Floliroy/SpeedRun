@@ -21,16 +21,23 @@ function Speedrun.GetTime(seconds)
         end
     end
 end
+
+function Speedrun.GetTooltip(timer)
+    if timer then
+        return "At the moment your best personnal is " .. math.floor(timer / 1000) .. " sec.\nEquivalent to " ..  Speedrun.GetTime(math.floor(timer / 1000))
+    else
+        return "At the moment you don't have any best personnal." 
+    end
+end
 -------------------------
 ---- Settings Window ----
 -------------------------
 function Speedrun.CreateSettingsWindow()
-	--TODO switch in settings window in another file and complete it
 	local panelData = {
 		type = "panel",
 		name = "Speedrun",
 		displayName = "SpeedRun",
-		author = "Floliroy & Panaa",
+		author = "Floliroy, Panaa",
 		version = Speedrun.version,
 		slashCommand = "/speedrun",
 		registerForRefresh = true,
@@ -53,7 +60,7 @@ function Speedrun.CreateSettingsWindow()
                 },
                 [2] = { type = "editbox",
                         name = "Step " .. Speedrun.stepList[638][1] .. " (sec)",
-                        tooltip = "At the moment your best personnal is " .. Speedrun.raidList[638].timerSteps[1] .. " sec.\nEquivalent to " ..  Speedrun.GetTime(Speedrun.raidList[638].timerSteps[1]),
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[638].timerSteps[1]),
                         default = "",
                         getFunc = function() return tostring(Speedrun.customTimerSteps[638][1]) end,
                         setFunc = function(newValue) 
@@ -63,7 +70,7 @@ function Speedrun.CreateSettingsWindow()
                 },
                 [3] = { type = "editbox",
                         name = "Step " .. Speedrun.stepList[638][2] .. " (sec)",
-                        tooltip = "At the moment your best personnal is " .. Speedrun.raidList[638].timerSteps[2] .. " sec.\nEquivalent to " ..  Speedrun.GetTime(Speedrun.raidList[638].timerSteps[2]),
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[638].timerSteps[2]),
                         default = "",
                         getFunc = function() return tostring(Speedrun.customTimerSteps[638][2]) end,
                         setFunc = function(newValue) 
@@ -73,7 +80,7 @@ function Speedrun.CreateSettingsWindow()
                 },
                 [4] = { type = "editbox",
                         name = "Step " .. Speedrun.stepList[638][3] .. " (sec)",
-                        tooltip = "At the moment your best personnal is " .. Speedrun.raidList[638].timerSteps[3] .. " sec.\nEquivalent to " ..  Speedrun.GetTime(Speedrun.raidList[638].timerSteps[3]),
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[638].timerSteps[3]),
                         default = "",
                         getFunc = function() return tostring(Speedrun.customTimerSteps[638][3]) end,
                         setFunc = function(newValue) 
@@ -83,7 +90,7 @@ function Speedrun.CreateSettingsWindow()
                 },
                 [5] = { type = "editbox",
                         name = "Step " .. Speedrun.stepList[638][4] .. " (sec)",
-                        tooltip = "At the moment your best personnal is " .. Speedrun.raidList[638].timerSteps[4] .. " sec.\nEquivalent to " ..  Speedrun.GetTime(Speedrun.raidList[638].timerSteps[4]),
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[638].timerSteps[4]),
                         default = "",
                         getFunc = function() return tostring(Speedrun.customTimerSteps[638][4]) end,
                         setFunc = function(newValue) 
@@ -93,7 +100,7 @@ function Speedrun.CreateSettingsWindow()
                 },
                 [6] = { type = "editbox",
                         name = "Step " .. Speedrun.stepList[638][5] .. " (sec)",
-                        tooltip = "At the moment your best personnal is " .. Speedrun.raidList[638].timerSteps[5] .. " sec.\nEquivalent to " ..  Speedrun.GetTime(Speedrun.raidList[638].timerSteps[5]),
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[638].timerSteps[5]),
                         default = "",
                         getFunc = function() return tostring(Speedrun.customTimerSteps[638][5]) end,
                         setFunc = function(newValue) 
@@ -103,7 +110,7 @@ function Speedrun.CreateSettingsWindow()
                 },
                 [7] = { type = "editbox",
                         name = "Step " .. Speedrun.stepList[638][6] .. " (sec)",
-                        tooltip = "At the moment your best personnal is " .. Speedrun.raidList[638].timerSteps[6] .. " sec.\nEquivalent to " ..  Speedrun.GetTime(Speedrun.raidList[638].timerSteps[6]),
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[638].timerSteps[6]),
                         default = "",
                         getFunc = function() return tostring(Speedrun.customTimerSteps[638][6]) end,
                         setFunc = function(newValue) 
@@ -113,7 +120,7 @@ function Speedrun.CreateSettingsWindow()
                 },
                 [8] = { type = "editbox",
                         name = "Step " .. Speedrun.stepList[638][7] .. " (sec)",
-                        tooltip = "At the moment your best personnal is " .. Speedrun.raidList[638].timerSteps[7] .. " sec.\nEquivalent to " ..  Speedrun.GetTime(Speedrun.raidList[638].timerSteps[7]),
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[638].timerSteps[7]),
                         default = "",
                         getFunc = function() return tostring(Speedrun.customTimerSteps[638][7]) end,
                         setFunc = function(newValue) 
@@ -123,7 +130,7 @@ function Speedrun.CreateSettingsWindow()
                 },
                 [9] = { type = "editbox",
                         name = "Step " .. Speedrun.stepList[638][8] .. " (sec)",
-                        tooltip = "At the moment your best personnal is " .. Speedrun.raidList[638].timerSteps[8] .. " sec.\nEquivalent to " ..  Speedrun.GetTime(Speedrun.raidList[638].timerSteps[8]),
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[638].timerSteps[8]),
                         default = "",
                         getFunc = function() return tostring(Speedrun.customTimerSteps[638][8]) end,
                         setFunc = function(newValue) 

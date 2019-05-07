@@ -55,15 +55,20 @@ function Speedrun.UpdateWindowPanel(waypoint, raid)
     end
     Speedrun.UpdateGlobalTimer()
 end
+
 function Speedrun.CreateRaidSegment(id)
     --TODO make initialize function
 
     --Reset segment control
     Speedrun.segment = {}
+    Speedrun.lastBossName = Speedrun.Default.lastBoosName
+    Speedrun.raidID = Speedrun.Default.raidID
+    Speedrun.Step = Speedrun.Default.Step
 
 
     local raid = Speedrun.raidList[id]
     SpeedRun_Timer_Container_Raid:SetText(zo_strformat(SI_ZONE_NAME,GetZoneNameById(id)))
+
     for i, x in ipairs(Speedrun.stepList[id]) do
 
         local segmentRow = WM:CreateControlFromVirtual("SpeedRun_Segment", SpeedRun_Timer_Container, "SpeedRun_Segment", i)
@@ -96,7 +101,7 @@ end
 function Speedrun.UpdateSegment(step, raid)
 
     --TODO if raid already has steptimer
-    d("UpdateSegmenet")
+    --d("UpdateSegment")
     local difference
     if raid.timerSteps[step] then
         difference = GetRaidDuration() - raid.timerSteps[step]

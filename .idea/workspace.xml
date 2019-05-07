@@ -14,18 +14,18 @@
       <file leaf-file-name="Speedrun.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Speedrun.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3995">
-              <caret line="235" column="20" lean-forward="false" selection-start-line="235" selection-start-column="20" selection-end-line="235" selection-end-column="20" />
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="12" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpeedrunUI.lua" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SpeedrunUI.lua" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SpeedrunUI.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="88" column="38" lean-forward="false" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
+            <state relative-caret-position="-158">
+              <caret line="68" column="38" lean-forward="true" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -85,17 +85,17 @@
         <entry file="file://$PROJECT_DIR$/SpeedrunMenu.lua">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="25" />
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpeedrunData.lua" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SpeedrunData.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SpeedrunData.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="743">
-              <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+            <state relative-caret-position="3842">
+              <caret line="226" column="0" lean-forward="true" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,7 +104,7 @@
       <file leaf-file-name="DebuffMe.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../DebuffMe/DebuffMe.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7565">
+            <state relative-caret-position="828">
               <caret line="445" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="498" selection-end-column="90" />
               <folding />
             </state>
@@ -172,10 +172,10 @@
         <option value="E:/Utilisateur/Images/Speedrun.lua" />
         <option value="$PROJECT_DIR$/../AsylumTracker/AsylumTracker.xml" />
         <option value="$PROJECT_DIR$/../DebuffMe/DebuffMe.lua" />
-        <option value="$PROJECT_DIR$/SpeedrunUI.lua" />
-        <option value="$PROJECT_DIR$/Speedrun.lua" />
         <option value="$PROJECT_DIR$/SpeedrunUI.xml" />
         <option value="$PROJECT_DIR$/SpeedrunData.lua" />
+        <option value="$PROJECT_DIR$/Speedrun.lua" />
+        <option value="$PROJECT_DIR$/SpeedrunUI.lua" />
       </list>
     </option>
   </component>
@@ -354,12 +354,12 @@
       <updated>1557071603693</updated>
       <workItem from="1557071606756" duration="25515000" />
       <workItem from="1557136114016" duration="41664000" />
-      <workItem from="1557257133336" duration="653000" />
+      <workItem from="1557257133336" duration="1024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67832000" />
+    <option name="totallyTimeSpent" value="68203000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-42" width="2576" height="1056" extended-state="6" />
@@ -721,14 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SpeedrunMenu.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../AsylumTracker/AsylumTracker.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11917">
@@ -737,34 +729,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../DebuffMe/DebuffMe.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7565">
-          <caret line="445" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="498" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../AsylumTracker/AsylumTracker.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Speedrun.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3995">
-          <caret line="235" column="20" lean-forward="false" selection-start-line="235" selection-start-column="20" selection-end-line="235" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SpeedrunUI.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="88" column="38" lean-forward="false" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -779,8 +747,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SpeedrunData.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="743">
-          <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+        <state relative-caret-position="3842">
+          <caret line="226" column="0" lean-forward="true" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../DebuffMe/DebuffMe.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="445" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="498" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SpeedrunMenu.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Speedrun.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SpeedrunUI.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-158">
+          <caret line="68" column="38" lean-forward="true" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
           <folding />
         </state>
       </provider>
