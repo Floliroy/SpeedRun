@@ -15,7 +15,10 @@ Speedrun.Step = 1
 ---- Variables Default ----
 ---------------------------
 Speedrun.Default = {
-	customTimerSteps = {}
+	customTimerSteps = {},
+    speedrun_container_OffsetX = 0,
+    speedrun_container_OffsetY = 0
+
 }
 Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 
@@ -228,21 +231,23 @@ function Speedrun:Initialize()
 	Speedrun.savedVariables = ZO_SavedVars:NewAccountWide("SpeedrunVariables", 1, nil, Speedrun.Default)
 	Speedrun.customTimerSteps = Speedrun.savedVariables.customTimerSteps
 
+    -- UI
+    Speedrun.ResetAnchors()
+    Speedrun.Reset()
 
 	--EVENT_MANAGER
-	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.Reset)
-	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.Reset)
-	--EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.Reset)
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.Reset)
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_BOSSES_CHANGED, function ()  d("Boss changed") end)
+	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.Reset)
+	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.Reset)
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.Test)
 	EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
     SLASH_COMMANDS["/speedrun"] = function()Speedrun.UpdateWaypoint() end
+    SLASH_COMMANDS["/speedruntest"] = function()Speedrun.ResetAnchors() end
 	
 end
 
-function Speedrun.SaveLoc()
-	Speedrun.savedVariables.OffsetX = SpeedrunAlert:GetLeft()
-	Speedrun.savedVariables.OffsetY = SpeedrunAlert:GetTop()
-end	
+
  
 function Speedrun.OnAddOnLoaded(event, addonName)
 	if addonName ~= Speedrun.name then return end

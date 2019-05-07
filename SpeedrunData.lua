@@ -190,11 +190,3 @@ Speedrun.raidList[639].timerSteps[6] = 3600000
 Speedrun.raidList[639].timerSteps[7] = 4600000
 Speedrun.raidList[639].timerSteps[8] = 5600000
 
-Speedrun.raidList[638].timerSteps[1] = 1800000
-Speedrun.raidList[638].timerSteps[2] = 1900000
-Speedrun.raidList[638].timerSteps[3] = 2200000
-Speedrun.raidList[638].timerSteps[4] = 2400000
-Speedrun.raidList[638].timerSteps[5] = 3000000
-Speedrun.raidList[638].timerSteps[6] = 3600000
-Speedrun.raidList[638].timerSteps[7] = 4600000
-Speedrun.raidList[638].timerSteps[8] = 5600000
