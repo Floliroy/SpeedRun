@@ -1,31 +1,38 @@
 <GuiXml>
     <Controls>
 
-        <TopLevelControl name="SpeedRun_Timer_Container" mouseEnabled="true" movable="true" resizeToFitDescendents="true">
-            <Anchor point="LEFT" relativeTo="GuiRoot" relativePoint="LEFT" offsetX="250" offsetY="0" />
+        <TopLevelControl name="SpeedRun_Timer_Container" mouseEnabled="true" movable="true" resizeToFitDescendents="true" hidden="true" clampedToScreen="true">
+            <Anchor point="TOPLEFT" relativeTo="GuiRoot" relativePoint="TOPLEFT" />
+            <OnMoveStop>
+                Speedrun.SaveLoc()
+            </OnMoveStop>
             <Controls>
                 <Backdrop name="$(parent)_BG" centerColor="66000000" edgeColor="33000000">
                     <Anchor point="TOPLEFT" offsetX="0" offsetY="0" />
                     <Anchor point="BOTTOMRIGHT" offsetX="0" offsetY="0" />
                     <Edge edgeSize="1" />
                 </Backdrop>
-                <Label name="$(parent)_Title" horizontalAlignment="left" font="ZoFontWinH5" text="Speed Run Timer:" wrapMode="TRUNCATE">
-                    <Dimensions x="150" y="24"/>
-                    <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$(parent)" offsetX="2" offsetY="0" />
+                <Label name="$(parent)_Title" horizontalAlignment="CENTER" font="ZoFontWinH5" text="Speed Run Timer:" wrapMode="TRUNCATE">
+                    <Anchor point="TOP" relativePoint="TOP" relativeTo="$(parent)" offsetX="2" offsetY="0" />
+                    <Dimensions y="20"/>
+                </Label>
+                <Label name="$(parent)_Raid"  horizontalAlignment="CENTER" font="ZoFontWinH5" text="Raid Name" wrapMode="TRUNCATE">
+                    <Dimensions y="20"/>
+                    <Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$(parent)_Title" offsetX="2" offsetY="0" />
                 </Label>
             </Controls>
         </TopLevelControl>
 
         <Control name="SpeedRun_Segment" virtual="true" resizeToFitDescendents="true" hidden="true">
             <ResizeToFitPadding width="5" height="0" />
-            <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="0" offsetY="0" />
+            <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT" offsetX="0" offsetY="10" />
             <Controls>
                 <Label name="$(parent)_Name" horizontalAlignment="left" verticalAlignment="center" font="ZoFontWinH5" text="Boss_Name" wrapMode="TRUNCATE">
                     <Dimensions x="150" y="20"/>
                     <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$(parent)" offsetX="3" offsetY="0" />
                 </Label>
                 <Label name="$(parent)_Diff" horizontalAlignment="center" verticalAlignment="center" font="ZoFontWinH5" text="">
-                    <Dimensions x="55" y="20"/>
+                    <Dimensions x="75" y="20"/>
                     <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$(parent)_Name" offsetX="0" offsetY="0" />
                 </Label>
                 <Label name="$(parent)_Best" horizontalAlignment="right" verticalAlignment="center" font="ZoFontWinH5" text="21:02">
@@ -35,14 +42,42 @@
             </Controls>
         </Control>
 
-        <TopLevelControl name="SpeedRun_TotalTimer" mouseEnabled="true" movable="true" resizeToFitDescendents="true">
-            <Anchor point="TOPLEFT" relativeTo="SpeedRun_Timer_Container" relativePoint="BOTTOM" offsetX="0" offsetY="0" />
+        <TopLevelControl name="SpeedRun_TotalTimer" mouseEnabled="true" movable="false"  hidden="true">
+            <Anchor point="TOPRIGHT" relativeTo="SpeedRun_Timer_Container" relativePoint="BOTTOMRIGHT" offsetX="0" offsetY="0" />
             <Controls>
-                <Label name="$(parent)_Title" horizontalAlignment="left" font="ZoFontWinH2" text="0:00:00">
-                    <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" offsetX="0" offsetY="0" />
+                <Label name="$(parent)_Title" horizontalAlignment="RIGHT" font="ZoFontWinH1" text="0:00:00">
+                    <Anchor point="TOPRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" offsetX="0" offsetY="0" />
                 </Label>
             </Controls>
         </TopLevelControl>
+
+        <TopLevelControl name="SpeedRun_Advanced" resizeToFitDescendents="true" mouseEnabled="true" movable="false" hidden="true">
+            <Anchor point="TOPRIGHT" relativeTo="SpeedRun_TotalTimer" relativePoint="BOTTOMRIGHT" offsetX="0" offsetY="0"/>
+
+            <Controls>
+                <Label name="$(parent)_Label" horizontalAlignment="LEFT" font="ZoFontWinH5" text="Previous Segment : ">
+                    <Dimensions x="150" y="20"/>
+                    <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" offsetX="0" offsetY="0" />
+                </Label>
+
+                <Label name="$(parent)_Best" horizontalAlignment="right" verticalAlignment="center" font="ZoFontWinH5" text="21:02">
+                    <Dimensions x="125" y="20"/>
+                    <Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$(parent)_Label" offsetX="0" offsetY="0" />
+                </Label>
+            </Controls>
+            <Controls>
+                <Label name="$(parent)_BestPossible_Label" horizontalAlignment="LEFT" font="ZoFontWinH5" text="Best Possible time : ">
+                    <Dimensions x="150" y="20"/>
+                    <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" offsetX="0" offsetY="20" />
+                </Label>
+
+                <Label name="$(parent)_BestPossible_Value" horizontalAlignment="right" verticalAlignment="center" font="ZoFontWinH5" text="21:02">
+                    <Dimensions x="125" y="20"/>
+                    <Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$(parent)_BestPossible_Label" offsetX="0" offsetY="0" />
+                </Label>
+            </Controls>
+        </TopLevelControl>
+
 
     </Controls>
 </GuiXml>

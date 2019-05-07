@@ -17,6 +17,9 @@ Speedrun.Step = 0
 ---------------------------
 Speedrun.Default = {
 	customTimerSteps = {},
+    speedrun_container_OffsetX = 0,
+    speedrun_container_OffsetY = 0,
+
 	raidList = {},
 	lastBossName = "",
 	raidID = 0,
@@ -249,6 +252,13 @@ function Speedrun:Initialize()
 	--Saved Variables
 	Speedrun.savedVariables = ZO_SavedVars:NewAccountWide("SpeedrunVariables", 1, nil, Speedrun.Default)
 	Speedrun.customTimerSteps = Speedrun.savedVariables.customTimerSteps
+
+    -- UI
+    Speedrun.ResetAnchors()
+    Speedrun.Reset()
+
+
+    --Variable init
 	Speedrun.lastBossName = Speedrun.savedVariables.lastBossName 
 	Speedrun.raidID = Speedrun.savedVariables.raidID
 	Speedrun.Step = Speedrun.savedVariables.Step
@@ -261,6 +271,7 @@ function Speedrun:Initialize()
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.Reset) --finish vet trial
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.Reset) --reset vet trial
 
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.Test)
 	
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_ZONE_CHANNEL_CHANGED, Speedrun.Test)
 	EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
@@ -268,10 +279,7 @@ function Speedrun:Initialize()
 	
 end
 
-function Speedrun.SaveLoc()
-	Speedrun.savedVariables.OffsetX = SpeedrunAlert:GetLeft()
-	Speedrun.savedVariables.OffsetY = SpeedrunAlert:GetTop()
-end	
+
  
 function Speedrun.OnAddOnLoaded(event, addonName)
 	if addonName ~= Speedrun.name then return end

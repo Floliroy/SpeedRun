@@ -5,6 +5,7 @@ Speedrun = Speedrun or { }
 local Speedrun = Speedrun
 local WM = GetWindowManager()
 local globalTimer
+local previousSegment
 local currentRaid
 Speedrun.segments = {}
 
@@ -12,6 +13,35 @@ Speedrun.segments = {}
 -------------------------
 ---- Functions       ----
 -------------------------
+
+function Speedrun.SaveLoc()
+    Speedrun.savedVariables["speedrun_container_OffsetX"] = SpeedRun_Timer_Container:GetLeft()
+    Speedrun.savedVariables["speedrun_container_OffsetY"] = SpeedRun_Timer_Container:GetTop()
+end
+
+function Speedrun.ResetAnchors()
+    SpeedRun_Timer_Container:ClearAnchors()
+    SpeedRun_Timer_Container:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, Speedrun.savedVariables["speedrun_container_OffsetX"], Speedrun.savedVariables["speedrun_container_OffsetY"])
+end
+
+function Speedrun.ToggleMovable()
+    local self = Speedrun
+    Speedrun.isMovable = not Speedrun.isMovable
+    if Speedrun.isMovable then
+
+
+    else
+        SpeedRun_Timer_Container:SetMovable(false)
+        SpeedRun_TotalTimer:SetMovable(false)
+        SpeedRun_Advanced:SetMovable(false)
+
+        SpeedRun_Timer_Container:SetHidden(true)
+        SpeedRun_TotalTimer:SetHidden(true)
+        SpeedRun_Advanced:SetHidden(true)
+    end
+end
+
+
 function Speedrun.UpdateGlobalTimer()
     SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration(), true))
 end
@@ -31,10 +61,14 @@ function Speedrun.CreateRaidSegment(id)
 
     --Reset segment control
     Speedrun.segment = {}
-    --Ui
-    globalTimer = WM:CreateControlFromVirtual("SpeedRun_Segment",   SpeedRun_Timer_Container, "SpeedRun_Segment")
+    Speedrun.lastBossName = Speedrun.Default.lastBoosName
+    Speedrun.raidID = Speedrun.Default.raidID
+    Speedrun.Step = Speedrun.Default.Step
+
 
     local raid = Speedrun.raidList[id]
+    SpeedRun_Timer_Container_Raid:SetText(zo_strformat(SI_ZONE_NAME,GetZoneNameById(id)))
+
     for i, x in ipairs(Speedrun.stepList[id]) do
 
         local segmentRow = WM:CreateControlFromVirtual("SpeedRun_Segment", SpeedRun_Timer_Container, "SpeedRun_Segment", i)
@@ -46,10 +80,21 @@ function Speedrun.CreateRaidSegment(id)
             segmentRow:GetNamedChild('_Best'):SetText("NA:NA")
         end
 
-        segmentRow:SetAnchor(TOPLEFT, SpeedRun_Timer_Container, TOPLEFT, 0, i*20)
+    --TODO NIQUE TAGRAND LUI DE CON
+        if i == 1 then
+            segmentRow:SetAnchor(TOPLEFT, SpeedRun_Timer_Container, TOPLEFT, 0, 40)
+        else
+            segmentRow:SetAnchor(TOPLEFT, SpeedRun_Timer_Container, TOPLEFT, 0, (i*20)+20)
+        end
         segmentRow:SetHidden(false)
         Speedrun.segments[i] = segmentRow;
     end
+
+    SpeedRun_Timer_Container:SetHidden(false)
+    SpeedRun_Advanced:SetHidden(false)
+    SpeedRun_TotalTimer:SetHidden(false)
+    SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
+    SpeedRun_Timer_Container_Raid:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
 
 end
 
