@@ -111,8 +111,8 @@ function Speedrun.UpdateSegment(step, raid)
         difference = GetRaidDuration() - raid.timerSteps[step]
     else
         difference = 0
-        Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(GetRaidDuration()))
     end
+    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(GetRaidDuration()))
 
 
     local segment = Speedrun.segments[Speedrun.Step]:GetNamedChild('_Diff')
