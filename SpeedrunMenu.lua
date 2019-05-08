@@ -52,8 +52,31 @@ function Speedrun.CreateSettingsWindow()
 			text = "Here you can set custom step point time to the different trials.\nIf you leave the editbox blank then it will take your best time.\nYou can also simulate your best possible score if you do all your best time for all step point without any deaths.",
         },
         [2] = {
+            type = "divider",
+        },
+        [3] = {
+            type = "checkbox",
+			name = "Enabled",
+			tooltip = "a tooltip",
+			default = true,
+			getFunc = function() return end,
+			setFunc = function(newValue) 
+				--TODO
+			end,
+        },
+        [4] = {
+            type = "button",
+			name = "Lock",
+			tooltip = "Use it to reposition the window.",
+			func = function() Speedrun.ToggleMovable() end,
+            width = "half",
+        },
+        [5] = {
+            type = "divider",
+        },
+        [6] = {
             type = "submenu",
-            name = "Aetherian Archive",
+            name = (zo_strformat(SI_ZONE_NAME,GetZoneNameById(638))),
             controls = {
                 [1] = { type = "description",
                         text = "You can use custom step point time or leave it blank to use your best personnal (tooltip will tell you what is your best personnal).\nMake sure to type time in seconds (1 min = 60 sec).",

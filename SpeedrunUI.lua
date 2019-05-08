@@ -28,19 +28,25 @@ function Speedrun.ToggleMovable()
     local self = Speedrun
     Speedrun.isMovable = not Speedrun.isMovable
     if Speedrun.isMovable then
+        SpeedRun_Timer_Container:SetMovable(true)
+        SpeedRun_TotalTimer:SetMovable(true)
+        SpeedRun_Advanced:SetMovable(true)
 
-
+        Speedrun.SetUIHidden(false)
     else
         SpeedRun_Timer_Container:SetMovable(false)
         SpeedRun_TotalTimer:SetMovable(false)
         SpeedRun_Advanced:SetMovable(false)
 
-        SpeedRun_Timer_Container:SetHidden(true)
-        SpeedRun_TotalTimer:SetHidden(true)
-        SpeedRun_Advanced:SetHidden(true)
+        Speedrun.SetUIHidden(true)
     end
 end
 
+function Speedrun.SetUIHidden(hide)
+    SpeedRun_Timer_Container:SetHidden(hide)
+    SpeedRun_TotalTimer:SetHidden(hide)
+    SpeedRun_Advanced:SetHidden(hide)
+end
 
 function Speedrun.UpdateGlobalTimer()
     SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration(), true))
@@ -90,9 +96,7 @@ function Speedrun.CreateRaidSegment(id)
         Speedrun.segments[i] = segmentRow;
     end
 
-    SpeedRun_Timer_Container:SetHidden(false)
-    SpeedRun_Advanced:SetHidden(false)
-    SpeedRun_TotalTimer:SetHidden(false)
+    Speedrun.SetUIHidden(false)
     SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
     SpeedRun_Timer_Container_Raid:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
 
