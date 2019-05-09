@@ -139,14 +139,15 @@ function Speedrun.MainCloudrest()
 	for i = 1, MAX_BOSSES do
 		if DoesUnitExist("boss" .. i) then
 			local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-			if Speedrun.Step == 1 then --start fight with boss
-				Speedrun.UpdateWaypoint()
+			local percentageHP = currentTargetHP / maxTargetHP 
 
-				Speedrun.lastBossName = GetUnitName("boss" .. i)
-				Speedrun.savedVariables.lastBossName = Speedrun.lastBossName 
-			end
 			if IsUnitInCombat("player") then    
-				local percentageHP = currentTargetHP / maxTargetHP 
+				if Speedrun.Step == 1 then --start fight with boss
+					Speedrun.UpdateWaypoint()
+	
+					Speedrun.lastBossName = GetUnitName("boss" .. i)
+					Speedrun.savedVariables.lastBossName = Speedrun.lastBossName 
+				end
 				if percentageHP <= 0.75 and Speedrun.Step == 2 then
 					Speedrun.UpdateWaypoint()
 				end
@@ -176,11 +177,12 @@ function Speedrun.MainAsylum()
 	for i = 1, MAX_BOSSES do
 		if DoesUnitExist("boss" .. i) then
 			local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-			if Speedrun.Step == 1 then --start fight with boss
-				Speedrun.UpdateWaypoint()
-			end
+			local percentageHP = currentTargetHP / maxTargetHP 
+			
 			if IsUnitInCombat("player") then    
-				local percentageHP = currentTargetHP / maxTargetHP 
+				if Speedrun.Step == 1 then --start fight with boss
+					Speedrun.UpdateWaypoint()
+				end
 				if percentageHP <= 0.9 and Speedrun.Step == 2 then
 					Speedrun.UpdateWaypoint()
 				end
@@ -194,7 +196,7 @@ function Speedrun.MainAsylum()
 					Speedrun.UpdateWaypoint()
 				end				
 			else
-				if currentTargetHP > 0 then 
+				if currentTargetHP > 0 and Speedrun.Step < 6 then 
 					Speedrun.Step = 1
 					Speedrun.savedVariables.Step = Speedrun.Step 
 				end
@@ -305,16 +307,9 @@ function Speedrun.IsInTrialZone()
 end
 
 function Speedrun:Initialize()
-	--Settings
-	Speedrun.CreateSettingsWindow()
-	
 	--Saved Variables
 	Speedrun.savedVariables = ZO_SavedVars:NewAccountWide("SpeedrunVariables", 1, nil, Speedrun.Default)
 	Speedrun.customTimerSteps = Speedrun.savedVariables.customTimerSteps
-
-    -- UI
-    Speedrun.ResetAnchors()
-    Speedrun.Reset()
 
 	--Variable init
 	Speedrun.raidList = Speedrun.savedVariables.raidList
@@ -324,6 +319,13 @@ function Speedrun:Initialize()
 	Speedrun.raidID = Speedrun.savedVariables.raidID
 	Speedrun.Step = Speedrun.savedVariables.Step
 	Speedrun.isBossDead = Speedrun.savedVariables.isBossDead
+
+	--Settings
+	Speedrun.CreateSettingsWindow()
+
+    -- UI
+    Speedrun.ResetAnchors()
+    Speedrun.Reset()
 
 	--EVENT_MANAGER
 	EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated) 

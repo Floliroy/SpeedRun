@@ -24,10 +24,30 @@ end
 
 function Speedrun.GetTooltip(timer)
     if timer then
-        return "At the moment your best personnal is " .. math.floor(timer / 1000) .. " sec.\nEquivalent to " ..  Speedrun.GetTime(math.floor(timer / 1000))
+        return "At the moment your best personnal time is " .. math.floor(timer / 1000) .. " sec.\nEquivalent to " ..  Speedrun.GetTime(math.floor(timer / 1000)) .. "."
     else
         return "At the moment you don't have any best personnal." 
     end
+end
+
+function Speedrun.Simulate(raidID)
+    local totalTime = 0
+    for i, x in pairs(Speedrun.raidList[raidID].timerSteps) do
+        totalTime = math.floor(x / 1000) + totalTime
+    end
+
+    local vitality
+    if raidID == 638 or raidID == 636 or raidID == 639 or raidID == 1082 or raidID == 635 then
+        vitality = 24
+    elseif raidID == 725 or raidID == 975 or raidID == 1000 or raidID == 1051 then
+        vitality = 36
+    elseif raidID == 677 then
+        vitality = 15
+    end
+
+    local score = Speedrun.GetScore(totalTime, vitality, raidID)
+    d("|cdf4242" .. zo_strformat(SI_ZONE_NAME,GetZoneNameById(raidID)) .. "|r")
+    d("Your score with a time of " .. Speedrun.GetTime(totalTime) .. " would be " .. math.floor(score) .. ".")
 end
 -------------------------
 ---- Settings Window ----
@@ -165,13 +185,187 @@ function Speedrun.CreateSettingsWindow()
                         name = "Simulate",
                         tooltip = "You will simulate your best possible score if you do all your best time for all step point without any deaths.",
                         func = function()
-                            d("TODO")
+                            Speedrun.Simulate(638)
                         end,
                         width = "half",
                 },
-            }
-        }        
-	}
-	
+            },
+        },
+        [7] = {
+            type = "submenu",
+            name = (zo_strformat(SI_ZONE_NAME,GetZoneNameById(636))),
+            controls = {
+                [1] = { type = "description",
+                        text = "You can use custom step point time or leave it blank to use your best personnal (tooltip will tell you what is your best personnal).\nMake sure to type time in seconds (1 min = 60 sec).",
+                },
+                [2] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[636][1] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[636].timerSteps[1]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[636][1]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[636][1] = tonumber(newValue)
+                            Speedrun.customTimerSteps[636][1] = tonumber(newValue)
+                            end,
+                },
+                [3] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[636][2] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[636].timerSteps[2]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[636][2]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[636][2] = tonumber(newValue)
+                            Speedrun.customTimerSteps[636][2] = tonumber(newValue)
+                            end,
+                },
+                [4] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[636][3] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[636].timerSteps[3]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[636][3]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[636][3] = tonumber(newValue)
+                            Speedrun.customTimerSteps[636][3] = tonumber(newValue)
+                            end,
+                },
+                [5] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[636][4] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[636].timerSteps[4]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[636][4]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[636][4] = tonumber(newValue)
+                            Speedrun.customTimerSteps[636][4] = tonumber(newValue)
+                            end,
+                },
+                [6] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[636][5] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[636].timerSteps[5]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[636][5]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[636][5] = tonumber(newValue)
+                            Speedrun.customTimerSteps[636][5] = tonumber(newValue)
+                            end,
+                },
+                [7] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[636][6] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[636].timerSteps[6]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[636][6]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[636][6] = tonumber(newValue)
+                            Speedrun.customTimerSteps[636][6] = tonumber(newValue)
+                            end,
+                },
+                [8] = { type = "button",
+                        name = "Simulate",
+                        tooltip = "You will simulate your best possible score if you do all your best time for all step point without any deaths.",
+                        func = function()
+                            Speedrun.Simulate(636)
+                        end,
+                        width = "half",
+                },
+            },
+        },
+        [8] = {
+            type = "submenu",
+            name = (zo_strformat(SI_ZONE_NAME,GetZoneNameById(639))),
+            controls = {
+                [1] = { type = "description",
+                        text = "You can use custom step point time or leave it blank to use your best personnal (tooltip will tell you what is your best personnal).\nMake sure to type time in seconds (1 min = 60 sec).",
+                },
+                [2] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[639][1] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[639].timerSteps[1]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[639][1]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[639][1] = tonumber(newValue)
+                            Speedrun.customTimerSteps[639][1] = tonumber(newValue)
+                            end,
+                },
+                [3] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[639][2] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[639].timerSteps[2]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[639][2]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[639][2] = tonumber(newValue)
+                            Speedrun.customTimerSteps[639][2] = tonumber(newValue)
+                            end,
+                },
+                [4] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[639][3] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[639].timerSteps[3]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[639][3]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[639][3] = tonumber(newValue)
+                            Speedrun.customTimerSteps[639][3] = tonumber(newValue)
+                            end,
+                },
+                [5] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[639][4] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[639].timerSteps[4]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[639][4]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[639][4] = tonumber(newValue)
+                            Speedrun.customTimerSteps[639][4] = tonumber(newValue)
+                            end,
+                },
+                [6] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[639][5] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[639].timerSteps[5]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[639][5]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[639][5] = tonumber(newValue)
+                            Speedrun.customTimerSteps[639][5] = tonumber(newValue)
+                            end,
+                },
+                [7] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[639][6] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[639].timerSteps[6]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[639][6]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[639][6] = tonumber(newValue)
+                            Speedrun.customTimerSteps[639][6] = tonumber(newValue)
+                            end,
+                },
+                [8] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[639][7] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[639].timerSteps[7]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[639][7]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[639][7] = tonumber(newValue)
+                            Speedrun.customTimerSteps[639][7] = tonumber(newValue)
+                            end,
+                },
+                [9] = { type = "editbox",
+                        name = "Step " .. Speedrun.stepList[639][8] .. " (sec)",
+                        tooltip = Speedrun.GetTooltip(Speedrun.raidList[639].timerSteps[8]),
+                        default = "",
+                        getFunc = function() return tostring(Speedrun.customTimerSteps[639][8]) end,
+                        setFunc = function(newValue) 
+                            Speedrun.savedVariables.customTimerSteps[639][8] = tonumber(newValue)
+                            Speedrun.customTimerSteps[639][8] = tonumber(newValue)
+                            end,
+                },
+                [10] = { type = "button",
+                        name = "Simulate",
+                        tooltip = "You will simulate your best possible score if you do all your best time for all step point without any deaths.",
+                        func = function()
+                            Speedrun.Simulate(639)
+                        end,
+                        width = "half",
+                },
+            },
+        },
+    }        
+
 	LAM2:RegisterOptionControls("Speedrun_Settings", optionsData)
 end
