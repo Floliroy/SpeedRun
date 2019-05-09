@@ -60,7 +60,7 @@
                     <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" offsetX="0" offsetY="0" />
                 </Label>
 
-                <Label name="$(parent)_Best" horizontalAlignment="right" verticalAlignment="center" font="ZoFontWinH5" text="21:02">
+                <Label name="$(parent)_PreviousSegment" horizontalAlignment="right" verticalAlignment="center" font="ZoFontWinH5" text="21:02">
                     <Dimensions x="125" y="20"/>
                     <Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$(parent)_Label" offsetX="0" offsetY="0" />
                 </Label>

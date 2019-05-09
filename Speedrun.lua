@@ -13,6 +13,7 @@ Speedrun.raidID = 0
 Speedrun.Step = 0
 Speedrun.currentRaidTimer = {}
 Speedrun.isBossDead = true
+Speedrun.segmentTimer = {}
 
 ---------------------------
 ---- Variables Default ----
@@ -27,7 +28,8 @@ Speedrun.Default = {
 	lastBossName = "",
 	raidID = 0,
 	isBossDead = true,
-	Step = 0
+	Step = 0,
+	segmentTimer = {}
 }
 Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 Speedrun.Default.raidList = Speedrun.raidList
@@ -143,7 +145,7 @@ function Speedrun.MainCloudrest()
 				Speedrun.UpdateWaypoint()
 
 				Speedrun.lastBossName = GetUnitName("boss" .. i)
-				Speedrun.savedVariables.lastBossName = Speedrun.lastBossName 
+				Speedrun.savedVariables.lastBossName = Speedrun.lastBossName
 			end
 			if IsUnitInCombat("player") then    
 				local percentageHP = currentTargetHP / maxTargetHP 

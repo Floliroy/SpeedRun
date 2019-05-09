@@ -81,10 +81,18 @@ function Speedrun.CreateRaidSegment(id)
         segmentRow:GetNamedChild('_Name'):SetText(x);
 
         if raid.timerSteps[i] then
-            segmentRow:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(raid.timerSteps[i], true))
+
+            if i == 1 then
+                Speedrun.segmentTimer[i] = raid.timerSteps[i]
+            else
+                Speedrun.segmentTimer[i] = raid.timerSteps[i] + Speedrun.segmentTimer[i-1]
+            end
+
+            segmentRow:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.segmentTimer[i], true))
         else
             segmentRow:GetNamedChild('_Best'):SetText("NA:NA")
         end
+
 
     --TODO NIQUE TAGRAND LUI DE CON
         if i == 1 then
@@ -104,23 +112,39 @@ end
 
 function Speedrun.UpdateSegment(step, raid)
 
-    --TODO if raid already has steptimer
-    --d("UpdateSegment")
+    --TODO Divide into multiple function
+
     local difference
-    if raid.timerSteps[step] then
-        difference = GetRaidDuration() - raid.timerSteps[step]
+    if Speedrun.segmentTimer[step] then
+        difference = GetRaidDuration() - Speedrun.segmentTimer[step]
     else
         difference = 0
     end
-    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(GetRaidDuration()))
 
+    local previousSegementDif
+    if raid.timerSteps[step] then
+        previousSegementDif = (GetRaidDuration() - Speedrun.segmentTimer[step-1]) - raid.timerSteps[step]
+    else
+        previousSegementDif = 0
+    end
+
+
+    local bestPossibleTime =  difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
+    SpeedRun_Advanced_BestPossible_Value:SetText(Speedrun.FormatRaidTimer(bestPossibleTime))
+    SpeedRun_Advanced_PreviousSegment:SetText(Speedrun.FormatRaidTimer(previousSegementDif))
+    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(GetRaidDuration()))
 
     local segment = Speedrun.segments[Speedrun.Step]:GetNamedChild('_Diff')
     segment:SetText(Speedrun.FormatRaidTimer(difference, true))
-    if difference > 0 then
+
+    Speedrun.DifferenceColor(difference, segment)
+    Speedrun.DifferenceColor(previousSegementDif, SpeedRun_Advanced_PreviousSegment)
+end
+
+function Speedrun.DifferenceColor(diff, segment)
+    if diff > 0 then
         segment:SetColor(unpack{1,0,0})
     else
         segment:SetColor(unpack{0,1,0})
     end
 end
-
