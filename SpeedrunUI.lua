@@ -1,7 +1,7 @@
 -------------------------
-----    Variables    ----
+---- Variables    ----
 -------------------------
-Speedrun = Speedrun or { }
+Speedrun = Speedrun or {}
 local Speedrun = Speedrun
 local WM = GetWindowManager()
 local globalTimer
@@ -13,7 +13,6 @@ Speedrun.segments = {}
 -------------------------
 ---- Functions       ----
 -------------------------
-
 function Speedrun.SaveLoc()
     Speedrun.savedVariables["speedrun_container_OffsetX"] = SpeedRun_Timer_Container:GetLeft()
     Speedrun.savedVariables["speedrun_container_OffsetY"] = SpeedRun_Timer_Container:GetTop()
@@ -70,10 +69,11 @@ function Speedrun.CreateRaidSegment(id)
     Speedrun.lastBossName = Speedrun.Default.lastBoosName
     Speedrun.raidID = Speedrun.Default.raidID
     Speedrun.Step = Speedrun.Default.Step
+    Speedrun.segmentTimer = {}
 
 
     local raid = Speedrun.raidList[id]
-    SpeedRun_Timer_Container_Raid:SetText(zo_strformat(SI_ZONE_NAME,GetZoneNameById(id)))
+    SpeedRun_Timer_Container_Raid:SetText(zo_strformat(SI_ZONE_NAME, GetZoneNameById(id)))
 
     for i, x in ipairs(Speedrun.stepList[id]) do
 
@@ -85,7 +85,7 @@ function Speedrun.CreateRaidSegment(id)
             if i == 1 then
                 Speedrun.segmentTimer[i] = raid.timerSteps[i]
             else
-                Speedrun.segmentTimer[i] = raid.timerSteps[i] + Speedrun.segmentTimer[i-1]
+                Speedrun.segmentTimer[i] = raid.timerSteps[i] + Speedrun.segmentTimer[i - 1]
             end
 
             segmentRow:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.segmentTimer[i], true))
@@ -94,11 +94,11 @@ function Speedrun.CreateRaidSegment(id)
         end
 
 
-    --TODO NIQUE TAGRAND LUI DE CON
+        --TODO NIQUE TAGRAND LUI DE CON
         if i == 1 then
             segmentRow:SetAnchor(TOPLEFT, SpeedRun_Timer_Container, TOPLEFT, 0, 40)
         else
-            segmentRow:SetAnchor(TOPLEFT, SpeedRun_Timer_Container, TOPLEFT, 0, (i*20)+20)
+            segmentRow:SetAnchor(TOPLEFT, SpeedRun_Timer_Container, TOPLEFT, 0, (i * 20) + 20)
         end
         segmentRow:SetHidden(false)
         Speedrun.segments[i] = segmentRow;
@@ -107,7 +107,6 @@ function Speedrun.CreateRaidSegment(id)
     Speedrun.SetUIHidden(false)
     SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
     SpeedRun_Timer_Container_Raid:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
-
 end
 
 function Speedrun.UpdateSegment(step, raid)
@@ -122,14 +121,17 @@ function Speedrun.UpdateSegment(step, raid)
     end
 
     local previousSegementDif
-    if raid.timerSteps[step] then
-        previousSegementDif = (GetRaidDuration() - Speedrun.segmentTimer[step-1]) - raid.timerSteps[step]
+    d(step)
+    if raid.timerSteps[step] and step > 1 then
+        previousSegementDif = (GetRaidDuration() - raid.timerSteps[step - 1]) - raid.timerSteps[step]
+    elseif raid.timerSteps[step] and step == 1 then
+        previousSegementDif = GetRaidDuration() - raid.timerSteps[step]
     else
         previousSegementDif = 0
     end
 
-
-    local bestPossibleTime =  difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
+    --TODO IF NO PRESAVED TIME
+    local bestPossibleTime = difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
     SpeedRun_Advanced_BestPossible_Value:SetText(Speedrun.FormatRaidTimer(bestPossibleTime))
     SpeedRun_Advanced_PreviousSegment:SetText(Speedrun.FormatRaidTimer(previousSegementDif))
     Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(GetRaidDuration()))
@@ -143,8 +145,8 @@ end
 
 function Speedrun.DifferenceColor(diff, segment)
     if diff > 0 then
-        segment:SetColor(unpack{1,0,0})
+        segment:SetColor(unpack { 1, 0, 0 })
     else
-        segment:SetColor(unpack{0,1,0})
+        segment:SetColor(unpack { 0, 1, 0 })
     end
 end
