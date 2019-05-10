@@ -41,9 +41,13 @@ function Speedrun.Simulate(raidID)
         vitality = 15
     end
 
-    local score = Speedrun.GetScore(totalTime, vitality, raidID)
-    d("|cdf4242" .. zo_strformat(SI_ZONE_NAME, GetZoneNameById(raidID)) .. "|r")
-    d("Your score with a time of " .. Speedrun.GetTime(totalTime) .. " would be " .. math.floor(score) .. ".")
+    local score = math.floor(Speedrun.GetScore(totalTime, vitality, raidID))
+    local dScore = string.sub(tostring(score),1,3)
+    local fScore = string.sub(tostring(score),4,7)
+    score = dScore .. "'" .. fScore
+
+    d("|cdf4242" .. zo_strformat(SI_ZONE_NAME,GetZoneNameById(raidID)) .. "|r")
+    d("Your score with a time of " .. Speedrun.GetTime(totalTime) .. " would be " .. score .. ".")
 end
 
 -------------------------

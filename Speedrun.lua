@@ -93,23 +93,6 @@ function Speedrun.GetScore(timer, vitality, raidID)
     end
 end
 
-function Speedrun.UpdateWaypoint()
-    local raid = Speedrun.raidList[Speedrun.raidID]
-    local waypoint = Speedrun.Step
-    if raid then
-        Speedrun.UpdateWindowPanel(waypoint, raid)
-
-        if raid.timerSteps[waypoint] == nil or raid.timerSteps[waypoint] < math.floor(GetRaidDuration()) then
-            raid.timerSteps[waypoint] = GetRaidDuration()
-            Speedrun.savedVariables.raidList = Speedrun.raidList
-        end
-        d("SR:waypoint " .. waypoint)
-        Speedrun.Step = Speedrun.Step + 1
-        Speedrun.savedVariables.Step = Speedrun.Step
-        return
-    end
-end
-
 function Speedrun.UpdateWaypointNew()
     local raid = Speedrun.raidList[Speedrun.raidID]
     local waypoint = Speedrun.Step
@@ -145,23 +128,23 @@ function Speedrun.MainCloudrest()
 
             if IsUnitInCombat("player") then
                 if Speedrun.Step == 1 then --start fight with boss
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
 
                     Speedrun.lastBossName = GetUnitName("boss" .. i)
                     Speedrun.savedVariables.lastBossName = Speedrun.lastBossName
                 end
                 if percentageHP <= 0.75 and Speedrun.Step == 2 then
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
                 if percentageHP <= 0.5 and Speedrun.Step == 3 then
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
                 if percentageHP <= 0.25 and Speedrun.Step == 4 then
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
                 if GetUnitName("boss" .. i) ~= Speedrun.lastBossName and Speedrun.Step == 5 then
                     --ZMaja Shadow
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
             else
                 if currentTargetHP > 0 and Speedrun.Step < 6 then
@@ -183,19 +166,19 @@ function Speedrun.MainAsylum()
 
             if IsUnitInCombat("player") then
                 if Speedrun.Step == 1 then --start fight with boss
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
                 if percentageHP <= 0.9 and Speedrun.Step == 2 then
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
                 if percentageHP <= 0.75 and Speedrun.Step == 3 then
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
                 if percentageHP <= 0.5 and Speedrun.Step == 4 then
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
                 if percentageHP <= 0.25 and Speedrun.Step == 5 then
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                 end
             else
                 if currentTargetHP > 0 and Speedrun.Step < 6 then
@@ -207,15 +190,32 @@ function Speedrun.MainAsylum()
     end
 end
 
+function Speedrun.LastArchive()
+	if IsUnitInCombat("player") and Speedrun.Step == 6 then
+		for i = 1, MAX_BOSSES do
+			if DoesUnitExist("boss" .. i) then
+				Speedrun.UpdateWaypointNew()
+				--Unregister for update then register again on update for UI panel
+				EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "Update")
+				EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
+			end
+		end
+	end
+end
+
 function Speedrun.MainBoss()
+	if Speedrun.Step == 6 and Speedrun.raidID == 638 then
+		--to trigger the mage
+		EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 333, Speedrun.LastArchive)
+	end
     for i = 1, MAX_BOSSES do
         if DoesUnitExist("boss" .. i) then
             if IsUnitInCombat("player") then
                 --begin fight with a boss
-                if isBossDead == true then
+                if Speedrun.isBossDead == true then
                     Speedrun.isBossDead = false
                     Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                     return
                 end
             else
@@ -224,7 +224,7 @@ function Speedrun.MainBoss()
                     --boss dead
                     Speedrun.isBossDead = true
                     Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
-                    Speedrun.UpdateWaypoint()
+                    Speedrun.UpdateWaypointNew()
                     return
                 end
             end
@@ -236,7 +236,7 @@ end
 ---- Base & Events ----
 -----------------------
 function Speedrun.Reset()
-    Speedrun.isBossDead = false
+    Speedrun.isBossDead = true
     Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
     Speedrun.lastBossName = ""
     Speedrun.savedVariables.lastBossName = Speedrun.lastBossName
@@ -271,7 +271,7 @@ function Speedrun.OnTrialFailed()
 end
 
 function Speedrun.OnTrialComplete()
-    Speedrun.UpdateWaypoint()
+    Speedrun.UpdateWaypointNew()
     Speedrun.UnregisterTrialsEvents()
 end
 
@@ -321,7 +321,8 @@ function Speedrun:Initialize()
     Speedrun.lastBossName = Speedrun.savedVariables.lastBossName
     Speedrun.raidID = Speedrun.savedVariables.raidID
     Speedrun.Step = Speedrun.savedVariables.Step
-    Speedrun.isBossDead = Speedrun.savedVariables.isBossDead
+	Speedrun.isBossDead = Speedrun.savedVariables.isBossDead
+	Speedrun.segmentTimer = Speedrun.savedVariables.segmentTimer
 
     --Settings
     Speedrun.CreateSettingsWindow()
