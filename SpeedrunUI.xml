@@ -55,7 +55,7 @@
             <Anchor point="TOPRIGHT" relativeTo="SpeedRun_TotalTimer" relativePoint="BOTTOMRIGHT" offsetX="0" offsetY="0"/>
 
             <Controls>
-                <Label name="$(parent)_Label" horizontalAlignment="LEFT" font="ZoFontWinH5" text="Previous Segment : ">
+                <Label name="$(parent)_Label" horizontalAlignment="LEFT" font="ZoFontWinH5" text="Gain on Last Segment : ">
                     <Dimensions x="150" y="20"/>
                     <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" offsetX="0" offsetY="0" />
                 </Label>
@@ -66,7 +66,7 @@
                 </Label>
             </Controls>
             <Controls>
-                <Label name="$(parent)_BestPossible_Label" horizontalAlignment="LEFT" font="ZoFontWinH5" text="Best Possible time : ">
+                <Label name="$(parent)_BestPossible_Label" horizontalAlignment="LEFT" font="ZoFontWinH5" text="Best Possible Time : ">
                     <Dimensions x="150" y="20"/>
                     <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" offsetX="0" offsetY="20" />
                 </Label>

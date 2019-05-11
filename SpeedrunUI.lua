@@ -125,7 +125,7 @@ function Speedrun.UpdateSegment(step, raid)
     end
 
     local previousSegementDif
-    d(step)
+    --d(step)
     if raid.timerSteps[step] and step > 1 then
         previousSegementDif = (GetRaidDuration() - raid.timerSteps[step - 1]) - raid.timerSteps[step]
     elseif raid.timerSteps[step] and step == 1 then
