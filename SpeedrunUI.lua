@@ -7,7 +7,6 @@ local WM = GetWindowManager()
 local globalTimer
 local previousSegment
 local currentRaid
-Speedrun.segments = {}
 
 
 -------------------------
@@ -65,19 +64,24 @@ function Speedrun.CreateRaidSegment(id)
     --TODO make initialize function
 
     --Reset segment control
-    Speedrun.segment = {}
     Speedrun.lastBossName = Speedrun.Default.lastBoosName
     Speedrun.raidID = Speedrun.Default.raidID
     Speedrun.Step = Speedrun.Default.Step
     Speedrun.segmentTimer = {}
-
 
     local raid = Speedrun.raidList[id]
     SpeedRun_Timer_Container_Raid:SetText(zo_strformat(SI_ZONE_NAME, GetZoneNameById(id)))
 
     for i, x in ipairs(Speedrun.stepList[id]) do
 
-        local segmentRow = WM:CreateControlFromVirtual("SpeedRun_Segment", SpeedRun_Timer_Container, "SpeedRun_Segment", i)
+        local segmentRow
+        if WM:GetControlByName("SpeedRun_Segment", i) then
+            d("Already exist")
+            segmentRow = WM:GetControlByName("SpeedRun_Segment", i)
+        else
+            d("Is getting created")
+            segmentRow = WM:CreateControlFromVirtual("SpeedRun_Segment", SpeedRun_Timer_Container, "SpeedRun_Segment", i)
+        end
         segmentRow:GetNamedChild('_Name'):SetText(x);
 
         if raid.timerSteps[i] then
