@@ -14,8 +14,18 @@
       <file leaf-file-name="Speedrun.lua" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Speedrun.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="125" column="63" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="353" selection-end-column="0" />
+            <state relative-caret-position="2465">
+              <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HodorReflexes.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HodorReflexes/HodorReflexes.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -24,18 +34,8 @@
       <file leaf-file-name="SpeedrunUI.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SpeedrunUI.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="132" column="30" lean-forward="false" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Speedrun.lua" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../SavedVariables/Speedrun.lua">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="137" column="18" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="83" column="11" lean-forward="false" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -54,8 +54,8 @@
       <file leaf-file-name="main.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/main.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="703" column="28" lean-forward="true" selection-start-line="703" selection-start-column="28" selection-end-line="703" selection-end-column="28" />
+            <state relative-caret-position="192">
+              <caret line="335" column="90" lean-forward="true" selection-start-line="335" selection-start-column="90" selection-end-line="335" selection-end-column="90" />
               <folding />
             </state>
           </provider>
@@ -64,18 +64,38 @@
       <file leaf-file-name="SpeedrunData.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SpeedrunData.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="215" column="1" lean-forward="true" selection-start-line="215" selection-start-column="1" selection-end-line="215" selection-end-column="1" />
+            <state relative-caret-position="165">
+              <caret line="200" column="24" lean-forward="true" selection-start-line="200" selection-start-column="24" selection-end-line="200" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DebuffMe.lua" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../DebuffMe/DebuffMe.lua">
+      <file leaf-file-name="AsylumTracker.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../AsylumTracker/AsylumTracker.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7565">
-              <caret line="445" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="498" selection-end-column="90" />
+            <state relative-caret-position="277">
+              <caret line="391" column="34" lean-forward="false" selection-start-line="391" selection-start-column="23" selection-end-line="391" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ids.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/ids.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/menu.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -85,19 +105,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>M</find>
-      <find>for</find>
-      <find>Color</find>
-      <find>GetTime</find>
-      <find>stepList[638]</find>
-      <find>raidList</find>
-      <find>ResetFight</find>
-      <find>playersData</find>
-      <find>UpdateWindowPanel</find>
-      <find>string.form</find>
-      <find>WM:</find>
-      <find>WM</find>
-      <find>Speedrun.segm</find>
       <find>currentRaid</find>
       <find>globalTimer</find>
       <find>InitializeTrial</find>
@@ -113,8 +120,21 @@
       <find>ToggleMovable</find>
       <find>SpeedRun_TotalTimer</find>
       <find>ultRow</find>
-      <find>RestorePosition</find>
       <find>diff</find>
+      <find>RestorePosition</find>
+      <find>IsReticleHidden</find>
+      <find>uiLocked</find>
+      <find>UnregisterForUpdate</find>
+      <find>ToggleShare</find>
+      <find>enableDamageList</find>
+      <find>.ultRow</find>
+      <find>playersData</find>
+      <find>UnregisterEvents</find>
+      <find>OnEffectChanged</find>
+      <find>CombatState</find>
+      <find>WM:</find>
+      <find>WM</find>
+      <find>Reset</find>
     </findStrings>
     <replaceStrings>
       <replace>stepList[636]</replace>
@@ -156,9 +176,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="2142" />
-    <option name="y" value="-34" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="409" />
+    <option name="y" value="-8" />
     <option name="width" value="1449" />
     <option name="height" value="1056" />
   </component>
@@ -177,10 +197,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -327,14 +347,16 @@
       <workItem from="1557257133336" duration="1858000" />
       <workItem from="1557349883381" duration="47000" />
       <workItem from="1557437613473" duration="9714000" />
+      <workItem from="1557530946924" duration="58000" />
+      <workItem from="1557605777157" duration="5468000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78798000" />
+    <option name="totallyTimeSpent" value="84324000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2142" y="-34" width="1449" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -356,10 +378,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="HDInsight Spark Submission" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19438446" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14712153" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Remote Spark Job in Cluster" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Remote Spark Job in Cluster" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -403,7 +425,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -411,7 +432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11917">
           <caret line="701" column="23" lean-forward="false" selection-start-line="701" selection-start-column="23" selection-end-line="701" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -427,7 +447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1598">
           <caret line="94" column="94" lean-forward="false" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="94" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -551,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/menu.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../HodorReflexes/HodorReflexesMenu.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -569,13 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="20" lean-forward="true" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/ids.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -628,20 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../HodorReflexes/HodorReflexes.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="46" lean-forward="false" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Speedrun.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../Raidificator/lib/ui.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -677,27 +668,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../AsylumTracker/AsylumTracker.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11917">
-          <caret line="701" column="23" lean-forward="false" selection-start-line="701" selection-start-column="23" selection-end-line="701" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../DebuffMe/DebuffMe.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7565">
-          <caret line="445" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="498" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../AsylumTracker/AsylumTracker.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -705,6 +679,58 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="94" column="94" lean-forward="false" selection-start-line="94" selection-start-column="26" selection-end-line="94" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../SavedVariables/Speedrun.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+          <folding>
+            <marker date="1557605570029" expanded="true" signature="21:6361" ph="..." />
+            <marker date="1557605570029" expanded="true" signature="46:6358" ph="..." />
+            <marker date="1557605570029" expanded="true" signature="78:6351" ph="..." />
+            <marker date="1557605570029" expanded="true" signature="124:6340" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../DebuffMe/DebuffMe.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="828">
+          <caret line="445" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="498" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/ids.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../AsylumTracker/AsylumTracker.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="391" column="34" lean-forward="false" selection-start-line="391" selection-start-column="23" selection-end-line="391" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/menu.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HodorReflexes/HodorReflexes.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="24" column="44" lean-forward="false" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -719,23 +745,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../HodorReflexes/modules/share/main.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="703" column="28" lean-forward="true" selection-start-line="703" selection-start-column="28" selection-end-line="703" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../SavedVariables/Speedrun.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="137" column="18" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+        <state relative-caret-position="192">
+          <caret line="335" column="90" lean-forward="true" selection-start-line="335" selection-start-column="90" selection-end-line="335" selection-end-column="90" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SpeedrunMenu.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
+        <state relative-caret-position="-527">
           <caret line="194" column="48" lean-forward="true" selection-start-line="194" selection-start-column="48" selection-end-line="194" selection-end-column="48" />
           <folding />
         </state>
@@ -743,24 +761,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SpeedrunData.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="215" column="1" lean-forward="true" selection-start-line="215" selection-start-column="1" selection-end-line="215" selection-end-column="1" />
+        <state relative-caret-position="165">
+          <caret line="200" column="24" lean-forward="true" selection-start-line="200" selection-start-column="24" selection-end-line="200" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Speedrun.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SpeedrunUI.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="132" column="30" lean-forward="false" selection-start-line="132" selection-start-column="30" selection-end-line="132" selection-end-column="30" />
+        <state relative-caret-position="238">
+          <caret line="83" column="11" lean-forward="false" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Speedrun.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="125" column="63" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="353" selection-end-column="0" />
+        <state relative-caret-position="2465">
+          <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -14,6 +14,7 @@ Speedrun.Step = 0
 Speedrun.currentRaidTimer = {}
 Speedrun.isBossDead = true
 Speedrun.segmentTimer = {}
+Speedrun.segments = {}
 
 ---------------------------
 ---- Variables Default ----
@@ -245,6 +246,12 @@ function Speedrun.Reset()
     Speedrun.currentRaidTimer = {}
     Speedrun.savedVariables.currentRaidTimer = Speedrun.currentRaidTimer
     SpeedRun_Timer_Container:SetHeight(0)
+    d(Speedrun.segment)
+    if Speedrun.segment then
+        for i,x in ipairs(Speedrun.segment) do
+            x:SetHidden(true)
+        end
+    end
 end
 
 function Speedrun.UnregisterTrialsEvents()
@@ -341,6 +348,7 @@ function Speedrun:Initialize()
 
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
     SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew() end
+    SLASH_COMMANDS["/resetspeed"] = function() Speedrun.Reset() end
 end
 
 
