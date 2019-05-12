@@ -11,11 +11,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Speedrun.lua" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Speedrun.lua" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Speedrun.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5865">
-              <caret line="345" column="117" lean-forward="false" selection-start-line="345" selection-start-column="117" selection-end-line="345" selection-end-column="117" />
+            <state relative-caret-position="-209">
+              <caret line="105" column="49" lean-forward="false" selection-start-line="105" selection-start-column="49" selection-end-line="105" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Speedrun.lua" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../SavedVariables/Speedrun.lua">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1190">
+              <caret line="70" column="24" lean-forward="false" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -31,12 +41,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpeedrunUI.lua" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SpeedrunUI.lua" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SpeedrunUI.lua">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
               <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
-              <folding />
+              <folding>
+                <marker date="1557687020847" expanded="true" signature="1892:2413" ph="..." />
+                <marker date="1557687020847" expanded="true" signature="4676:5163" ph="..." />
+                <marker date="1557687020847" expanded="true" signature="5213:5345" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,7 +61,8 @@
             <state relative-caret-position="748">
               <caret line="44" column="132" lean-forward="false" selection-start-line="44" selection-start-column="132" selection-end-line="44" selection-end-column="132" />
               <folding>
-                <marker date="1557657805494" expanded="true" signature="4380:4961" ph="..." />
+                <marker date="1557687020831" expanded="true" signature="4730:4961" ph="..." />
+                <marker date="1557687020831" expanded="true" signature="4731:4937" ph="..." />
               </folding>
             </state>
           </provider>
@@ -68,7 +83,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3400">
               <caret line="200" column="24" lean-forward="false" selection-start-line="200" selection-start-column="24" selection-end-line="200" selection-end-column="24" />
-              <folding />
+              <folding>
+                <marker date="1557687020792" expanded="true" signature="2456:4210" ph="..." />
+                <marker date="1557687020792" expanded="true" signature="4195:4210" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,7 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Virtual</find>
       <find>raidList[1]</find>
       <find>hiddent</find>
       <find>saveloc</find>
@@ -137,6 +154,7 @@
       <find>enabled</find>
       <find>OnReticleUpdate</find>
       <find>ToggleControls</find>
+      <find>638</find>
     </findStrings>
     <replaceStrings>
       <replace>stepList[636]</replace>
@@ -165,9 +183,10 @@
         <option value="$PROJECT_DIR$/../DebuffMe/DebuffMe.lua" />
         <option value="$PROJECT_DIR$/SpeedrunData.lua" />
         <option value="$PROJECT_DIR$/SpeedrunMenu.lua" />
-        <option value="$PROJECT_DIR$/Speedrun.lua" />
         <option value="$PROJECT_DIR$/SpeedrunUI.xml" />
         <option value="$PROJECT_DIR$/SpeedrunUI.lua" />
+        <option value="$PROJECT_DIR$/Speedrun.lua" />
+        <option value="$PROJECT_DIR$/../../SavedVariables/Speedrun.lua" />
       </list>
     </option>
   </component>
@@ -352,12 +371,12 @@
       <workItem from="1557530946924" duration="58000" />
       <workItem from="1557605777157" duration="13147000" />
       <workItem from="1557654217066" duration="1912000" />
-      <workItem from="1557660150007" duration="1215000" />
+      <workItem from="1557660150007" duration="1962000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95130000" />
+    <option name="totallyTimeSpent" value="95877000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
@@ -421,7 +440,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1496">
           <caret line="88" column="38" lean-forward="false" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
-          <folding />
+          <folding>
+            <marker date="1557687020847" expanded="true" signature="1892:2413" ph="..." />
+            <marker date="1557687020847" expanded="true" signature="4676:5163" ph="..." />
+            <marker date="1557687020847" expanded="true" signature="5213:5345" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -466,7 +489,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="12" />
-          <folding />
+          <folding>
+            <marker date="1557687020792" expanded="true" signature="2456:4210" ph="..." />
+            <marker date="1557687020792" expanded="true" signature="4195:4210" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -482,7 +508,8 @@
         <state relative-caret-position="799">
           <caret line="47" column="108" lean-forward="false" selection-start-line="47" selection-start-column="108" selection-end-line="47" selection-end-column="108" />
           <folding>
-            <marker date="1557657805494" expanded="true" signature="4380:4961" ph="..." />
+            <marker date="1557687020831" expanded="true" signature="4730:4961" ph="..." />
+            <marker date="1557687020831" expanded="true" signature="4731:4937" ph="..." />
           </folding>
         </state>
       </provider>
@@ -550,7 +577,8 @@
         <state relative-caret-position="901">
           <caret line="53" column="9" lean-forward="false" selection-start-line="53" selection-start-column="9" selection-end-line="53" selection-end-column="9" />
           <folding>
-            <marker date="1557657805494" expanded="true" signature="4380:4961" ph="..." />
+            <marker date="1557687020831" expanded="true" signature="4730:4961" ph="..." />
+            <marker date="1557687020831" expanded="true" signature="4731:4937" ph="..." />
           </folding>
         </state>
       </provider>
@@ -559,7 +587,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3196">
           <caret line="188" column="44" lean-forward="false" selection-start-line="188" selection-start-column="44" selection-end-line="188" selection-end-column="44" />
-          <folding />
+          <folding>
+            <marker date="1557687020792" expanded="true" signature="2456:4210" ph="..." />
+            <marker date="1557687020792" expanded="true" signature="4195:4210" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -689,13 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../SavedVariables/Speedrun.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../DebuffMe/DebuffMe.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
@@ -746,7 +770,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3400">
           <caret line="200" column="24" lean-forward="false" selection-start-line="200" selection-start-column="24" selection-end-line="200" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1557687020792" expanded="true" signature="2456:4210" ph="..." />
+            <marker date="1557687020792" expanded="true" signature="4195:4210" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -766,20 +793,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Speedrun.lua">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5865">
-          <caret line="345" column="117" lean-forward="false" selection-start-line="345" selection-start-column="117" selection-end-line="345" selection-end-column="117" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SpeedrunUI.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
           <caret line="44" column="132" lean-forward="false" selection-start-line="44" selection-start-column="132" selection-end-line="44" selection-end-column="132" />
           <folding>
-            <marker date="1557657805494" expanded="true" signature="4380:4961" ph="..." />
+            <marker date="1557687020831" expanded="true" signature="4730:4961" ph="..." />
+            <marker date="1557687020831" expanded="true" signature="4731:4937" ph="..." />
           </folding>
         </state>
       </provider>
@@ -788,6 +808,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+          <folding>
+            <marker date="1557687020847" expanded="true" signature="1892:2413" ph="..." />
+            <marker date="1557687020847" expanded="true" signature="4676:5163" ph="..." />
+            <marker date="1557687020847" expanded="true" signature="5213:5345" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../SavedVariables/Speedrun.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="24" lean-forward="false" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Speedrun.lua">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-209">
+          <caret line="105" column="49" lean-forward="false" selection-start-line="105" selection-start-column="49" selection-end-line="105" selection-end-column="49" />
           <folding />
         </state>
       </provider>
