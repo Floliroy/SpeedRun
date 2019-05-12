@@ -42,7 +42,11 @@ end
 
 function Speedrun.SetUIHidden(hide)
     SpeedRun_Timer_Container:SetHidden(hide)
-    SpeedRun_TotalTimer:SetHidden(hide)
+
+    d("HIDDEN")
+    SpeedRun_TotalTimer_Title:SetHidden(hide)
+
+    d("HIDDEN1")
     SpeedRun_Advanced:SetHidden(hide)
 end
 

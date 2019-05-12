@@ -249,9 +249,9 @@ function Speedrun.Reset()
     Speedrun.currentRaidTimer = {}
     Speedrun.savedVariables.currentRaidTimer = Speedrun.currentRaidTimer
     SpeedRun_Timer_Container:SetHeight(0)
-    d(Speedrun.segment)
-    if Speedrun.segment then
-        for i,x in ipairs(Speedrun.segment) do
+
+    if Speedrun.segments then
+        for i,x in ipairs(Speedrun.segments) do
             x:SetHidden(true)
         end
     end
@@ -293,6 +293,7 @@ end
 function Speedrun.OnPlayerActivated()
     local zoneID = GetZoneId(GetUnitZoneIndex("player"))
     if Speedrun.IsInTrialZone() then
+        Speedrun.Reset()
         Speedrun.CreateRaidSegment(zoneID)
         Speedrun.SetUIHidden(false)
 
@@ -311,7 +312,6 @@ function Speedrun.IsInTrialZone()
 
     for k, v in pairs(Speedrun.raidList) do
         if Speedrun.raidList[k].id == GetZoneId(GetUnitZoneIndex("player")) then
-
             return true
         end
     end
@@ -343,7 +343,7 @@ function Speedrun:Initialize()
 
     --EVENT_MANAGER
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated)
-
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RETICLE_HIDDEN_UPDATE, function() SpeedRun_Timer_Container:SetHidden(IsReticleHidden()) end)
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.OnTrialStarted) --start vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.OnTrialComplete) --finish vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.OnTrialFailed) --reset vet trial
@@ -351,7 +351,7 @@ function Speedrun:Initialize()
     --EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_TARGET_CHANGED, Speedrun.Test)
 
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
-    SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew()
+    SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
 end
 
 
