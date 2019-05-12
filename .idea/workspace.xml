@@ -15,7 +15,7 @@
         <entry file="file://$PROJECT_DIR$/Speedrun.lua">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="426" column="119" lean-forward="true" selection-start-line="426" selection-start-column="119" selection-end-line="426" selection-end-column="119" />
+              <caret line="426" column="119" lean-forward="false" selection-start-line="426" selection-start-column="119" selection-end-line="426" selection-end-column="119" />
               <folding />
             </state>
           </provider>
@@ -76,8 +76,8 @@
       <file leaf-file-name="SpeedrunMenu.lua" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SpeedrunMenu.lua">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="145" column="33" lean-forward="true" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+            <state relative-caret-position="544">
+              <caret line="92" column="57" lean-forward="false" selection-start-line="92" selection-start-column="57" selection-end-line="92" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -353,12 +353,12 @@
       <workItem from="1557530946924" duration="58000" />
       <workItem from="1557605777157" duration="13147000" />
       <workItem from="1557654217066" duration="1912000" />
-      <workItem from="1557660150007" duration="6984000" />
+      <workItem from="1557660150007" duration="7583000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100899000" />
+    <option name="totallyTimeSpent" value="101498000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -757,7 +757,7 @@
     <entry file="file://$PROJECT_DIR$/Speedrun.lua">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
-          <caret line="426" column="119" lean-forward="true" selection-start-line="426" selection-start-column="119" selection-end-line="426" selection-end-column="119" />
+          <caret line="426" column="119" lean-forward="false" selection-start-line="426" selection-start-column="119" selection-end-line="426" selection-end-column="119" />
           <folding />
         </state>
       </provider>
@@ -788,8 +788,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SpeedrunMenu.lua">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="145" column="33" lean-forward="true" selection-start-line="145" selection-start-column="33" selection-end-line="145" selection-end-column="33" />
+        <state relative-caret-position="544">
+          <caret line="92" column="57" lean-forward="false" selection-start-line="92" selection-start-column="57" selection-end-line="92" selection-end-column="57" />
           <folding />
         </state>
       </provider>
