@@ -205,31 +205,37 @@ Speedrun.stepList = {
         [6] = "Kill Shadow"
     },
     [1082] = { --BRP
-        --Comment ce comportera l'addon sur le 4eme stage ?
+        [1] = "First Arena",
+        [2] = "Second Arena",
+        [3] = "Third Arena",
+        [4] = "Fourth Arena",
+        [5] = "Fifth Arena",
+        [6] = "Complete"
     },
     [677] = { --MA
-        --TODO (flemme)
+        [1] = "First Arena",
+        [2] = "Second Arena",
+        [3] = "Third Arena",
+        [4] = "Fourth Arena",
+        [5] = "Fifth Arena",
+        [6] = "Sixth Arena",
+        [7] = "Seventh Arena",
+        [8] = "Eighth Arena",
+        [9] = "Ninth Arena",
+        [10] = "Complete"
     },
     [635] = { --DSA
-        --TODO (flemme)
+        [1] = "First Arena",
+        [2] = "Second Arena",
+        [3] = "Third Arena",
+        [4] = "Fourth Arena",
+        [5] = "Fifth Arena",
+        [6] = "Sixth Arena",
+        [7] = "Seventh Arena",
+        [8] = "Eighth Arena",
+        [9] = "Ninth Arena",
+        [10] = "Tenth Arena",
+        [11] = "Complete"
     },
 }
 
---TEST
-Speedrun.raidList[639].timerSteps[1] = 720000
-Speedrun.raidList[639].timerSteps[2] = 90000
-Speedrun.raidList[639].timerSteps[3] = 120000
-Speedrun.raidList[639].timerSteps[4] = 90000
-Speedrun.raidList[639].timerSteps[5] = 120000
-Speedrun.raidList[639].timerSteps[6] = 90000
-Speedrun.raidList[639].timerSteps[7] = 120000
-Speedrun.raidList[639].timerSteps[8] = 90000
-
-Speedrun.raidList[638].timerSteps[1] = 720000
-Speedrun.raidList[638].timerSteps[2] = 90000
-Speedrun.raidList[638].timerSteps[3] = 120000
-Speedrun.raidList[638].timerSteps[4] = 90000
-Speedrun.raidList[638].timerSteps[5] = 120000
-Speedrun.raidList[638].timerSteps[6] = 90000
-Speedrun.raidList[638].timerSteps[7] = 120000
-Speedrun.raidList[638].timerSteps[8] = 90000

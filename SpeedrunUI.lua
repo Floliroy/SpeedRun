@@ -76,10 +76,8 @@ function Speedrun.CreateRaidSegment(id)
 
         local segmentRow
         if WM:GetControlByName("SpeedRun_Segment", i) then
-            d("Already exist")
             segmentRow = WM:GetControlByName("SpeedRun_Segment", i)
         else
-            d("Is getting created")
             segmentRow = WM:CreateControlFromVirtual("SpeedRun_Segment", SpeedRun_Timer_Container, "SpeedRun_Segment", i)
         end
         segmentRow:GetNamedChild('_Name'):SetText(x);
@@ -114,9 +112,7 @@ function Speedrun.CreateRaidSegment(id)
 end
 
 function Speedrun.UpdateSegment(step, raid)
-
     --TODO Divide into multiple function
-
     local difference
     if Speedrun.segmentTimer[step] then
         difference = GetRaidDuration() - Speedrun.segmentTimer[step]
@@ -135,8 +131,12 @@ function Speedrun.UpdateSegment(step, raid)
     end
 
     --TODO IF NO PRESAVED TIME
-    local bestPossibleTime = difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
-    SpeedRun_Advanced_BestPossible_Value:SetText(Speedrun.FormatRaidTimer(bestPossibleTime))
+    if Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)] then 
+        local bestPossibleTime = difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
+        SpeedRun_Advanced_BestPossible_Value:SetText(Speedrun.FormatRaidTimer(bestPossibleTime))
+    else
+        SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
+    end    
     SpeedRun_Advanced_PreviousSegment:SetText(Speedrun.FormatRaidTimer(previousSegementDif))
     Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(GetRaidDuration()))
 
