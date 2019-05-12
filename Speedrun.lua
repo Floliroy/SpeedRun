@@ -31,7 +31,8 @@ Speedrun.Default = {
     segmentTimer = {},
     speedrun_container_OffsetX = 0,
     speedrun_container_OffsetY = 0,
-    
+    isMovable = true,
+
     --variables
     currentRaidTimer = {},
     lastBossName = "",
@@ -45,6 +46,8 @@ Speedrun.Default = {
 }
 Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 Speedrun.Default.raidList = Speedrun.raidList
+Speedrun.isMovable = Speedrun.Default.isMovable
+
 
 -------------------
 ---- Functions ----
@@ -320,8 +323,8 @@ function Speedrun.Reset()
     Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM
 
     SpeedRun_Timer_Container:SetHeight(0)
-    if Speedrun.segment then
-        for i,x in ipairs(Speedrun.segment) do
+    if Speedrun.segments then
+        for i,x in ipairs(Speedrun.segments) do
             x:SetHidden(true)
         end
     end
@@ -386,7 +389,6 @@ function Speedrun.IsInTrialZone()
 
     for k, v in pairs(Speedrun.raidList) do
         if Speedrun.raidList[k].id == GetZoneId(GetUnitZoneIndex("player")) then
-
             return true
         end
     end
@@ -419,9 +421,10 @@ function Speedrun:Initialize()
     Speedrun.ResetAnchors()
     Speedrun.Reset()
 
+
     --EVENT_MANAGER
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated)
-
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RETICLE_HIDDEN_UPDATE, function() Speedrun.SetUIHidden(not Speedrun.isMovable and IsReticleHidden()) end)
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.OnTrialStarted) --start vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.OnTrialComplete) --finish vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.OnTrialFailed) --reset vet trial
