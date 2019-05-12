@@ -39,7 +39,10 @@ Speedrun.Default = {
     raidID = 0,
     isBossDead = true,
     Step = 1,
-    isMiniTrialHM = nil
+    isMiniTrialHM = nil,
+
+    --settings
+    addsOnCR = true
 }
 Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 Speedrun.Default.raidList = Speedrun.raidList
@@ -50,7 +53,7 @@ Speedrun.isMovable = Speedrun.Default.isMovable
 ---- Functions ----
 -------------------
 function Speedrun.Test()
-    d("Target Changed")
+    --Insert test here
 end
 
 function Speedrun.FormatRaidTimer(timer, ms)
@@ -92,7 +95,7 @@ function Speedrun.GetScore(timer, vitality, raidID)
     elseif raidID == 1000 then --AS
         return (70000 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
     elseif raidID == 1051 then --CR
-        if Speedrun.addsOnCR == 1 then
+        if Speedrun.addsOnCR == true then
             return (85750 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
         else
             return (88000 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
@@ -140,7 +143,8 @@ function Speedrun.MainArena()
     if IsUnitInCombat("player") then 
         for i = 1, MAX_BOSSES do
             if DoesUnitExist("boss" .. i) then
-            else--start arena
+            else
+                --start arena
                 if Speedrun.isBossDead == true then
                     Speedrun.isBossDead = false
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
@@ -154,7 +158,6 @@ function Speedrun.MainArena()
                 if currentTargetHP <= 0 and Speedrun.isBossDead == false then
                     --finish arena
                     Speedrun.isBossDead = true
-                    --Speedrun.UpdateWaypointNew(GetRaidDuration())
                 end
             end
         end
@@ -172,10 +175,12 @@ function Speedrun.MainCloudrest()
                 Speedrun.isMiniTrialHM = true
                 Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
             else 
-                Speedrun.isMiniTrialHM = false
-                Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
-                d("not in +3")
-                Speedrun.UnregisterTrialsEvents()
+                if maxTargetHP < 64000000 and currentTargetHP <= 0 then
+                    Speedrun.isMiniTrialHM = false
+                    Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
+                    d("Not in vCR+3")
+                    Speedrun.UnregisterTrialsEvents()
+                end
             end
 
             if IsUnitInCombat("player") and Speedrun.isMiniTrialHM == true then
@@ -407,6 +412,8 @@ function Speedrun:Initialize()
     Speedrun.Step = Speedrun.savedVariables.Step
     Speedrun.isMiniTrialHM = Speedrun.savedVariables.isMiniTrialHM
 
+    Speedrun.addsOnCR = Speedrun.savedVariables.addsOnCR
+
     --Settings
     Speedrun.CreateSettingsWindow()
 
@@ -426,6 +433,7 @@ function Speedrun:Initialize()
 
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
     SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
+    --SLASH_COMMANDS["/speedtest"] = function() Speedrun.Test() end
 end
 
 function Speedrun.OnAddOnLoaded(event, addonName)
