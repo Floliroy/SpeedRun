@@ -89,8 +89,7 @@ function Speedrun.CreateSettingsWindow()
             type = "checkbox",
             name = "Lock Ui",
             tooltip = "a tooltip",
-            default = true,
-            getFunc = function() return Speedrun.isMovable end,
+            getFunc = function() return not Speedrun.isMovable end,
             setFunc = function(newValue)
                 Speedrun.ToggleMovable()
             end,

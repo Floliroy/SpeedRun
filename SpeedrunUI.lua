@@ -27,14 +27,10 @@ function Speedrun.ToggleMovable()
     Speedrun.isMovable = not Speedrun.isMovable
     if Speedrun.isMovable then
         SpeedRun_Timer_Container:SetMovable(true)
-        SpeedRun_TotalTimer:SetMovable(true)
-        SpeedRun_Advanced:SetMovable(true)
 
         Speedrun.SetUIHidden(false)
     else
         SpeedRun_Timer_Container:SetMovable(false)
-        SpeedRun_TotalTimer:SetMovable(false)
-        SpeedRun_Advanced:SetMovable(false)
 
         Speedrun.SetUIHidden(true)
     end
