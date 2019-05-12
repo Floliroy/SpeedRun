@@ -42,7 +42,7 @@
             </Controls>
         </Control>
 
-        <TopLevelControl name="SpeedRun_TotalTimer" mouseEnabled="true" movable="false" resizeToFitDescendents="true"  hidden="false">
+        <TopLevelControl name="SpeedRun_TotalTimer" mouseEnabled="true" movable="false" hidden="false">
             <Anchor point="TOPRIGHT" relativeTo="SpeedRun_Timer_Container" relativePoint="BOTTOMRIGHT" />
             <Controls>
                 <Label name="$(parent)_Title" hidden="true"  horizontalAlignment="RIGHT" font="ZoFontWinH1" text="0:00:00">

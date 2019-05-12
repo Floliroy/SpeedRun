@@ -31,7 +31,8 @@ Speedrun.Default = {
     segmentTimer = {},
     speedrun_container_OffsetX = 0,
     speedrun_container_OffsetY = 0,
-    
+    isMovable = true,
+
     --variables
     currentRaidTimer = {},
     lastBossName = "",
@@ -42,6 +43,8 @@ Speedrun.Default = {
 }
 Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 Speedrun.Default.raidList = Speedrun.raidList
+Speedrun.isMovable = Speedrun.Default.isMovable
+
 
 -------------------
 ---- Functions ----
@@ -411,9 +414,10 @@ function Speedrun:Initialize()
     Speedrun.ResetAnchors()
     Speedrun.Reset()
 
+
     --EVENT_MANAGER
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated)
-    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RETICLE_HIDDEN_UPDATE, function() SpeedRun_Timer_Container:SetHidden(IsReticleHidden()) end)
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RETICLE_HIDDEN_UPDATE, function() Speedrun.SetUIHidden(not Speedrun.isMovable and IsReticleHidden()) end)
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.OnTrialStarted) --start vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.OnTrialComplete) --finish vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.OnTrialFailed) --reset vet trial

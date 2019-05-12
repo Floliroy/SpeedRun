@@ -42,11 +42,7 @@ end
 
 function Speedrun.SetUIHidden(hide)
     SpeedRun_Timer_Container:SetHidden(hide)
-
-    d("HIDDEN")
     SpeedRun_TotalTimer_Title:SetHidden(hide)
-
-    d("HIDDEN1")
     SpeedRun_Advanced:SetHidden(hide)
 end
 
@@ -111,6 +107,7 @@ function Speedrun.CreateRaidSegment(id)
     end
 
     Speedrun.SetUIHidden(false)
+    d(SpeedRun_Timer_Container:GetWidth())
     SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
     SpeedRun_Timer_Container_Raid:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
 end

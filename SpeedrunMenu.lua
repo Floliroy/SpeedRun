@@ -85,12 +85,15 @@ function Speedrun.CreateSettingsWindow()
                 --TODO
             end,
         },
-        [4] = {
-            type = "button",
-            name = "Lock",
-            tooltip = "Use it to reposition the window.",
-            func = function() Speedrun.ToggleMovable() end,
-            width = "half",
+        [4] =  {
+            type = "checkbox",
+            name = "Lock Ui",
+            tooltip = "a tooltip",
+            default = true,
+            getFunc = function() return Speedrun.isMovable end,
+            setFunc = function(newValue)
+                Speedrun.ToggleMovable()
+            end,
         },
         [5] = {
             type = "divider",
