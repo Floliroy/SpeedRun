@@ -80,7 +80,7 @@ function Speedrun.CreateSettingsWindow()
         [3] = {
             type = "checkbox",
             name = "Enabled",
-            tooltip = "a tooltip",
+            tooltip = "Not working for now, it will always be enable",
             default = true,
             getFunc = function() return end,
             setFunc = function(newValue)
@@ -90,8 +90,7 @@ function Speedrun.CreateSettingsWindow()
         [4] =  {
             type = "checkbox",
             name = "Lock UI",
-            tooltip = "a tooltip",
-            default = true,
+            tooltip = "Lock UI to reposition the window on your screen",
             getFunc = function() return Speedrun.isMovable end,
             setFunc = function()
                 Speedrun.ToggleMovable()
