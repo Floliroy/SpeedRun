@@ -113,8 +113,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[638][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[638][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[638][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[638][1] = newValue
+                        Speedrun.customTimerSteps[638][1] = newValue
                     end,
                 },
                 [3] = {
@@ -124,8 +124,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[638][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[638][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[638][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[638][2] = newValue
+                        Speedrun.customTimerSteps[638][2] = newValue
                     end,
                 },
                 [4] = {
@@ -135,8 +135,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[638][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[638][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[638][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[638][3] = newValue
+                        Speedrun.customTimerSteps[638][3] = newValue
                     end,
                 },
                 [5] = {
@@ -146,8 +146,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[638][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[638][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[638][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[638][4] = newValue
+                        Speedrun.customTimerSteps[638][4] = newValue
                     end,
                 },
                 [6] = {
@@ -157,8 +157,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[638][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[638][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[638][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[638][5] = newValue
+                        Speedrun.customTimerSteps[638][5] = newValue
                     end,
                 },
                 [7] = {
@@ -168,8 +168,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[638][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[638][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[638][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[638][6] = newValue
+                        Speedrun.customTimerSteps[638][6] = newValue
                     end,
                 },
                 [8] = {
@@ -179,8 +179,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[638][7]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[638][7] = tonumber(newValue)
-                        Speedrun.customTimerSteps[638][7] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[638][7] = newValue
+                        Speedrun.customTimerSteps[638][7] = newValue
                     end,
                 },
                 [9] = {
@@ -190,8 +190,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[638][8]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[638][8] = tonumber(newValue)
-                        Speedrun.customTimerSteps[638][8] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[638][8] = newValue
+                        Speedrun.customTimerSteps[638][8] = newValue
                     end,
                 },
                 [10] = {
@@ -220,8 +220,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[636][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[636][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[636][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[636][1] = newValue
+                        Speedrun.customTimerSteps[636][1] = newValue
                     end,
                 },
                 [3] = {
@@ -231,8 +231,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[636][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[636][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[636][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[636][2] = newValue
+                        Speedrun.customTimerSteps[636][2] = newValue
                     end,
                 },
                 [4] = {
@@ -242,8 +242,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[636][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[636][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[636][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[636][3] = newValue
+                        Speedrun.customTimerSteps[636][3] = newValue
                     end,
                 },
                 [5] = {
@@ -253,8 +253,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[636][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[636][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[636][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[636][4] = newValue
+                        Speedrun.customTimerSteps[636][4] = newValue
                     end,
                 },
                 [6] = {
@@ -264,8 +264,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[636][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[636][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[636][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[636][5] = newValue
+                        Speedrun.customTimerSteps[636][5] = newValue
                     end,
                 },
                 [7] = {
@@ -275,8 +275,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[636][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[636][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[636][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[636][6] = newValue
+                        Speedrun.customTimerSteps[636][6] = newValue
                     end,
                 },
                 [8] = {
@@ -305,8 +305,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[639][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[639][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[639][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[639][1] = newValue
+                        Speedrun.customTimerSteps[639][1] = newValue
                     end,
                 },
                 [3] = {
@@ -316,8 +316,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[639][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[639][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[639][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[639][2] = newValue
+                        Speedrun.customTimerSteps[639][2] = newValue
                     end,
                 },
                 [4] = {
@@ -327,8 +327,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[639][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[639][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[639][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[639][3] = newValue
+                        Speedrun.customTimerSteps[639][3] = newValue
                     end,
                 },
                 [5] = {
@@ -338,8 +338,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[639][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[639][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[639][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[639][4] = newValue
+                        Speedrun.customTimerSteps[639][4] = newValue
                     end,
                 },
                 [6] = {
@@ -349,8 +349,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[639][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[639][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[639][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[639][5] = newValue
+                        Speedrun.customTimerSteps[639][5] = newValue
                     end,
                 },
                 [7] = {
@@ -360,8 +360,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[639][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[639][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[639][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[639][6] = newValue
+                        Speedrun.customTimerSteps[639][6] = newValue
                     end,
                 },
                 [8] = {
@@ -371,8 +371,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[639][7]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[639][7] = tonumber(newValue)
-                        Speedrun.customTimerSteps[639][7] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[639][7] = newValue
+                        Speedrun.customTimerSteps[639][7] = newValue
                     end,
                 },
                 [9] = {
@@ -382,8 +382,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[639][8]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[639][8] = tonumber(newValue)
-                        Speedrun.customTimerSteps[639][8] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[639][8] = newValue
+                        Speedrun.customTimerSteps[639][8] = newValue
                     end,
                 },
                 [10] = {
@@ -412,8 +412,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[725][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[725][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[725][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[725][1] = newValue
+                        Speedrun.customTimerSteps[725][1] = newValue
                     end,
                 },
                 [3] = {
@@ -423,8 +423,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[725][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[725][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[725][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[725][2] = newValue
+                        Speedrun.customTimerSteps[725][2] = newValue
                     end,
                 },
                 [4] = {
@@ -434,8 +434,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[725][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[725][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[725][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[725][3] = newValue
+                        Speedrun.customTimerSteps[725][3] = newValue
                     end,
                 },
                 [5] = {
@@ -445,8 +445,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[725][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[725][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[725][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[725][4] = newValue
+                        Speedrun.customTimerSteps[725][4] = newValue
                     end,
                 },
                 [6] = {
@@ -456,8 +456,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[725][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[725][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[725][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[725][5] = newValue
+                        Speedrun.customTimerSteps[725][5] = newValue
                     end,
                 },
                 [7] = {
@@ -467,8 +467,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[725][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[725][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[725][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[725][6] = newValue
+                        Speedrun.customTimerSteps[725][6] = newValue
                     end,
                 },
                 [8] = {
@@ -497,8 +497,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][1] = newValue
+                        Speedrun.customTimerSteps[975][1] = newValue
                     end,
                 },
                 [3] = {
@@ -508,8 +508,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][2] = newValue
+                        Speedrun.customTimerSteps[975][2] = newValue
                     end,
                 },
                 [4] = {
@@ -519,8 +519,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][3] = newValue
+                        Speedrun.customTimerSteps[975][3] = newValue
                     end,
                 },
                 [5] = {
@@ -530,8 +530,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][4] = newValue
+                        Speedrun.customTimerSteps[975][4] = newValue
                     end,
                 },
                 [6] = {
@@ -541,8 +541,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][5] = newValue
+                        Speedrun.customTimerSteps[975][5] = newValue
                     end,
                 },
                 [7] = {
@@ -552,8 +552,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][6] = newValue
+                        Speedrun.customTimerSteps[975][6] = newValue
                     end,
                 },
                 [8] = {
@@ -563,8 +563,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][7]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][7] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][7] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][7] = newValue
+                        Speedrun.customTimerSteps[975][7] = newValue
                     end,
                 },
                 [9] = {
@@ -574,8 +574,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][8]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][8] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][8] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][8] = newValue
+                        Speedrun.customTimerSteps[975][8] = newValue
                     end,
                 },
                 [10] = {
@@ -585,8 +585,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][9]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][9] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][9] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][9] = newValue
+                        Speedrun.customTimerSteps[975][9] = newValue
                     end,
                 },
                 [11] = {
@@ -596,8 +596,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[975][10]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[975][10] = tonumber(newValue)
-                        Speedrun.customTimerSteps[975][10] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[975][10] = newValue
+                        Speedrun.customTimerSteps[975][10] = newValue
                     end,
                 },
                 [12] = {
@@ -626,8 +626,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1000][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1000][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1000][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1000][1] = newValue
+                        Speedrun.customTimerSteps[1000][1] = newValue
                     end,
                 },
                 [3] = {
@@ -637,8 +637,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1000][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1000][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1000][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1000][2] = newValue
+                        Speedrun.customTimerSteps[1000][2] = newValue
                     end,
                 },
                 [4] = {
@@ -648,8 +648,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1000][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1000][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1000][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1000][3] = newValue
+                        Speedrun.customTimerSteps[1000][3] = newValue
                     end,
                 },
                 [5] = {
@@ -659,8 +659,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1000][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1000][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1000][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1000][4] = newValue
+                        Speedrun.customTimerSteps[1000][4] = newValue
                     end,
                 },
                 [6] = {
@@ -670,8 +670,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1000][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1000][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1000][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1000][5] = newValue
+                        Speedrun.customTimerSteps[1000][5] = newValue
                     end,
                 },
                 [7] = {
@@ -681,8 +681,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1000][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1000][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1000][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1000][6] = newValue
+                        Speedrun.customTimerSteps[1000][6] = newValue
                     end,
                 },
                 [8] = {
@@ -722,8 +722,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1051][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1051][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1051][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1051][1] = newValue
+                        Speedrun.customTimerSteps[1051][1] = newValue
                     end,
                 },
                 [4] = {
@@ -733,8 +733,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1051][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1051][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1051][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1051][2] = newValue
+                        Speedrun.customTimerSteps[1051][2] = newValue
                     end,
                 },
                 [5] = {
@@ -744,8 +744,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1051][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1051][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1051][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1051][3] = newValue
+                        Speedrun.customTimerSteps[1051][3] = newValue
                     end,
                 },
                 [6] = {
@@ -755,8 +755,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1051][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1051][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1051][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1051][4] = newValue
+                        Speedrun.customTimerSteps[1051][4] = newValue
                     end,
                 },
                 [7] = {
@@ -766,8 +766,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1051][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1051][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1051][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1051][5] = newValue
+                        Speedrun.customTimerSteps[1051][5] = newValue
                     end,
                 },
                 [8] = {
@@ -777,8 +777,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1051][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1051][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1051][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1051][6] = newValue
+                        Speedrun.customTimerSteps[1051][6] = newValue
                     end,
                 },
                 [9] = {
@@ -807,8 +807,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1082][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1082][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1082][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1082][1] = newValue
+                        Speedrun.customTimerSteps[1082][1] = newValue
                     end,
                 },
                 [3] = {
@@ -818,8 +818,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1082][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1082][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1082][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1082][2] = newValue
+                        Speedrun.customTimerSteps[1082][2] = newValue
                     end,
                 },
                 [4] = {
@@ -829,8 +829,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1082][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1082][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1082][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1082][3] = newValue
+                        Speedrun.customTimerSteps[1082][3] = newValue
                     end,
                 },
                 [5] = {
@@ -840,8 +840,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1082][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1082][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1082][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1082][4] = newValue
+                        Speedrun.customTimerSteps[1082][4] = newValue
                     end,
                 },
                 [6] = {
@@ -851,8 +851,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1082][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1082][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1082][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1082][5] = newValue
+                        Speedrun.customTimerSteps[1082][5] = newValue
                     end,
                 },
                 [7] = {
@@ -862,8 +862,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[1082][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[1082][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[1082][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[1082][6] = newValue
+                        Speedrun.customTimerSteps[1082][6] = newValue
                     end,
                 },
                 [8] = {
@@ -892,8 +892,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][1] = newValue
+                        Speedrun.customTimerSteps[677][1] = newValue
                     end,
                 },
                 [3] = {
@@ -903,8 +903,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][2] = newValue
+                        Speedrun.customTimerSteps[677][2] = newValue
                     end,
                 },
                 [4] = {
@@ -914,8 +914,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][3] = newValue
+                        Speedrun.customTimerSteps[677][3] = newValue
                     end,
                 },
                 [5] = {
@@ -925,8 +925,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][4] = newValue
+                        Speedrun.customTimerSteps[677][4] = newValue
                     end,
                 },
                 [6] = {
@@ -936,8 +936,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][5] = newValue
+                        Speedrun.customTimerSteps[677][5] = newValue
                     end,
                 },
                 [7] = {
@@ -947,8 +947,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][6] = newValue
+                        Speedrun.customTimerSteps[677][6] = newValue
                     end,
                 },
                 [8] = {
@@ -958,8 +958,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][7]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][7] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][7] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][7] = newValue
+                        Speedrun.customTimerSteps[677][7] = newValue
                     end,
                 },
                 [9] = {
@@ -969,8 +969,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][8]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][8] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][8] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][8] = newValue
+                        Speedrun.customTimerSteps[677][8] = newValue
                     end,
                 },
                 [10] = {
@@ -980,8 +980,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][9]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][9] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][9] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][9] = newValue
+                        Speedrun.customTimerSteps[677][9] = newValue
                     end,
                 },
                 [11] = {
@@ -991,8 +991,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[677][10]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][10] = tonumber(newValue)
-                        Speedrun.customTimerSteps[677][10] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[677][10] = newValue
+                        Speedrun.customTimerSteps[677][10] = newValue
                     end,
                 },
                 [12] = {
@@ -1021,8 +1021,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][1]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][1] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][1] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][1] = newValue
+                        Speedrun.customTimerSteps[635][1] = newValue
                     end,
                 },
                 [3] = {
@@ -1032,8 +1032,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][2]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][2] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][2] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][2] = newValue
+                        Speedrun.customTimerSteps[635][2] = newValue
                     end,
                 },
                 [4] = {
@@ -1043,8 +1043,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][3]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][3] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][3] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][3] = newValue
+                        Speedrun.customTimerSteps[635][3] = newValue
                     end,
                 },
                 [5] = {
@@ -1054,8 +1054,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][4]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][4] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][4] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][4] = newValue
+                        Speedrun.customTimerSteps[635][4] = newValue
                     end,
                 },
                 [6] = {
@@ -1065,8 +1065,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][5]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][5] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][5] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][5] = newValue
+                        Speedrun.customTimerSteps[635][5] = newValue
                     end,
                 },
                 [7] = {
@@ -1076,8 +1076,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][6]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][6] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][6] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][6] = newValue
+                        Speedrun.customTimerSteps[635][6] = newValue
                     end,
                 },
                 [8] = {
@@ -1087,8 +1087,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][7]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][7] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][7] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][7] = newValue
+                        Speedrun.customTimerSteps[635][7] = newValue
                     end,
                 },
                 [9] = {
@@ -1098,8 +1098,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][8]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][8] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][8] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][8] = newValue
+                        Speedrun.customTimerSteps[635][8] = newValue
                     end,
                 },
                 [10] = {
@@ -1109,8 +1109,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][9]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][9] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][9] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][9] = newValue
+                        Speedrun.customTimerSteps[635][9] = newValue
                     end,
                 },
                 [11] = {
@@ -1120,8 +1120,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][10]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][10] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][10] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][10] = newValue
+                        Speedrun.customTimerSteps[635][10] = newValue
                     end,
                 },
                 [12] = {
@@ -1131,8 +1131,8 @@ function Speedrun.CreateSettingsWindow()
                     default = "",
                     getFunc = function() return tostring(Speedrun.customTimerSteps[635][11]) end,
                     setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][11] = tonumber(newValue)
-                        Speedrun.customTimerSteps[635][11] = tonumber(newValue)
+                        Speedrun.savedVariables.customTimerSteps[635][11] = newValue
+                        Speedrun.customTimerSteps[635][11] = newValue
                     end,
                 },
                 [13] = {
