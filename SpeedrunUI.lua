@@ -107,7 +107,7 @@ function Speedrun.CreateRaidSegment(id)
     end
 
     Speedrun.SetUIHidden(false)
-    d(SpeedRun_Timer_Container:GetWidth())
+    --d(SpeedRun_Timer_Container:GetWidth())
     SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
     SpeedRun_Timer_Container_Raid:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
 end

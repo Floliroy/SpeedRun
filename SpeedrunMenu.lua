@@ -28,8 +28,10 @@ end
 
 function Speedrun.Simulate(raidID)
     local totalTime = 0
-    for i, x in pairs(Speedrun.raidList[raidID].timerSteps) do
-        totalTime = math.floor(x / 1000) + totalTime
+    for i, x in pairs(Speedrun.customTimerSteps[raidID]) do
+        if Speedrun.GetSavedTimer(raidID,i) then
+            totalTime = math.floor(Speedrun.GetSavedTimer(raidID,i) / 1000) + totalTime
+        end
     end
 
     local vitality
@@ -87,11 +89,11 @@ function Speedrun.CreateSettingsWindow()
         },
         [4] =  {
             type = "checkbox",
-            name = "Lock Ui",
+            name = "Lock UI",
             tooltip = "a tooltip",
             default = true,
             getFunc = function() return Speedrun.isMovable end,
-            setFunc = function(newValue)
+            setFunc = function()
                 Speedrun.ToggleMovable()
             end,
         },
