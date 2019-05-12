@@ -134,11 +134,15 @@ end
 ---- Trials ----
 ----------------
 function Speedrun.MainArena()
-    if IsUnitInCombat("player") then
-        if Speedrun.isBossDead == true then
-            --start arena
-            Speedrun.isBossDead = false
-            Speedrun.UpdateWaypointNew(GetRaidDuration())
+    if IsUnitInCombat("player") then 
+        for i = 1, MAX_BOSSES do
+            if DoesUnitExist("boss" .. i) then
+            else--start arena
+                if Speedrun.isBossDead == true then
+                    Speedrun.isBossDead = false
+                    Speedrun.UpdateWaypointNew(GetRaidDuration())
+                end
+            end
         end
     else
         for i = 1, MAX_BOSSES do
@@ -352,21 +356,20 @@ Speedrun.OnTrialComplete = function(eventCode, trialName, score, totalTime)
 end
 
 function Speedrun.OnTrialStarted()
-    --Speedrun.Reset()
+    Speedrun.Reset()
     Speedrun.RegisterTrialsEvents()
 end
 
 function Speedrun.OnPlayerActivated()
     local zoneID = GetZoneId(GetUnitZoneIndex("player"))
-    if Speedrun.IsInTrialZone() then
-        Speedrun.Reset()
-        Speedrun.CreateRaidSegment(zoneID)
-        Speedrun.SetUIHidden(false)
-
+    if Speedrun.IsInTrialZone() then  
         if Speedrun.raidID ~= zoneID then
+            Speedrun.Reset()
             Speedrun.raidID = zoneID
             Speedrun.savedVariables.raidID = Speedrun.raidID 
         end
+        Speedrun.CreateRaidSegment(zoneID)
+        Speedrun.SetUIHidden(false)
 
     else
         Speedrun.SetUIHidden(true)
