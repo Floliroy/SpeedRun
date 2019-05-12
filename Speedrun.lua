@@ -46,14 +46,20 @@ Speedrun.Default = {
 }
 Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 Speedrun.Default.raidList = Speedrun.raidList
-Speedrun.isMovable = Speedrun.Default.isMovable
-
 
 -------------------
 ---- Functions ----
 -------------------
 function Speedrun.Test()
     --Insert test here
+end
+
+function Speedrun.GetSavedTimer(raidID,step)
+    if tonumber(Speedrun.customTimerSteps[raidID][step]) then
+        return tonumber(Speedrun.customTimerSteps[raidID][step])*1000
+    else
+        return Speedrun.raidList[raidID].timerSteps[step]
+    end
 end
 
 function Speedrun.FormatRaidTimer(timer, ms)
@@ -112,7 +118,6 @@ end
 function Speedrun.UpdateWaypointNew(raidDuration)
     local raid = Speedrun.raidList[Speedrun.raidID]
     local waypoint = Speedrun.Step
-
     if raid then
         Speedrun.currentRaidTimer[waypoint] = math.floor(raidDuration)
         Speedrun.savedVariables.currentRaidTimer[waypoint] = Speedrun.currentRaidTimer[waypoint]
@@ -322,12 +327,6 @@ function Speedrun.Reset()
     Speedrun.isMiniTrialHM = nil
     Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM
 
-    SpeedRun_Timer_Container:SetHeight(0)
-    if Speedrun.segments then
-        for i,x in ipairs(Speedrun.segments) do
-            x:SetHidden(true)
-        end
-    end
 end
 
 function Speedrun.UnregisterTrialsEvents()
@@ -373,6 +372,7 @@ function Speedrun.OnPlayerActivated()
     if Speedrun.IsInTrialZone() then  
         if Speedrun.raidID ~= zoneID then
             Speedrun.Reset()
+            Speedrun.ResetUI()
             Speedrun.raidID = zoneID
             Speedrun.savedVariables.raidID = Speedrun.raidID 
         end
@@ -386,13 +386,11 @@ function Speedrun.OnPlayerActivated()
 end
 
 function Speedrun.IsInTrialZone()
-
     for k, v in pairs(Speedrun.raidList) do
         if Speedrun.raidList[k].id == GetZoneId(GetUnitZoneIndex("player")) then
             return true
         end
     end
-
     return false
 end
 
@@ -413,18 +411,19 @@ function Speedrun:Initialize()
     Speedrun.isMiniTrialHM = Speedrun.savedVariables.isMiniTrialHM
 
     Speedrun.addsOnCR = Speedrun.savedVariables.addsOnCR
+    Speedrun.isMovable = Speedrun.Default.isMovable
 
     --Settings
     Speedrun.CreateSettingsWindow()
 
     -- UI
+    Speedrun.ResetUI()
     Speedrun.ResetAnchors()
     Speedrun.Reset()
 
 
     --EVENT_MANAGER
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated)
-    local hideControl = not Speedrun.IsInTrialZone or (not Speedrun.isMovable and IsReticleHidden())
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RETICLE_HIDDEN_UPDATE, function() Speedrun.SetUIHidden((not Speedrun.isMovable) and ((not Speedrun.IsInTrialZone()) or IsReticleHidden())) end)
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.OnTrialStarted) --start vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.OnTrialComplete) --finish vet trial

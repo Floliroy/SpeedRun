@@ -17,6 +17,15 @@ function Speedrun.SaveLoc()
     Speedrun.savedVariables["speedrun_container_OffsetY"] = SpeedRun_Timer_Container:GetTop()
 end
 
+function Speedrun.ResetUI()
+    SpeedRun_Timer_Container:SetHeight(0)
+    if Speedrun.segments then
+        for i,x in ipairs(Speedrun.segments) do
+            x:SetHidden(true)
+        end
+    end
+end
+
 function Speedrun.ResetAnchors()
     SpeedRun_Timer_Container:ClearAnchors()
     SpeedRun_Timer_Container:SetAnchor(TOPLEFT, GuiRoot, TOPLEFT, Speedrun.savedVariables["speedrun_container_OffsetX"], Speedrun.savedVariables["speedrun_container_OffsetY"])
@@ -78,12 +87,12 @@ function Speedrun.CreateRaidSegment(id)
         end
         segmentRow:GetNamedChild('_Name'):SetText(x);
 
-        if raid.timerSteps[i] then
+        if Speedrun.GetSavedTimer(raid.id, Speedrun.Step) then
 
             if i == 1 then
-                Speedrun.segmentTimer[i] = raid.timerSteps[i]
+                Speedrun.segmentTimer[i] = Speedrun.GetSavedTimer(raid.id, i)
             else
-                Speedrun.segmentTimer[i] = raid.timerSteps[i] + Speedrun.segmentTimer[i - 1]
+                Speedrun.segmentTimer[i] = Speedrun.GetSavedTimer(raid.id, i) + Speedrun.segmentTimer[i - 1]
             end
 
             segmentRow:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.segmentTimer[i], true))
@@ -103,11 +112,10 @@ function Speedrun.CreateRaidSegment(id)
     end
 
     Speedrun.SetUIHidden(false)
-    d(SpeedRun_Timer_Container:GetWidth())
+    --d(SpeedRun_Timer_Container:GetWidth())
     SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
     SpeedRun_Timer_Container_Raid:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
 end
-
 function Speedrun.UpdateSegment(step, raid)
     --TODO Divide into multiple function
     local difference
@@ -118,11 +126,10 @@ function Speedrun.UpdateSegment(step, raid)
     end
 
     local previousSegementDif
-    --d(step)
-    if raid.timerSteps[step] and step > 1 then
-        previousSegementDif = (GetRaidDuration() - raid.timerSteps[step - 1]) - raid.timerSteps[step]
-    elseif raid.timerSteps[step] and step == 1 then
-        previousSegementDif = GetRaidDuration() - raid.timerSteps[step]
+    if Speedrun.GetSavedTimer(raid.id, step) and step > 1 then
+        previousSegementDif = (GetRaidDuration() - Speedrun.GetSavedTimer(raid.id, (step - 1)) - Speedrun.GetSavedTimer(raid.id, step))
+    elseif Speedrun.GetSavedTimer(raid.id, step) and step == 1 then
+        previousSegementDif = GetRaidDuration() - Speedrun.GetSavedTimer(raid.id, step)
     else
         previousSegementDif = 0
     end

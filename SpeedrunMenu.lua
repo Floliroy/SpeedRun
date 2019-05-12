@@ -28,8 +28,10 @@ end
 
 function Speedrun.Simulate(raidID)
     local totalTime = 0
-    for i, x in pairs(Speedrun.raidList[raidID].timerSteps) do
-        totalTime = math.floor(x / 1000) + totalTime
+    for i, x in pairs(Speedrun.customTimerSteps[raidID]) do
+        if Speedrun.GetSavedTimer(raidID,i) then
+            totalTime = math.floor(Speedrun.GetSavedTimer(raidID,i) / 1000) + totalTime
+        end
     end
 
     local vitality
@@ -78,7 +80,7 @@ function Speedrun.CreateSettingsWindow()
         [3] = {
             type = "checkbox",
             name = "Enabled",
-            tooltip = "a tooltip",
+            tooltip = "Not working for now, it will always be enable",
             default = true,
             getFunc = function() return end,
             setFunc = function(newValue)
@@ -87,10 +89,10 @@ function Speedrun.CreateSettingsWindow()
         },
         [4] =  {
             type = "checkbox",
-            name = "Lock Ui",
-            tooltip = "a tooltip",
-            getFunc = function() return not Speedrun.isMovable end,
-            setFunc = function(newValue)
+            name = "Lock UI",
+            tooltip = "Lock UI to reposition the window on your screen",
+            getFunc = function() return Speedrun.isMovable end,
+            setFunc = function()
                 Speedrun.ToggleMovable()
             end,
         },
