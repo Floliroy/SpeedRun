@@ -114,11 +114,12 @@ function Speedrun.CreateRaidSegment(id)
     SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
     SpeedRun_Timer_Container_Raid:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
 end
+
 function Speedrun.UpdateSegment(step, raid)
     --TODO Divide into multiple function
     local difference
     if Speedrun.segmentTimer[step] then
-        difference = GetRaidDuration() - Speedrun.segmentTimer[step]
+        difference = Speedrun.currentRaidTimer[step] - Speedrun.segmentTimer[step]
     else
         difference = 0
     end
@@ -126,9 +127,9 @@ function Speedrun.UpdateSegment(step, raid)
     --TODO correct previousSegementDif
     local previousSegementDif
     if Speedrun.GetSavedTimer(raid.id, step) and step > 1 then
-        previousSegementDif = (GetRaidDuration() - Speedrun.GetSavedTimer(raid.id, (step - 1)) - Speedrun.GetSavedTimer(raid.id, step))
+        previousSegementDif = Speedrun.currentRaidTimer[step] - Speedrun.currentRaidTimer[step - 1] - Speedrun.GetSavedTimer(raid.id, step)
     elseif Speedrun.GetSavedTimer(raid.id, step) and step == 1 then
-        previousSegementDif = GetRaidDuration() - Speedrun.GetSavedTimer(raid.id, step)
+        previousSegementDif = Speedrun.currentRaidTimer[step] - Speedrun.GetSavedTimer(raid.id, step)
     else
         previousSegementDif = 0
     end
@@ -141,7 +142,7 @@ function Speedrun.UpdateSegment(step, raid)
         SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
     end    
     SpeedRun_Advanced_PreviousSegment:SetText(Speedrun.FormatRaidTimer(previousSegementDif))
-    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(GetRaidDuration()))
+    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.currentRaidTimer[step]))
 
     local segment = Speedrun.segments[Speedrun.Step]:GetNamedChild('_Diff')
     segment:SetText(Speedrun.FormatRaidTimer(difference, true))
