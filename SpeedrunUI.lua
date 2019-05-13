@@ -33,8 +33,7 @@ end
 
 function Speedrun.ToggleMovable()
     local self = Speedrun
-    Speedrun.isMovable = not Speedrun.isMovable
-    if Speedrun.isMovable then
+    if not Speedrun.isMovable then
         SpeedRun_Timer_Container:SetMovable(true)
 
         Speedrun.SetUIHidden(false)
@@ -69,9 +68,6 @@ function Speedrun.CreateRaidSegment(id)
     --TODO make initialize function
 
     --Reset segment control
-    Speedrun.lastBossName = Speedrun.Default.lastBoosName
-    Speedrun.raidID = Speedrun.Default.raidID
-    Speedrun.Step = Speedrun.Default.Step
     Speedrun.segmentTimer = {}
 
     local raid = Speedrun.raidList[id]
@@ -87,19 +83,21 @@ function Speedrun.CreateRaidSegment(id)
         end
         segmentRow:GetNamedChild('_Name'):SetText(x);
 
-        if Speedrun.GetSavedTimer(raid.id, Speedrun.Step) then
-
+        if Speedrun.GetSavedTimer(raid.id, i) then
             if i == 1 then
                 Speedrun.segmentTimer[i] = Speedrun.GetSavedTimer(raid.id, i)
             else
                 Speedrun.segmentTimer[i] = Speedrun.GetSavedTimer(raid.id, i) + Speedrun.segmentTimer[i - 1]
             end
-
             segmentRow:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.segmentTimer[i], true))
         else
+            if i == 1 then
+                Speedrun.segmentTimer[i] = 0
+            else
+                Speedrun.segmentTimer[i] = 0 + Speedrun.segmentTimer[i - 1]
+            end
             segmentRow:GetNamedChild('_Best'):SetText("NA:NA")
         end
-
 
         --TODO NIQUE TAGRAND LUI DE CON
         if i == 1 then
@@ -125,6 +123,7 @@ function Speedrun.UpdateSegment(step, raid)
         difference = 0
     end
 
+    --TODO correct previousSegementDif
     local previousSegementDif
     if Speedrun.GetSavedTimer(raid.id, step) and step > 1 then
         previousSegementDif = (GetRaidDuration() - Speedrun.GetSavedTimer(raid.id, (step - 1)) - Speedrun.GetSavedTimer(raid.id, step))

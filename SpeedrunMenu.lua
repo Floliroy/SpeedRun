@@ -91,8 +91,11 @@ function Speedrun.CreateSettingsWindow()
             type = "checkbox",
             name = "Lock UI",
             tooltip = "Lock UI to reposition the window on your screen",
+            default = true,
             getFunc = function() return Speedrun.isMovable end,
-            setFunc = function()
+            setFunc = function(newValue)
+                Speedrun.isMovable = newValue
+                Speedrun.savedVariables.isMovable = newValue
                 Speedrun.ToggleMovable()
             end,
         },

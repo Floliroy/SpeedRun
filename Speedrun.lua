@@ -29,8 +29,8 @@ Speedrun.Default = {
 
     --UI
     segmentTimer = {},
-    speedrun_container_OffsetX = 0,
-    speedrun_container_OffsetY = 0,
+    speedrun_container_OffsetX = 500,
+    speedrun_container_OffsetY = 500,
     isMovable = true,
 
     --variables
@@ -398,6 +398,12 @@ function Speedrun:Initialize()
     --Saved Variables
     Speedrun.savedVariables = ZO_SavedVars:NewAccountWide("SpeedrunVariables", 1, nil, Speedrun.Default)
 
+    -- UI
+    Speedrun.ResetUI()
+    Speedrun.ResetAnchors()
+    Speedrun.Reset()
+
+    --Init Variables
     Speedrun.customTimerSteps = Speedrun.savedVariables.customTimerSteps
     Speedrun.raidList = Speedrun.savedVariables.raidList
 
@@ -416,15 +422,9 @@ function Speedrun:Initialize()
     --Settings
     Speedrun.CreateSettingsWindow()
 
-    -- UI
-    Speedrun.ResetUI()
-    Speedrun.ResetAnchors()
-    Speedrun.Reset()
-
-
     --EVENT_MANAGER
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated)
-    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RETICLE_HIDDEN_UPDATE, function() Speedrun.SetUIHidden((not Speedrun.isMovable) and ((not Speedrun.IsInTrialZone()) or IsReticleHidden())) end)
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RETICLE_HIDDEN_UPDATE, function() Speedrun.SetUIHidden(Speedrun.isMovable and ((not Speedrun.IsInTrialZone()) or IsReticleHidden())) end)
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.OnTrialStarted) --start vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.OnTrialComplete) --finish vet trial
     EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.OnTrialFailed) --reset vet trial
