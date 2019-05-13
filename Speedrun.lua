@@ -379,6 +379,8 @@ function Speedrun.OnPlayerActivated()
         Speedrun.CreateRaidSegment(zoneID)
         Speedrun.SetUIHidden(false)
 
+        Speedrun.RegisterTrialsEvents()
+        EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
     else
         Speedrun.SetUIHidden(true)
         Speedrun.UnregisterTrialsEvents()

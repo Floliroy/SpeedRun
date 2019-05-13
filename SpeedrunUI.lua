@@ -114,6 +114,7 @@ function Speedrun.CreateRaidSegment(id)
     SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
     SpeedRun_Timer_Container_Raid:SetHorizontalAlignment(TEXT_ALIGN_CENTER)
 end
+
 function Speedrun.UpdateSegment(step, raid)
     --TODO Divide into multiple function
     local difference
