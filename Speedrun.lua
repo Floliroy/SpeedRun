@@ -275,8 +275,7 @@ function Speedrun.LastArchive()
                 if currentTargetHP > 0 then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                     --Unregister for update then register again on update for UI panel
-                    EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "Update")
-                    EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
+                    EVENT_MANAGER:UnregisterForUpdate(Speedrun.name.."LastAA")
                 end
 			end
 		end
@@ -286,7 +285,7 @@ end
 function Speedrun.MainBoss()
 	if Speedrun.Step == 6 and Speedrun.raidID == 638 then
 		--to trigger the mage
-		EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 333, Speedrun.LastArchive)
+		EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."LastAA", 333, Speedrun.LastArchive)
 	end
     for i = 1, MAX_BOSSES do
         if DoesUnitExist("boss" .. i) then
@@ -333,13 +332,15 @@ function Speedrun.UnregisterTrialsEvents()
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_BOSSES_CHANGED)
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE)
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "Update")
+    EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "MiniTrial")
+    EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "LastAA")
 end
 
 function Speedrun.RegisterTrialsEvents()
     if Speedrun.raidID == 1000 then --AS
-        EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 333, Speedrun.MainAsylum)
+        EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."MiniTrial", 333, Speedrun.MainAsylum)
     elseif Speedrun.raidID == 1051 then --CR
-        EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 333, Speedrun.MainCloudrest)
+        EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."MiniTrial", 333, Speedrun.MainCloudrest)
     elseif Speedrun.raidID == 1082 or Speedrun.raidID == 677 or Speedrun.raidID == 635 then --arenas
         EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.MainArena)
     else --Other Raids
@@ -349,7 +350,7 @@ function Speedrun.RegisterTrialsEvents()
         --if still inCombat
         EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBoss)
     end
-    EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
+    EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."Update", 900, Speedrun.UpdateWindowPanel)
 end
 
 function Speedrun.OnTrialFailed()
@@ -380,7 +381,6 @@ function Speedrun.OnPlayerActivated()
         Speedrun.SetUIHidden(false)
 
         Speedrun.RegisterTrialsEvents()
-        EVENT_MANAGER:RegisterForUpdate(Speedrun.name, 900, Speedrun.UpdateWindowPanel)
     else
         Speedrun.SetUIHidden(true)
         Speedrun.UnregisterTrialsEvents()
