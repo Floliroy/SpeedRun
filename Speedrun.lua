@@ -18,6 +18,7 @@ Speedrun.raidID = 0
 Speedrun.isBossDead = true
 Speedrun.Step = 1
 Speedrun.isMiniTrialHM = nil
+Speedrun.stage = 0
 
 ---------------------------
 ---- Variables Default ----
@@ -40,6 +41,7 @@ Speedrun.Default = {
     isBossDead = true,
     Step = 1,
     isMiniTrialHM = nil,
+    stage = 0,
 
     --settings
     addsOnCR = true
@@ -144,27 +146,45 @@ end
 ----------------
 ---- Trials ----
 ----------------
+
+function Speedrun.MainBRP()
+    local x, y = GetMapPlayerPosition('player');
+    local stage
+    if x > 0.54 and x < 0.64 and y > 0.79 and y < 0.89 then
+        stage = 1
+    elseif x > 0.3 and x < 0.4 and y > 0.69 and y < 0.8 then
+        stage = 2
+    elseif x > 0.41 and x < 0.52 and y > 0.43 and y < 0.53 then
+        stage = 3
+    elseif x > 0.63 and x < 0.73 and y > 0.22 and y < 0.32 then
+        stage = 4
+    elseif x > 0.4 and x < 0.5 and y > 0.08 and y < 0.18 then
+        stage = 5
+    else
+        stage = 0
+    end
+    if Speedrun.stage == stage - 1 then
+        Speedrun.stage = stage
+        Speedrun.savedVariables.stage = Speedrun.stage
+        UpdateWaypointNew(GetRaidDuration())
+    end
+end
+
+Speedrun.ArenaBossDead = function (eventCode, scoreUpdateReason, scoreAmount, totalScore)
+    if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS then
+        --finish arena
+        Speedrun.isBossDead = true
+        Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
+    end
+end
+
 function Speedrun.MainArena()
     if IsUnitInCombat("player") then 
-        for i = 1, MAX_BOSSES do
-            if DoesUnitExist("boss" .. i) then
-            else
-                --start arena
-                if Speedrun.isBossDead == true then
-                    Speedrun.isBossDead = false
-                    Speedrun.UpdateWaypointNew(GetRaidDuration())
-                end
-            end
-        end
-    else
-        for i = 1, MAX_BOSSES do
-            if DoesUnitExist("boss" .. i) then
-                local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-                if currentTargetHP <= 0 and Speedrun.isBossDead == false then
-                    --finish arena
-                    Speedrun.isBossDead = true
-                end
-            end
+        if Speedrun.isBossDead == true then
+            --start arena
+            Speedrun.isBossDead = false
+            Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
+            Speedrun.UpdateWaypointNew(GetRaidDuration())
         end
     end
 end
@@ -325,6 +345,8 @@ function Speedrun.Reset()
     Speedrun.savedVariables.Step = Speedrun.Step
     Speedrun.isMiniTrialHM = nil
     Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM
+    Speedrun.stage = 0
+    Speedrun.savedVariables.stage = Speedrun.stage
 
 end
 
@@ -341,8 +363,11 @@ function Speedrun.RegisterTrialsEvents()
         EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."MiniTrial", 333, Speedrun.MainAsylum)
     elseif Speedrun.raidID == 1051 then --CR
         EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."MiniTrial", 333, Speedrun.MainCloudrest)
-    elseif Speedrun.raidID == 1082 or Speedrun.raidID == 677 or Speedrun.raidID == 635 then --arenas
+    elseif Speedrun.raidID == 1082 then --BRP
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBRP)
+    elseif Speedrun.raidID == 677 or Speedrun.raidID == 635 then --arenas
         EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.MainArena)
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.ArenaBossDead)
     else --Other Raids
         EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_BOSSES_CHANGED, Speedrun.MainBoss) 
         --is EVENT_BOSSES_CHANGED usefull ?
@@ -417,6 +442,7 @@ function Speedrun:Initialize()
 	Speedrun.isBossDead = Speedrun.savedVariables.isBossDead
     Speedrun.Step = Speedrun.savedVariables.Step
     Speedrun.isMiniTrialHM = Speedrun.savedVariables.isMiniTrialHM
+    Speedrun.stage = Speedrun.savedVariables.stage
 
     Speedrun.addsOnCR = Speedrun.savedVariables.addsOnCR
     Speedrun.isMovable = Speedrun.Default.isMovable
