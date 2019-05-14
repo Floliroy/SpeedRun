@@ -198,20 +198,8 @@ function Speedrun.MainCloudrest()
             local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
             local percentageHP = currentTargetHP / maxTargetHP
 
-            if IsUnitInCombat("player") and maxTargetHP >= 64000000 and Speedrun.isMiniTrialHM == nil then
-                Speedrun.isMiniTrialHM = true
-                Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
-            else 
-                if maxTargetHP < 64000000 and currentTargetHP <= 0 then
-                    Speedrun.isMiniTrialHM = false
-                    Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
-                    d("Not in vCR+3")
-                    Speedrun.UnregisterTrialsEvents()
-                end
-            end
-
-            if IsUnitInCombat("player") and Speedrun.isMiniTrialHM == true then
-                if Speedrun.Step == 1 then --start fight with boss
+            if IsUnitInCombat("player") then
+                if Speedrun.Step == 1 and maxTargetHP >= 64000000 then --start fight with boss
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
                     Speedrun.lastBossName = GetUnitName("boss" .. i)
@@ -234,10 +222,8 @@ function Speedrun.MainCloudrest()
                 if currentTargetHP > 0 and Speedrun.Step < 6 then
                     Speedrun.lastBossName = ""
                     Speedrun.savedVariables.lastBossName = Speedrun.lastBossName
-                    Speedrun.Step = 2
+                    Speedrun.Step = 1
                     Speedrun.savedVariables.Step = Speedrun.Step
-                    Speedrun.isMiniTrialHM = nil
-                    Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
                 end
             end
         end
@@ -251,18 +237,8 @@ function Speedrun.MainAsylum()
             local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
             local percentageHP = currentTargetHP / maxTargetHP
 
-            if IsUnitInCombat("player") and maxTargetHP >= 99000000 and Speedrun.isMiniTrialHM == nil then
-                Speedrun.isMiniTrialHM = true
-                Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
-            else 
-                Speedrun.isMiniTrialHM = false
-                Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
-                d("Not in vAS+2")
-                Speedrun.UnregisterTrialsEvents()
-            end
-
-            if IsUnitInCombat("player") and Speedrun.isMiniTrialHM == true then
-                if Speedrun.Step == 1 then --start fight with boss
+            if IsUnitInCombat("player") then
+                if Speedrun.Step == 1 and maxTargetHP >= 99000000 then --start fight with boss
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                 end
                 if percentageHP <= 0.9 and Speedrun.Step == 2 then
@@ -279,10 +255,8 @@ function Speedrun.MainAsylum()
                 end
             else
                 if currentTargetHP > 0 and Speedrun.Step < 6 then
-                    Speedrun.Step = 2
+                    Speedrun.Step = 1
                     Speedrun.savedVariables.Step = Speedrun.Step
-                    Speedrun.isMiniTrialHM = nil
-                    Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
                 end
             end
         end
