@@ -20,9 +20,16 @@ end
 
 function Speedrun.ResetUI()
     SpeedRun_Timer_Container:SetHeight(0)
+    SpeedRun_TotalTimer_Title:SetText("00:00")
+    SpeedRun_Advanced_PreviousSegment:SetText("NA:NA")
+    SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
     if Speedrun.segments then
         for i,x in ipairs(Speedrun.segments) do
+            local name = WM:GetControlByName(x:GetName())
             x:SetHidden(true)
+            name:GetNamedChild("_Name"):SetText(" ")
+            name:GetNamedChild("_Diff"):SetText(" ")
+            name:GetNamedChild("_Best"):SetText(" "):SetColor(0,0,0)
         end
     end
 end
@@ -164,10 +171,11 @@ function Speedrun.UpdateSegment(step, raid)
     if Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)] then 
         bestPossibleTime = difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
         SpeedRun_Advanced_BestPossible_Value:SetText(Speedrun.FormatRaidTimer(bestPossibleTime))
+        
         Speedrun.UpdateCurrentScore()
     else
         SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
-    end    
+    end
     SpeedRun_Advanced_PreviousSegment:SetText(Speedrun.FormatRaidTimer(previousSegementDif))
     Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.currentRaidTimer[step]))
 
