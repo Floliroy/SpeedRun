@@ -195,9 +195,14 @@ function Speedrun.MainCloudrest()
     for i = 1, MAX_BOSSES do
         if DoesUnitExist("boss" .. i) then
             --Zmaja got more than 64Million HP
-            local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-            local percentageHP = currentTargetHP / maxTargetHP
+            local currentTargetHP, maxTargetHP, effmaxTargetHP
+            if Speedrun.Step == 1 then
+                currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("reticleover", POWERTYPE_HEALTH)
+            else
+                currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
+            end
 
+            local percentageHP = currentTargetHP / maxTargetHP
             if IsUnitInCombat("player") then
                 if Speedrun.Step == 1 and maxTargetHP >= 64000000 then --start fight with boss
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
