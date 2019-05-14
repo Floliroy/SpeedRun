@@ -408,7 +408,9 @@ function Speedrun.OnPlayerActivated()
         Speedrun.CreateRaidSegment(zoneID)
         Speedrun.SetUIHidden(false)
 
-        Speedrun.RegisterTrialsEvents()
+        if GetRaidDuration() < 86400000 then --less than one day 
+            Speedrun.RegisterTrialsEvents()
+        end
     else
         Speedrun.SetUIHidden(true)
         Speedrun.UnregisterTrialsEvents()
@@ -431,7 +433,6 @@ function Speedrun:Initialize()
     -- UI
     Speedrun.ResetUI()
     Speedrun.ResetAnchors()
-    Speedrun.Reset()
 
     --Init Variables
     Speedrun.customTimerSteps = Speedrun.savedVariables.customTimerSteps

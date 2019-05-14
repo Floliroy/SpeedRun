@@ -118,7 +118,7 @@ end
 function Speedrun.UpdateSegment(step, raid)
     --TODO Divide into multiple function
     local difference
-    if Speedrun.segmentTimer[step] then
+    if Speedrun.segmentTimer[step] ~= nil and Speedrun.segmentTimer[step] ~= Speedrun.segmentTimer[step + 1]  then
         difference = Speedrun.currentRaidTimer[step] - Speedrun.segmentTimer[step]
     else
         difference = 0
