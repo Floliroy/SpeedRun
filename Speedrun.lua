@@ -147,8 +147,8 @@ end
 ---- Trials ----
 ----------------
 
-function Speedrun.MainBRP()
-    local x, y = GetMapPlayerPosition('player');
+function Speedrun.MainBRP() --copied from BRHelper
+    local x, y = GetMapPlayerPosition("player");
     local stage
     if x > 0.54 and x < 0.64 and y > 0.79 and y < 0.89 then
         stage = 1
@@ -171,8 +171,10 @@ function Speedrun.MainBRP()
 end
 
 Speedrun.ArenaBossDead = function (eventCode, scoreUpdateReason, scoreAmount, totalScore)
-    if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS then
+    --d("Reason: " .. scoreUpdateReason)
+    if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE then
         --finish arena
+        d("Boss Dead")
         Speedrun.isBossDead = true
         Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
     end
@@ -255,7 +257,7 @@ function Speedrun.MainAsylum()
             else 
                 Speedrun.isMiniTrialHM = false
                 Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
-                d("not in +2")
+                d("Not in vAS+2")
                 Speedrun.UnregisterTrialsEvents()
             end
 
@@ -353,6 +355,7 @@ end
 function Speedrun.UnregisterTrialsEvents()
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_BOSSES_CHANGED)
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_SCORE_UPDATE)
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "Update")
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "MiniTrial")
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "LastAA")
