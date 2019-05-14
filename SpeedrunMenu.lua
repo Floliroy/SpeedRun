@@ -59,7 +59,7 @@ function Speedrun.CreateSettingsWindow()
     local panelData = {
         type = "panel",
         name = "Speedrun",
-        displayName = "SpeedRun",
+        displayName = "Speed|cdf4242Run|r",
         author = "Floliroy, Panaa",
         version = Speedrun.version,
         slashCommand = "/speedrun",

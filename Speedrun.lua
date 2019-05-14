@@ -18,6 +18,7 @@ Speedrun.raidID = 0
 Speedrun.isBossDead = true
 Speedrun.Step = 1
 Speedrun.isMiniTrialHM = nil
+Speedrun.stage = 0
 
 ---------------------------
 ---- Variables Default ----
@@ -40,6 +41,7 @@ Speedrun.Default = {
     isBossDead = true,
     Step = 1,
     isMiniTrialHM = nil,
+    stage = 0,
 
     --settings
     addsOnCR = true
@@ -144,27 +146,47 @@ end
 ----------------
 ---- Trials ----
 ----------------
+
+function Speedrun.MainBRP() --copied from BRHelper thx @andy.s
+    local x, y = GetMapPlayerPosition("player");
+    local stage
+    if x > 0.54 and x < 0.64 and y > 0.79 and y < 0.89 then
+        stage = 1
+    elseif x > 0.3 and x < 0.4 and y > 0.69 and y < 0.8 then
+        stage = 2
+    elseif x > 0.41 and x < 0.52 and y > 0.43 and y < 0.53 then
+        stage = 3
+    elseif x > 0.63 and x < 0.73 and y > 0.22 and y < 0.32 then
+        stage = 4
+    elseif x > 0.4 and x < 0.5 and y > 0.08 and y < 0.18 then
+        stage = 5
+    else
+        stage = 0
+    end
+    if Speedrun.stage == stage - 1 then
+        Speedrun.stage = stage
+        Speedrun.savedVariables.stage = Speedrun.stage
+        Speedrun.UpdateWaypointNew(GetRaidDuration())
+    end
+end
+
+Speedrun.ArenaBossDead = function (eventCode, scoreUpdateReason, scoreAmount, totalScore)
+    --d("Reason: " .. scoreUpdateReason)
+    if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE then
+        --finish arena
+        d("Boss Dead")
+        Speedrun.isBossDead = true
+        Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
+    end
+end
+
 function Speedrun.MainArena()
     if IsUnitInCombat("player") then 
-        for i = 1, MAX_BOSSES do
-            if DoesUnitExist("boss" .. i) then
-            else
-                --start arena
-                if Speedrun.isBossDead == true then
-                    Speedrun.isBossDead = false
-                    Speedrun.UpdateWaypointNew(GetRaidDuration())
-                end
-            end
-        end
-    else
-        for i = 1, MAX_BOSSES do
-            if DoesUnitExist("boss" .. i) then
-                local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-                if currentTargetHP <= 0 and Speedrun.isBossDead == false then
-                    --finish arena
-                    Speedrun.isBossDead = true
-                end
-            end
+        if Speedrun.isBossDead == true then
+            --start arena
+            Speedrun.isBossDead = false
+            Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
+            Speedrun.UpdateWaypointNew(GetRaidDuration())
         end
     end
 end
@@ -235,7 +257,7 @@ function Speedrun.MainAsylum()
             else 
                 Speedrun.isMiniTrialHM = false
                 Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM 
-                d("not in +2")
+                d("Not in vAS+2")
                 Speedrun.UnregisterTrialsEvents()
             end
 
@@ -275,7 +297,7 @@ function Speedrun.LastArchive()
                 if currentTargetHP > 0 then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                     --Unregister for update then register again on update for UI panel
-                    EVENT_MANAGER:UnregisterForUpdate(Speedrun.name.."LastAA")
+                    EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "LastAA")
                 end
 			end
 		end
@@ -285,7 +307,7 @@ end
 function Speedrun.MainBoss()
 	if Speedrun.Step == 6 and Speedrun.raidID == 638 then
 		--to trigger the mage
-		EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."LastAA", 333, Speedrun.LastArchive)
+		EVENT_MANAGER:RegisterForUpdate(Speedrun.name .. "LastAA", 333, Speedrun.LastArchive)
 	end
     for i = 1, MAX_BOSSES do
         if DoesUnitExist("boss" .. i) then
@@ -325,12 +347,15 @@ function Speedrun.Reset()
     Speedrun.savedVariables.Step = Speedrun.Step
     Speedrun.isMiniTrialHM = nil
     Speedrun.savedVariables.isMiniTrialHM = Speedrun.isMiniTrialHM
+    Speedrun.stage = 0
+    Speedrun.savedVariables.stage = Speedrun.stage
 
 end
 
 function Speedrun.UnregisterTrialsEvents()
-    EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_BOSSES_CHANGED)
-    EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Boss", EVENT_BOSSES_CHANGED)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "TrialScore", EVENT_RAID_TRIAL_SCORE_UPDATE)
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "Update")
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "MiniTrial")
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "LastAA")
@@ -338,17 +363,20 @@ end
 
 function Speedrun.RegisterTrialsEvents()
     if Speedrun.raidID == 1000 then --AS
-        EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."MiniTrial", 333, Speedrun.MainAsylum)
+        EVENT_MANAGER:RegisterForUpdate(Speedrun.name .. "MiniTrial", 333, Speedrun.MainAsylum)
     elseif Speedrun.raidID == 1051 then --CR
-        EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."MiniTrial", 333, Speedrun.MainCloudrest)
-    elseif Speedrun.raidID == 1082 or Speedrun.raidID == 677 or Speedrun.raidID == 635 then --arenas
-        EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.MainArena)
+        EVENT_MANAGER:RegisterForUpdate(Speedrun.name .. "MiniTrial", 333, Speedrun.MainCloudrest)
+    elseif Speedrun.raidID == 1082 then --BRP
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBRP)
+    elseif Speedrun.raidID == 677 or Speedrun.raidID == 635 then --arenas
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainArena)
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "TrialScore", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.ArenaBossDead)
     else --Other Raids
-        EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_BOSSES_CHANGED, Speedrun.MainBoss) 
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Boss", EVENT_BOSSES_CHANGED, Speedrun.MainBoss) 
         --is EVENT_BOSSES_CHANGED usefull ?
         --maybe for HRC first and secondtop, SO first and second, HoF third
         --if still inCombat
-        EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBoss)
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBoss)
     end
     EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."Update", 900, Speedrun.UpdateWindowPanel)
 end
@@ -380,7 +408,9 @@ function Speedrun.OnPlayerActivated()
         Speedrun.CreateRaidSegment(zoneID)
         Speedrun.SetUIHidden(false)
 
-        Speedrun.RegisterTrialsEvents()
+        if GetRaidDuration() < 86400000 then --less than one day 
+            Speedrun.RegisterTrialsEvents()
+        end
     else
         Speedrun.SetUIHidden(true)
         Speedrun.UnregisterTrialsEvents()
@@ -403,7 +433,6 @@ function Speedrun:Initialize()
     -- UI
     Speedrun.ResetUI()
     Speedrun.ResetAnchors()
-    Speedrun.Reset()
 
     --Init Variables
     Speedrun.customTimerSteps = Speedrun.savedVariables.customTimerSteps
@@ -417,6 +446,7 @@ function Speedrun:Initialize()
 	Speedrun.isBossDead = Speedrun.savedVariables.isBossDead
     Speedrun.Step = Speedrun.savedVariables.Step
     Speedrun.isMiniTrialHM = Speedrun.savedVariables.isMiniTrialHM
+    Speedrun.stage = Speedrun.savedVariables.stage
 
     Speedrun.addsOnCR = Speedrun.savedVariables.addsOnCR
     Speedrun.isMovable = Speedrun.Default.isMovable
@@ -425,15 +455,15 @@ function Speedrun:Initialize()
     Speedrun.CreateSettingsWindow()
 
     --EVENT_MANAGER
-    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated)
-    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RETICLE_HIDDEN_UPDATE, function() Speedrun.SetUIHidden(Speedrun.isMovable and ((not Speedrun.IsInTrialZone()) or IsReticleHidden())) end)
-    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_STARTED, Speedrun.OnTrialStarted) --start vet trial
-    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_COMPLETE, Speedrun.OnTrialComplete) --finish vet trial
-    EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_RAID_TRIAL_FAILED, Speedrun.OnTrialFailed) --reset vet trial
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Activated", EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated)
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Reticle", EVENT_RETICLE_HIDDEN_UPDATE, function() Speedrun.SetUIHidden(Speedrun.isMovable and ((not Speedrun.IsInTrialZone()) or IsReticleHidden())) end)
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Started", EVENT_RAID_TRIAL_STARTED, Speedrun.OnTrialStarted) --start vet trial
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Complete", EVENT_RAID_TRIAL_COMPLETE, Speedrun.OnTrialComplete) --finish vet trial
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Failed", EVENT_RAID_TRIAL_FAILED, Speedrun.OnTrialFailed) --reset vet trial
 
     --EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_TARGET_CHANGED, Speedrun.Test)
 
-    EVENT_MANAGER:UnregisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Loaded", EVENT_ADD_ON_LOADED)
     SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
     --SLASH_COMMANDS["/speedtest"] = function() Speedrun.Test() end
 end
@@ -443,4 +473,4 @@ function Speedrun.OnAddOnLoaded(event, addonName)
     Speedrun:Initialize()
 end
 
-EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_ADD_ON_LOADED, Speedrun.OnAddOnLoaded)
+EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Loaded", EVENT_ADD_ON_LOADED, Speedrun.OnAddOnLoaded)
