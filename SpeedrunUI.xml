@@ -35,7 +35,7 @@
                     <Dimensions x="75" y="20"/>
                     <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$(parent)_Name" offsetX="0" offsetY="0" />
                 </Label>
-                <Label name="$(parent)_Best" horizontalAlignment="right" verticalAlignment="center" font="ZoFontWinH5" text="21:02">
+                <Label name="$(parent)_Best" horizontalAlignment="right" verticalAlignment="center" font="ZoFontWinH5" text="00:00">
                     <Dimensions x="55" y="20"/>
                     <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$(parent)_Diff" offsetX="0" offsetY="0" />
                 </Label>
@@ -47,6 +47,15 @@
             <Controls>
                 <Label name="$(parent)_Title" hidden="true"  horizontalAlignment="RIGHT" font="ZoFontWinH1" text="0:00:00">
                     <Anchor point="TOPRIGHT" relativePoint="BOTTOMLEFT" relativeTo="$(parent)" />
+                </Label>
+            </Controls>
+        </TopLevelControl>
+
+        <TopLevelControl name="SpeedRun_Score" mouseEnabled="true" movable="false" hidden="false">
+            <Anchor point="TOPLEFT" relativeTo="SpeedRun_Timer_Container" relativePoint="BOTTOMLEFT" />
+            <Controls>
+                <Label name="$(parent)_Label" hidden="true"  horizontalAlignment="LEFT" font="ZoFontWinH1" text="NA'NA">
+                    <Anchor point="TOPLEFT" relativePoint="BOTTOMRIGHT" relativeTo="$(parent)" offsetX="20" />
                 </Label>
             </Controls>
         </TopLevelControl>

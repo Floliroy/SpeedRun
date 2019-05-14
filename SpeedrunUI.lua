@@ -7,6 +7,7 @@ local WM = GetWindowManager()
 local globalTimer
 local previousSegment
 local currentRaid
+local bestPossibleTime
 
 
 -------------------------
@@ -47,13 +48,38 @@ end
 function Speedrun.SetUIHidden(hide)
     SpeedRun_Timer_Container:SetHidden(hide)
     SpeedRun_TotalTimer_Title:SetHidden(hide)
+    SpeedRun_Score_Label:SetHidden(hide)
     SpeedRun_Advanced:SetHidden(hide)
 end
 
 function Speedrun.UpdateGlobalTimer()
     SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration(), true))
+
+    if bestPossibleTime == nil or math.floor(bestPossibleTime/1000) == 0 then 
+        Speedrun.UpdateCurrentScore()
+    end
+
 end
 
+function Speedrun.UpdateCurrentScore()
+    local timer
+    if bestPossibleTime then 
+        if math.floor(bestPossibleTime/1000) == 0 then
+            timer = GetRaidDuration()/1000
+        else
+            timer = bestPossibleTime/1000
+        end
+    else
+        timer = GetRaidDuration()/1000
+    end
+
+    local score = math.floor(Speedrun.GetScore(timer,GetCurrentRaidLifeScoreBonus()/1000,Speedrun.raidID))
+    local fScore = string.sub(score,string.len(score)-2,string.len(score))
+    local dScore = string.gsub(score,fScore,"")
+    score = dScore .. "'" .. fScore
+
+    SpeedRun_Score_Label:SetText(score)
+end
 
 function Speedrun.UpdateWindowPanel(waypoint, raid)
     waypoint = waypoint or 1
@@ -136,8 +162,9 @@ function Speedrun.UpdateSegment(step, raid)
 
     --TODO IF NO PRESAVED TIME
     if Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)] then 
-        local bestPossibleTime = difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
+        bestPossibleTime = difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
         SpeedRun_Advanced_BestPossible_Value:SetText(Speedrun.FormatRaidTimer(bestPossibleTime))
+        Speedrun.UpdateCurrentScore()
     else
         SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
     end    

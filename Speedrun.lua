@@ -170,7 +170,7 @@ function Speedrun.MainBRP() --copied from BRHelper thx @andy.s
     end
 end
 
-Speedrun.ArenaBossDead = function (eventCode, scoreUpdateReason, scoreAmount, totalScore)
+Speedrun.ArenaBossDead = function(eventCode, scoreUpdateReason, scoreAmount, totalScore)
     --d("Reason: " .. scoreUpdateReason)
     if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE then
         --finish arena
@@ -357,7 +357,8 @@ function Speedrun.RegisterTrialsEvents()
         --if still inCombat
         EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBoss)
     end
-    EVENT_MANAGER:RegisterForUpdate(Speedrun.name.."Update", 900, Speedrun.UpdateWindowPanel)
+    EVENT_MANAGER:RegisterForUpdate(Speedrun.name .. "Update", 900, Speedrun.UpdateWindowPanel)
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Score", EVENT_RAID_REVIVE_COUNTER_UPDATE, Speedrun.UpdateCurrentScore)
 end
 
 function Speedrun.OnTrialFailed()
