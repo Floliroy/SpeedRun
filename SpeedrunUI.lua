@@ -62,7 +62,7 @@ end
 function Speedrun.UpdateGlobalTimer()
     SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration(), true))
 
-    if bestPossibleTime == nil or math.floor(bestPossibleTime/1000) == 0 then 
+    if bestPossibleTime == nil or Speedrun.segmentTimer[Speedrun.Step] == Speedrun.segmentTimer[Speedrun.Step + 1] then 
         Speedrun.UpdateCurrentScore()
     end
 
@@ -71,7 +71,7 @@ end
 function Speedrun.UpdateCurrentScore()
     local timer
     if bestPossibleTime then 
-        if math.floor(bestPossibleTime/1000) == 0 then
+        if Speedrun.segmentTimer[Speedrun.Step] == Speedrun.segmentTimer[Speedrun.Step + 1] then
             timer = GetRaidDuration()/1000
         else
             timer = bestPossibleTime/1000
@@ -171,7 +171,7 @@ function Speedrun.UpdateSegment(step, raid)
     if Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)] then 
         bestPossibleTime = difference + Speedrun.segmentTimer[table.getn(Speedrun.segmentTimer)]
         SpeedRun_Advanced_BestPossible_Value:SetText(Speedrun.FormatRaidTimer(bestPossibleTime))
-        
+
         Speedrun.UpdateCurrentScore()
     else
         SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
