@@ -170,24 +170,12 @@ function Speedrun.MainBRP() --copied from BRHelper thx @andy.s
     end
 end
 
-Speedrun.ArenaBossDead = function(eventCode, scoreUpdateReason, scoreAmount, totalScore)
-    --d("Reason: " .. scoreUpdateReason)
+
+function Speedrun.MainArena(eventCode, scoreUpdateReason, scoreAmount, totalScore)
     if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE then
         --finish arena
         d("Boss Dead")
-        Speedrun.isBossDead = true
-        Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
-    end
-end
-
-function Speedrun.MainArena()
-    if IsUnitInCombat("player") then 
-        if Speedrun.isBossDead == true then
-            --start arena
-            Speedrun.isBossDead = false
-            Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
-            Speedrun.UpdateWaypointNew(GetRaidDuration())
-        end
+        Speedrun.UpdateWaypointNew(GetRaidDuration())
     end
 end
 
@@ -348,8 +336,7 @@ function Speedrun.RegisterTrialsEvents()
     elseif Speedrun.raidID == 1082 then --BRP
         EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBRP)
     elseif Speedrun.raidID == 677 or Speedrun.raidID == 635 then --arenas
-        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainArena)
-        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "TrialScore", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.ArenaBossDead)
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "TrialScore", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.MainArena)
     else --Other Raids
         EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Boss", EVENT_BOSSES_CHANGED, Speedrun.MainBoss) 
         --is EVENT_BOSSES_CHANGED usefull ?

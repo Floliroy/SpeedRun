@@ -23,13 +23,14 @@ function Speedrun.ResetUI()
     SpeedRun_TotalTimer_Title:SetText("00:00")
     SpeedRun_Advanced_PreviousSegment:SetText("NA:NA")
     SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
+    SpeedRun_Score_Label:SetText("NA'NA")
     if Speedrun.segments then
         for i,x in ipairs(Speedrun.segments) do
             local name = WM:GetControlByName(x:GetName())
             x:SetHidden(true)
             name:GetNamedChild("_Name"):SetText(" ")
             name:GetNamedChild("_Diff"):SetText(" ")
-            name:GetNamedChild("_Best"):SetText(" "):SetColor(0,0,0)
+            name:GetNamedChild("_Best"):SetText(" ")
         end
     end
 end
