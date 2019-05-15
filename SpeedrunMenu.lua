@@ -51,7 +51,18 @@ function Speedrun.Simulate(raidID)
     d("|cdf4242" .. zo_strformat(SI_ZONE_NAME,GetZoneNameById(raidID)) .. "|r")
     d("Your score with a time of " .. Speedrun.GetTime(totalTime) .. " would be " .. score .. ".")
 end
-
+function Speedrun.CreateOptionTable (raidID, step)
+    return {type = "editbox",
+        name = "Step " .. Speedrun.stepList[raidID][step] .. " (sec)",
+        tooltip = Speedrun.GetTooltip(Speedrun.raidList[raidID].timerSteps[step]),
+        default = "",
+        getFunc = function() return tostring(Speedrun.customTimerSteps[raidID][step]) end,
+        setFunc = function(newValue)
+            Speedrun.savedVariables.customTimerSteps[raidID][step] = newValue
+            Speedrun.customTimerSteps[raidID][step] = newValue
+        end,
+    }
+end
 -------------------------
 ---- Settings Window ----
 -------------------------
