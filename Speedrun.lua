@@ -323,6 +323,7 @@ function Speedrun.UnregisterTrialsEvents()
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Boss", EVENT_BOSSES_CHANGED)
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE)
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "TrialScore", EVENT_RAID_TRIAL_SCORE_UPDATE)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Score", EVENT_RAID_REVIVE_COUNTER_UPDATE)
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "Update")
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "MiniTrial")
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "LastAA")
@@ -395,7 +396,7 @@ end
 
 function Speedrun:Initialize()
     --Saved Variables
-    Speedrun.savedVariables = ZO_SavedVars:NewAccountWide("SpeedrunVariables", 1, nil, Speedrun.Default)
+    Speedrun.savedVariables = ZO_SavedVars:NewAccountWide("SpeedrunVariables", 2, nil, Speedrun.Default)
 
     -- UI
     Speedrun.ResetUI()

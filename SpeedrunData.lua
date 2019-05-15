@@ -245,8 +245,7 @@ Speedrun.stepList = {
         [6] = "Sixth Stage",
         [7] = "Seventh Stage",
         [8] = "Eighth Stage",
-        [9] = "Ninth Stage",
-        [10] = "Complete"
+        [9] = "Ninth Stage"
     },
     [635] = { --DSA
         [1] = "First Stage",
@@ -258,8 +257,7 @@ Speedrun.stepList = {
         [7] = "Seventh Stage",
         [8] = "Eighth Stage",
         [9] = "Ninth Stage",
-        [10] = "Tenth Stage",
-        [11] = "Complete"
+        [10] = "Tenth Stage"
     },
 }
 

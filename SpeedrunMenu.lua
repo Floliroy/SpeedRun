@@ -1000,17 +1000,6 @@ function Speedrun.CreateSettingsWindow()
                     end,
                 },
                 [11] = {
-                    type = "editbox",
-                    name = "Step " .. Speedrun.stepList[677][10] .. " (sec)",
-                    tooltip = Speedrun.GetTooltip(Speedrun.raidList[677].timerSteps[10]),
-                    default = "",
-                    getFunc = function() return tostring(Speedrun.customTimerSteps[677][10]) end,
-                    setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[677][10] = newValue
-                        Speedrun.customTimerSteps[677][10] = newValue
-                    end,
-                },
-                [12] = {
                     type = "button",
                     name = "Simulate",
                     tooltip = "You will simulate your best possible score if you do all your best time for all step point without any deaths.",
@@ -1140,17 +1129,6 @@ function Speedrun.CreateSettingsWindow()
                     end,
                 },
                 [12] = {
-                    type = "editbox",
-                    name = "Step " .. Speedrun.stepList[635][11] .. " (sec)",
-                    tooltip = Speedrun.GetTooltip(Speedrun.raidList[635].timerSteps[11]),
-                    default = "",
-                    getFunc = function() return tostring(Speedrun.customTimerSteps[635][11]) end,
-                    setFunc = function(newValue)
-                        Speedrun.savedVariables.customTimerSteps[635][11] = newValue
-                        Speedrun.customTimerSteps[635][11] = newValue
-                    end,
-                },
-                [13] = {
                     type = "button",
                     name = "Simulate",
                     tooltip = "You will simulate your best possible score if you do all your best time for all step point without any deaths.",
