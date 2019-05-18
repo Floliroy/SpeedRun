@@ -103,7 +103,7 @@ function Speedrun.GetScore(timer, vitality, raidID)
     elseif raidID == 1000 then --AS
         return (70000 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
     elseif raidID == 1051 then --CR
-        if Speedrun.addsOnCR == true then
+        if Speedrun.addsOnCR == false then
             return (85750 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
         else
             return (88000 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
@@ -351,6 +351,7 @@ end
 
 function Speedrun.OnTrialFailed()
     Speedrun.Reset()
+    Speedrun.ResetUI()
     Speedrun.UnregisterTrialsEvents()
 end
 
@@ -361,6 +362,7 @@ end
 
 function Speedrun.OnTrialStarted()
     Speedrun.Reset()
+    Speedrun.ResetUI()
     Speedrun.RegisterTrialsEvents()
 end
 
@@ -380,6 +382,8 @@ function Speedrun.OnPlayerActivated()
             Speedrun.RegisterTrialsEvents()
         end
     else
+        Speedrun.Reset()
+        Speedrun.ResetUI()
         Speedrun.SetUIHidden(true)
         Speedrun.UnregisterTrialsEvents()
     end
