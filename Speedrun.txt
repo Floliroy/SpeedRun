@@ -1,5 +1,5 @@
 ## Title: Speed|cdf4242Run|r
-## APIVersion: 100026
+## APIVersion: 100027
 ## Author: Floliroy, Panaa
 ## Version: 0.1
 ## DependsOn: LibStub LibAddonMenu-2.0
@@ -14,6 +14,9 @@
 Lib/LibCustomTitles/LibTitleLocale.lua
 Lib/LibCustomTitles/LibCustomTitles.lua
 Lib/LibCustomTitles/Titles/Floliroy.lua
+
+Lang/en.lua
+Lang/$(language).lua
 
 SpeedrunData.lua
 Speedrun.lua

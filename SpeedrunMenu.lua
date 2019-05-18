@@ -20,9 +20,9 @@ end
 
 function Speedrun.GetTooltip(timer)
     if timer then
-        return "At the moment your best personnal time is " .. math.floor(timer / 1000) .. " sec.\nEquivalent to " .. Speedrun.GetTime(math.floor(timer / 1000)) .. "."
+        return zo_strformat(SI_SPEEDRUN_STEP_DESC_EXIST, math.floor(timer / 1000), Speedrun.GetTime(math.floor(timer / 1000)))
     else
-        return "At the moment you don't have any best personnal."
+        return zo_strformat(SI_SPEEDRUN_STEP_DESC_NULL)
     end
 end
 
@@ -49,12 +49,12 @@ function Speedrun.Simulate(raidID)
     score = dScore .. "'" .. fScore
 
     d("|cdf4242" .. zo_strformat(SI_ZONE_NAME,GetZoneNameById(raidID)) .. "|r")
-    d("Your score with a time of " .. Speedrun.GetTime(totalTime) .. " would be " .. score .. ".")
+    d(zo_strformat(SI_SPEEDRUN_SIMULATE_FUNCTION, Speedrun.GetTime(totalTime), score))
 end
 
 function Speedrun.CreateOptionTable(raidID, step)
     return {type = "editbox",
-            name = "Step " .. Speedrun.stepList[raidID][step] .. " (sec)",
+            name = zo_strformat(SI_SPEEDRUN_STEP_NAME, Speedrun.stepList[raidID][step]),
             tooltip = Speedrun.GetTooltip(Speedrun.raidList[raidID].timerSteps[step]),
             default = "",
             getFunc = function() return tostring(Speedrun.customTimerSteps[raidID][step]) end,
@@ -68,13 +68,13 @@ end
 function Speedrun.CreateRaidMenu(raidID)
     local raidMenu = {}
     table.insert(raidMenu, {    type = "description",
-                                text = "You can use custom step point time or leave it blank to use your best personnal (tooltip will tell you what is your best personnal).\nMake sure to type time in seconds (1 min = 60 sec).",
+                                text = zo_strformat(SI_SPEEDRUN_RAID_DESC),
     })
 
     if raidID == 1051 then
         table.insert(raidMenu, {type = "checkbox",
-            name = "With Adds",
-            tooltip = "Set here if you're doing adds before last boss or not.",
+            name = zo_strformat(SI_SPEEDRUN_ADDS_CR_NAME),
+            tooltip = zo_strformat(SI_SPEEDRUN_ADDS_CR_DESC),
             default = true,
             getFunc = function() return Speedrun.savedVariables.addsOnCR end,
             setFunc = function(newValue)
@@ -84,13 +84,13 @@ function Speedrun.CreateRaidMenu(raidID)
         })
     end
 
-    for k, v in pairs(Speedrun.stepList[raidID]) do
-        table.insert(raidMenu, Speedrun.CreateOptionTable(raidID, k))
+    for i, x in ipairs(Speedrun.stepList[raidID]) do
+        table.insert(raidMenu, Speedrun.CreateOptionTable(raidID, i))
     end
 
     table.insert(raidMenu, {    type = "button",
-                                name = "Simulate",
-                                tooltip = "You will simulate your best possible score if you do all your best time for all step point without any deaths.",
+                                name = zo_strformat(SI_SPEEDRUN_SIMULATE_NAME),
+                                tooltip = zo_strformat(SI_SPEEDRUN_SIMULATE_DEC),
                                 func = function()
                                     Speedrun.Simulate(raidID)
                                 end,
@@ -121,13 +121,13 @@ function Speedrun.CreateSettingsWindow()
 
     local optionsData = {
         {   type = "description",
-            text = "Here you can set custom step point time to the different trials.\nIf you leave the editbox blank then it will take your best time.\nYou can also simulate your best possible score if you do all your best time for all step point without any deaths.",
+            text = zo_strformat(SI_SPEEDRUN_GLOBAL_DESC),
         },
         {   type = "divider",
         },
         {   type = "checkbox",
-            name = "Enabled",
-            tooltip = "Not working for now, it will always be enable",
+            name = zo_strformat(SI_SPEEDRUN_ENABLE_NAME),
+            tooltip = zo_strformat(SI_SPEEDRUN_ENABLE_DESC),
             default = true,
             getFunc = function() return end,
             setFunc = function(newValue)
@@ -135,8 +135,8 @@ function Speedrun.CreateSettingsWindow()
             end,
         },
         {   type = "checkbox",
-            name = "Lock UI",
-            tooltip = "Lock UI to reposition the window on your screen",
+            name = zo_strformat(SI_SPEEDRUN_LOCK_NAME),
+            tooltip = zo_strformat(SI_SPEEDRUN_LOCK_DESC),
             default = true,
             getFunc = function() return Speedrun.isMovable end,
             setFunc = function(newValue)
