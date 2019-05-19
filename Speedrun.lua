@@ -87,6 +87,12 @@ function Speedrun.FormatRaidTimer(timer, ms)
     end
 end
 
+function Speedrun.FormatRaidScore(score)
+    local fScore = string.sub(score,string.len(score)-2,string.len(score))
+    local dScore = string.gsub(score,fScore,"")
+    return dScore .. "'" .. fScore
+end
+
 function Speedrun.GetScore(timer, vitality, raidID)
     if raidID == 638 then --AA
         return (124300 + (1000 * vitality)) * (1 + (900 - timer) / 10000)
@@ -189,7 +195,7 @@ function Speedrun.MainCloudrest()
             end
 
             local percentageHP = currentTargetHP / maxTargetHP
-            if IsUnitInCombat("player") then
+            if IsUnitInCombat("player") and  Speedrun.isBossDead == true then
                 if Speedrun.Step == 1 and maxTargetHP >= 64000000 then --start fight with boss
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
@@ -210,8 +216,12 @@ function Speedrun.MainCloudrest()
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                 end
             else
+                currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
                 if currentTargetHP > 0 and Speedrun.Step < 6 then
                     Speedrun.Reset()
+                elseif currentTargetHP <= 0 then
+                    Speedrun.isBossDead = false
+                    Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
                 end
             end
         end
@@ -225,7 +235,7 @@ function Speedrun.MainAsylum()
             local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
             local percentageHP = currentTargetHP / maxTargetHP
 
-            if IsUnitInCombat("player") then
+            if IsUnitInCombat("player") and  Speedrun.isBossDead == true then
                 if Speedrun.Step == 1 and maxTargetHP >= 99000000 then --start fight with boss
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                 end
@@ -244,6 +254,9 @@ function Speedrun.MainAsylum()
             else
                 if currentTargetHP > 0 and Speedrun.Step < 6 then
                     Speedrun.Reset()
+                elseif currentTargetHP <= 0 then
+                    Speedrun.isBossDead = false
+                    Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
                 end
             end
         end
@@ -353,8 +366,10 @@ end
 
 Speedrun.OnTrialComplete = function(eventCode, trialName, score, totalTime)
     Speedrun.UpdateWaypointNew(totalTime)
-    Speedrun.UnregisterTrialsEvents()
+    SpeedRun_Score_Label:SetText(Speedrun.FormatRaidScore(GetCurrentRaidScore()))
+    SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration()+1000, true))
 
+    Speedrun.UnregisterTrialsEvents()
     Speedrun.raidID = 0
     Speedrun.savedVariables.raidID = Speedrun.raidID 
 end
@@ -380,6 +395,8 @@ function Speedrun.OnPlayerActivated()
             Speedrun.RegisterTrialsEvents()
         end
     else
+        Speedrun.raidID = zoneID
+        Speedrun.savedVariables.raidID = Speedrun.raidID 
         Speedrun.SetUIHidden(true)
         Speedrun.UnregisterTrialsEvents()
     end

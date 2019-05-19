@@ -82,11 +82,8 @@ function Speedrun.UpdateCurrentScore()
     end
 
     local score = math.floor(Speedrun.GetScore(timer+1,GetCurrentRaidLifeScoreBonus()/1000,Speedrun.raidID))
-    local fScore = string.sub(score,string.len(score)-2,string.len(score))
-    local dScore = string.gsub(score,fScore,"")
-    score = dScore .. "'" .. fScore
 
-    SpeedRun_Score_Label:SetText(score)
+    SpeedRun_Score_Label:SetText(Speedrun.FormatRaidScore(score))
 end
 
 function Speedrun.UpdateWindowPanel(waypoint, raid)
