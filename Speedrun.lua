@@ -174,15 +174,6 @@ function Speedrun.MainBRP() --copied from BRHelper thx @andy.s
     end
 end
 
-
-Speedrun.MainArena = function(eventCode, scoreUpdateReason, scoreAmount, totalScore)
-    if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE then
-        --finish arena
-        d("Boss Dead")
-        Speedrun.UpdateWaypointNew(GetRaidDuration())
-    end
-end
-
 function Speedrun.MainCloudrest()
     for i = 1, MAX_BOSSES do
         if DoesUnitExist("boss" .. i) then
@@ -224,6 +215,8 @@ function Speedrun.MainCloudrest()
                     Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
                 end
             end
+        else
+            Speedrun.Reset()
         end
     end
 end
@@ -259,6 +252,8 @@ function Speedrun.MainAsylum()
                     Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
                 end
             end
+        else
+            Speedrun.Reset()
         end
     end
 end
@@ -278,6 +273,15 @@ function Speedrun.LastArchive()
 	end
 end
 
+Speedrun.BossDead = function(eventCode, scoreUpdateReason, scoreAmount, totalScore)
+    if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE then
+        --finish arena
+        Speedrun.UpdateWaypointNew(GetRaidDuration())
+        Speedrun.isBossDead = true
+        Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
+    end
+end
+
 function Speedrun.MainBoss()
 	if Speedrun.Step == 6 and Speedrun.raidID == 638 then
 		--to trigger the mage
@@ -294,7 +298,7 @@ function Speedrun.MainBoss()
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                     return
                 end
-            else
+            elseif Speedrun.raidID == 636 then --for HRC second boss
                 if currentTargetHP <= 0 and Speedrun.isBossDead == false then
                     --boss dead
                     Speedrun.isBossDead = true
@@ -325,10 +329,10 @@ function Speedrun.Reset()
 end
 
 function Speedrun.UnregisterTrialsEvents()
-    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Boss", EVENT_BOSSES_CHANGED)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "BossChange", EVENT_BOSSES_CHANGED)
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE)
-    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Arena", EVENT_RAID_TRIAL_SCORE_UPDATE)
-    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Score", EVENT_RAID_REVIVE_COUNTER_UPDATE)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "BossDead", EVENT_RAID_TRIAL_SCORE_UPDATE)
+    EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "DeathScore", EVENT_RAID_REVIVE_COUNTER_UPDATE)
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "Update")
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "MiniTrial")
     EVENT_MANAGER:UnregisterForUpdate(Speedrun.name .. "LastAA")
@@ -345,17 +349,18 @@ function Speedrun.RegisterTrialsEvents()
         EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBRP)
 
     elseif Speedrun.raidID == 677 or Speedrun.raidID == 635 then --arenas
-        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Arena", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.MainArena)
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "BossDead", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.BossDead)
 
     else --Other Raids
-        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Boss", EVENT_BOSSES_CHANGED, Speedrun.MainBoss) 
-        --is EVENT_BOSSES_CHANGED usefull ?
-        --maybe for HRC first and secondtop, SO first and second, HoF third if still inCombat
+        EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "BossChange", EVENT_BOSSES_CHANGED, Speedrun.MainBoss) 
         EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBoss)
+        if Speedrun.raidID ~= 636 then --not for HRC
+            EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "BossDead", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.BossDead)
+        end
 
     end
     EVENT_MANAGER:RegisterForUpdate(Speedrun.name .. "Update", 900, Speedrun.UpdateWindowPanel)
-    EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Score", EVENT_RAID_REVIVE_COUNTER_UPDATE, Speedrun.UpdateCurrentScore)
+    EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "DeathScore", EVENT_RAID_REVIVE_COUNTER_UPDATE, Speedrun.UpdateCurrentScore)
 end
 
 function Speedrun.OnTrialFailed()
