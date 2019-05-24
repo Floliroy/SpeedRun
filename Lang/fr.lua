@@ -16,8 +16,8 @@ SafeAddString(SI_SPEEDRUN_AA_FINISH_MAGE 		, "Fin La Mage", 1)
 --HRC
 SafeAddString(SI_SPEEDRUN_HRC_BEGIN_RAKOTU 		, "Début Ra Kotu", 1)
 SafeAddString(SI_SPEEDRUN_HRC_FINISH_RAKOTU 	, "Fin Ra Kotu", 1)
-SafeAddString(SI_SPEEDRUN_HRC_BEGIN_SECOND 		, "TODO", 1)
-SafeAddString(SI_SPEEDRUN_HRC_FINISH_SECOND 	, "TODO", 1)
+SafeAddString(SI_SPEEDRUN_HRC_BEGIN_SECOND 		, "Début Second Boss", 1)
+SafeAddString(SI_SPEEDRUN_HRC_FINISH_SECOND 	, "Fin Second Boss", 1)
 SafeAddString(SI_SPEEDRUN_HRC_BEGIN_WARRIOR 	, "Début Le Guerrier", 1)
 SafeAddString(SI_SPEEDRUN_HRC_FINISH_WARRIOR 	, "Fin Le Guerrier", 1)
 

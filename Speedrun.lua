@@ -136,7 +136,7 @@ function Speedrun.UpdateWaypointNew(raidDuration)
             timerWaypoint = Speedrun.currentRaidTimer[waypoint]
         end
 
-        if raid.timerSteps[waypoint] == nil or raid.timerSteps[waypoint] > timerWaypoint then
+        if raid.timerSteps[waypoint] == nil or raid.timerSteps[waypoint] <= 0 or raid.timerSteps[waypoint] > timerWaypoint then
             raid.timerSteps[waypoint] = timerWaypoint
             Speedrun.savedVariables.raidList = Speedrun.raidList
         end
