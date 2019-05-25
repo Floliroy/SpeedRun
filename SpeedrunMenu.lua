@@ -37,7 +37,7 @@ function Speedrun.Simulate(raidID)
     local vitality
     if raidID == 638 or raidID == 636 or raidID == 639 or raidID == 1082 or raidID == 635 then
         vitality = 24
-    elseif raidID == 725 or raidID == 975 or raidID == 1000 or raidID == 1051 then
+    elseif raidID == 725 or raidID == 975 or raidID == 1000 or raidID == 1051 or raidID == 1121 then
         vitality = 36
     elseif raidID == 677 then
         vitality = 15
@@ -83,6 +83,32 @@ function Speedrun.CreateRaidMenu(raidID)
             end,
         })
     end
+
+    if raidID == 1121 then
+        local choices = {
+            [1] = zo_strformat(SI_SPEEDRUN_ZERO),
+            [2] = zo_strformat(SI_SPEEDRUN_ONE),
+            [3] = zo_strformat(SI_SPEEDRUN_TWO),
+            [4] = zo_strformat(SI_SPEEDRUN_THREE),
+        }
+        table.insert(raidMenu, {type = "dropdown",
+            name = zo_strformat(SI_SPEEDRUN_HM_SS_NAME),
+            tooltip = zo_strformat(SI_SPEEDRUN_HM_SS_DESC),
+            choices = choices,
+			default = choices[4],
+			getFunc = function() return choices[Speedrun.savedVariables.hmOnSS] end,
+			setFunc = function(selected)
+				for index, name in ipairs(choices) do
+					if name == selected then
+						Speedrun.savedVariables.hmOnSS = index
+						Speedrun.hmOnSS = index
+						break
+					end
+				end
+			end,
+        })
+    end
+
 
     for i, x in ipairs(Speedrun.stepList[raidID]) do
         table.insert(raidMenu, Speedrun.CreateOptionTable(raidID, i))

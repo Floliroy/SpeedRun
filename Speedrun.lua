@@ -42,7 +42,8 @@ Speedrun.Default = {
     stage = 0,
 
     --settings
-    addsOnCR = true
+    addsOnCR = true,
+    hmOnSS = 4,
 }
 Speedrun.Default.customTimerSteps = Speedrun.customTimerSteps
 Speedrun.Default.raidList = Speedrun.raidList
@@ -119,8 +120,15 @@ function Speedrun.GetScore(timer, vitality, raidID)
     elseif raidID == 635 then --DSA
         return (20000 + (1000 * vitality)) * (1 + (3600 - timer) / 10000)
     elseif raidID == 1121 then --SS
-        return GetCurrentRaidScore()
-        --return (108150 + (1000 * vitality)) * (1 + (1800 - timer) / 10000)
+        if Speedrun.hmOnSS == 1 then
+            return (87250 + (1000 * vitality)) * (1 + (1800 - timer) / 10000)
+        elseif Speedrun.hmOnSS == 2 then
+            return (127250 + (1000 * vitality)) * (1 + (1800 - timer) / 10000)
+        elseif Speedrun.hmOnSS == 3 then
+            return (167250 + (1000 * vitality)) * (1 + (1800 - timer) / 10000)
+        elseif Speedrun.hmOnSS == 4 then
+            return (207250 + (1000 * vitality)) * (1 + (1800 - timer) / 10000)
+        end
     else
         return 0
     end
@@ -443,6 +451,7 @@ function Speedrun:Initialize()
     Speedrun.stage = Speedrun.savedVariables.stage
 
     Speedrun.addsOnCR = Speedrun.savedVariables.addsOnCR
+    Speedrun.hmOnSS = Speedrun.savedVariables.hmOnSS
     Speedrun.isMovable = Speedrun.Default.isMovable
 
     --Settings

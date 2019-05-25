@@ -105,6 +105,12 @@ SafeAddString(SI_SPEEDRUN_STEP_DESC_EXIST 		, "Actuellement votre meilleur temps
 SafeAddString(SI_SPEEDRUN_STEP_DESC_NULL 		, "Actuellement vous n'avez pas de meilleur temps.", 1)
 SafeAddString(SI_SPEEDRUN_ADDS_CR_NAME 			, "Avec les Adds", 1)
 SafeAddString(SI_SPEEDRUN_ADDS_CR_DESC 			, "Activez cet option suivant si vous faites les adds ou non.", 1)
+SafeAddString(SI_SPEEDRUN_HM_SS_NAME			, "Combien d'HM", 1)
+SafeAddString(SI_SPEEDRUN_HM_SS_DESC			, "Choisissez ici combien d'HM vous faites sur Sollance.", 1)
+SafeAddString(SI_SPEEDRUN_ZERO					, "Zero", 1)
+SafeAddString(SI_SPEEDRUN_ONE					, "Un", 1)
+SafeAddString(SI_SPEEDRUN_TWO					, "Deux", 1)
+SafeAddString(SI_SPEEDRUN_THREE					, "Trois", 1)
 SafeAddString(SI_SPEEDRUN_SIMULATE_NAME 		, "Simuler", 1)
 SafeAddString(SI_SPEEDRUN_SIMULATE_DESC 		, "Vous simulerez votre meilleur score possible si vous faites les meilleurs temps possible pour toutes vos étapes et sans morts.", 1)
 

@@ -106,6 +106,12 @@
 	SI_SPEEDRUN_STEP_DESC_NULL 			= "At the moment you don't have any best personnal.",
 	SI_SPEEDRUN_ADDS_CR_NAME 			= "With Adds",
 	SI_SPEEDRUN_ADDS_CR_DESC 			= "Set here if you're doing adds before last boss or not.",
+	SI_SPEEDRUN_HM_SS_NAME				= "How Many HM",
+	SI_SPEEDRUN_HM_SS_DESC				= "Set here how many HM you're going to do in Sunspire.",
+	SI_SPEEDRUN_ZERO					= "Zero",
+	SI_SPEEDRUN_ONE						= "One",
+	SI_SPEEDRUN_TWO						= "Two",
+	SI_SPEEDRUN_THREE					= "Three",
 	SI_SPEEDRUN_SIMULATE_NAME 			= "Simulate",
 	SI_SPEEDRUN_SIMULATE_DESC 			= "You will simulate your best possible score if you do all your best time for all step point without any deaths.",
 
