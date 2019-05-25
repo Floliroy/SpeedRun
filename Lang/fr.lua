@@ -67,6 +67,14 @@ SafeAddString(SI_SPEEDRUN_CR_GALENWE_APPEAR 	, "Galenwe", 1)
 SafeAddString(SI_SPEEDRUN_CR_SHADOW_APPEAR 		, "Spectre Apparait", 1)
 SafeAddString(SI_SPEEDRUN_CR_Fin_SHADOW 		, "Fin Spectre", 1)
 
+--SS
+SafeAddString(SI_SPEEDRUN_SS_BEGIN_FIRST		, "Début Premier Boss", 1)
+SafeAddString(SI_SPEEDRUN_SS_KILL_FIRST			, "Fin Premier Boss", 1)
+SafeAddString(SI_SPEEDRUN_SS_BEGIN_SECOND		, "Début Second Boss", 1)
+SafeAddString(SI_SPEEDRUN_SS_KILL_SECOND		, "Fin Second Boss", 1)
+SafeAddString(SI_SPEEDRUN_SS_BEGIN_LAST			, "Début Dernier Boss", 1)
+SafeAddString(SI_SPEEDRUN_SS_KILL_LAST			, "Fin Dernier Boss", 1)
+
 --ARENAS
 SafeAddString(SI_SPEEDRUN_ARENA_FIRST 			, "Première Arène", 1)
 SafeAddString(SI_SPEEDRUN_ARENA_SECOND 			, "Deuxième Arène", 1)

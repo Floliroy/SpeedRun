@@ -22,7 +22,7 @@ function Speedrun.ResetUI()
     SpeedRun_Timer_Container:SetHeight(0)
     SpeedRun_TotalTimer_Title:SetText("00:00")
     SpeedRun_Advanced_PreviousSegment:SetText("NA:NA")
-    SpeedRun_Advanced_PreviousSegment:SetColor(unpack { 0, 0, 0 })
+    SpeedRun_Advanced_PreviousSegment:SetColor(unpack { 1, 1, 1 })
     SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
     SpeedRun_Score_Label:SetText("NA'NA")
     if Speedrun.segments then
@@ -82,9 +82,11 @@ function Speedrun.UpdateCurrentScore()
         timer = GetRaidDuration()/1000
     end
 
-    local score = math.floor(Speedrun.GetScore(timer+1,GetCurrentRaidLifeScoreBonus()/1000,Speedrun.raidID))
-
-    SpeedRun_Score_Label:SetText(Speedrun.FormatRaidScore(score))
+    local score
+    if  IsRaidInProgress() then
+        score = math.floor(Speedrun.GetScore(timer+1,GetCurrentRaidLifeScoreBonus()/1000,Speedrun.raidID))
+        SpeedRun_Score_Label:SetText(Speedrun.FormatRaidScore(score))
+    end
 end
 
 function Speedrun.UpdateWindowPanel(waypoint, raid)

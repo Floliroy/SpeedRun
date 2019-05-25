@@ -118,6 +118,11 @@ function Speedrun.GetScore(timer, vitality, raidID)
         return (426000 + (1000 * vitality)) * (1 + (5400 - timer) / 10000)
     elseif raidID == 635 then --DSA
         return (20000 + (1000 * vitality)) * (1 + (3600 - timer) / 10000)
+    elseif raidID == 1121 then --SS
+        return GetCurrentRaidScore()
+        --return (108150 + (1000 * vitality)) * (1 + (1800 - timer) / 10000)
+    else
+        return 0
     end
 end
 

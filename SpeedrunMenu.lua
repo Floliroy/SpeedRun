@@ -154,6 +154,7 @@ function Speedrun.CreateSettingsWindow()
         Speedrun.CreateRaidMenu(975),
         Speedrun.CreateRaidMenu(1000),
         Speedrun.CreateRaidMenu(1051),
+        Speedrun.CreateRaidMenu(1121),
         Speedrun.CreateRaidMenu(1082),
         Speedrun.CreateRaidMenu(677),
         Speedrun.CreateRaidMenu(635),

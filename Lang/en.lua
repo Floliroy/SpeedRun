@@ -67,6 +67,14 @@
 	SI_SPEEDRUN_CR_GALENWE_APPEAR 		= "Galenwe",
 	SI_SPEEDRUN_CR_SHADOW_APPEAR 		= "Shadow Appear",
 	SI_SPEEDRUN_CR_KILL_SHADOW 			= "Kill Shadow",
+	
+	--SS
+	SI_SPEEDRUN_SS_BEGIN_FIRST			= "Begin First Boss",
+	SI_SPEEDRUN_SS_KILL_FIRST			= "Kill First Boss",
+	SI_SPEEDRUN_SS_BEGIN_SECOND			= "Begin Second Boss",
+	SI_SPEEDRUN_SS_KILL_SECOND			= "Kill Second Boss",
+	SI_SPEEDRUN_SS_BEGIN_LAST			= "Begin Last Boss",
+	SI_SPEEDRUN_SS_KILL_LAST			= "Kill Last Boss",
 
 	--ARENAS
 	SI_SPEEDRUN_ARENA_FIRST 			= "First Stage",
