@@ -72,8 +72,8 @@ SafeAddString(SI_SPEEDRUN_SS_BEGIN_FIRST		, "Premier Boss", 1)
 SafeAddString(SI_SPEEDRUN_SS_KILL_FIRST			, "Premier Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
 SafeAddString(SI_SPEEDRUN_SS_BEGIN_SECOND		, "Second Boss", 1)
 SafeAddString(SI_SPEEDRUN_SS_KILL_SECOND		, "Second Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
-SafeAddString(SI_SPEEDRUN_SS_BEGIN_LAST			, "Dernier Boss", 1)
-SafeAddString(SI_SPEEDRUN_SS_KILL_LAST			, "Dernier Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
+SafeAddString(SI_SPEEDRUN_SS_BEGIN_LAST			, "Nahviintaas", 1)
+SafeAddString(SI_SPEEDRUN_SS_KILL_LAST			, "Nahviintaas |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
 
 --ARENAS
 SafeAddString(SI_SPEEDRUN_ARENA_FIRST 			, "Première Arène", 1)

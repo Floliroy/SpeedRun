@@ -73,8 +73,8 @@
 	SI_SPEEDRUN_SS_KILL_FIRST			= "First Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_SS_BEGIN_SECOND			= "Second Boss",
 	SI_SPEEDRUN_SS_KILL_SECOND			= "Second Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
-	SI_SPEEDRUN_SS_BEGIN_LAST			= "Last Boss",
-	SI_SPEEDRUN_SS_KILL_LAST			= "Last Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_SS_BEGIN_LAST			= "Nahviintaas",
+	SI_SPEEDRUN_SS_KILL_LAST			= "Nahviintaas |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
 	--ARENAS
 	SI_SPEEDRUN_ARENA_FIRST 			= "First Stage",
