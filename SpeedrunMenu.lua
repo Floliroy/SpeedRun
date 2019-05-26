@@ -151,7 +151,7 @@ function Speedrun.CreateSettingsWindow()
         },
         {   type = "divider",
         },
-        {   type = "checkbox",
+        --[[{   type = "checkbox",
             name = zo_strformat(SI_SPEEDRUN_ENABLE_NAME),
             tooltip = zo_strformat(SI_SPEEDRUN_ENABLE_DESC),
             default = true,
@@ -159,7 +159,7 @@ function Speedrun.CreateSettingsWindow()
             setFunc = function(newValue)
                 --TODO
             end,
-        },
+        },]]
         {   type = "checkbox",
             name = zo_strformat(SI_SPEEDRUN_LOCK_NAME),
             tooltip = zo_strformat(SI_SPEEDRUN_LOCK_DESC),

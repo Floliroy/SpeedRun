@@ -99,8 +99,6 @@ function Speedrun.UpdateWindowPanel(waypoint, raid)
 end
 
 function Speedrun.CreateRaidSegment(id)
-    --TODO make initialize function
-
     --Reset segment control
     Speedrun.segmentTimer = {}
 
@@ -133,7 +131,6 @@ function Speedrun.CreateRaidSegment(id)
             segmentRow:GetNamedChild('_Best'):SetText("NA:NA")
         end
 
-        --TODO NIQUE TAGRAND LUI DE CON
         if i == 1 then
             segmentRow:SetAnchor(TOPLEFT, SpeedRun_Timer_Container, TOPLEFT, 0, 40)
         else

@@ -51,9 +51,9 @@ Speedrun.Default.raidList = Speedrun.raidList
 -------------------
 ---- Functions ----
 -------------------
-function Speedrun.Test()
+--[[function Speedrun.Test()
     --Insert test here
-end
+end]]
 
 function Speedrun.GetSavedTimer(raidID,step)
     if tonumber(Speedrun.customTimerSteps[raidID][step]) then
@@ -153,7 +153,7 @@ function Speedrun.UpdateWaypointNew(raidDuration)
             raid.timerSteps[waypoint] = timerWaypoint
             Speedrun.savedVariables.raidList = Speedrun.raidList
         end
-        d("SR:WayPoint = " .. waypoint)
+        --d("SR:WayPoint = " .. waypoint)
         Speedrun.Step = Speedrun.Step + 1
         Speedrun.savedVariables.Step = Speedrun.Step
         return
@@ -467,8 +467,7 @@ function Speedrun:Initialize()
     --EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_TARGET_CHANGED, Speedrun.Test)
 
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Loaded", EVENT_ADD_ON_LOADED)
-    SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
-    --SLASH_COMMANDS["/speedtest"] = function() Speedrun.Test() end
+    --SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
 end
 
 function Speedrun.OnAddOnLoaded(event, addonName)
