@@ -6,51 +6,51 @@
 	----------------------
 	--AA
 	SI_SPEEDRUN_AA_BEGIN_LIGHTNING 		= "Lightning Atro",
-	SI_SPEEDRUN_AA_FINISH_LIGHTNING 	= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Lightning Atro",
+	SI_SPEEDRUN_AA_FINISH_LIGHTNING 	= "Lightning Atro |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_AA_BEGIN_STONE 			= "Stone Atro",
-	SI_SPEEDRUN_AA_FINISH_STONE 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Stone Atro",
+	SI_SPEEDRUN_AA_FINISH_STONE 		= "Stone Atro |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_AA_BEGIN_VARLARIEL 		= "Varlariel",
-	SI_SPEEDRUN_AA_FINISH_VARLARIEL 	= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Varlariel",
+	SI_SPEEDRUN_AA_FINISH_VARLARIEL 	= "Varlariel |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_AA_BEGIN_MAGE 			= "The Mage",
-	SI_SPEEDRUN_AA_FINISH_MAGE 			= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t The Mage",
+	SI_SPEEDRUN_AA_FINISH_MAGE 			= "The Mage |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
 	--HRC
 	SI_SPEEDRUN_HRC_BEGIN_RAKOTU 		= "Ra Kotu",
-	SI_SPEEDRUN_HRC_FINISH_RAKOTU 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Ra Kotu",
+	SI_SPEEDRUN_HRC_FINISH_RAKOTU 		= "Ra Kotu |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_HRC_BEGIN_SECOND 		= "Second Boss",
-	SI_SPEEDRUN_HRC_FINISH_SECOND 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Second Boss",
+	SI_SPEEDRUN_HRC_FINISH_SECOND 		= "Second Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_HRC_BEGIN_WARRIOR 		= "The Warrior",
-	SI_SPEEDRUN_HRC_FINISH_WARRIOR 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t The Warrior",
+	SI_SPEEDRUN_HRC_FINISH_WARRIOR 		= "The Warrior |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
 	--SO
 	SI_SPEEDRUN_SO_BEGIN_MANTIKORA 		= "Mantikora",
-	SI_SPEEDRUN_SO_FINISH_MANTIKORA 	= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Mantikora",
+	SI_SPEEDRUN_SO_FINISH_MANTIKORA 	= "Mantikora |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_SO_BEGIN_TROLL 			= "Stonebreaker",
-	SI_SPEEDRUN_SO_FINISH_TROLL 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Stonebreaker",
+	SI_SPEEDRUN_SO_FINISH_TROLL 		= "Stonebreaker |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_SO_BEGIN_OZARA 			= "Ozara",
-	SI_SPEEDRUN_SO_FINISH_OZARA 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Ozara",
+	SI_SPEEDRUN_SO_FINISH_OZARA 		= "Ozara |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_SO_BEGIN_SERPENT 		= "The Serpent",
-	SI_SPEEDRUN_SO_FINISH_SERPENT 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t The Serpent",
+	SI_SPEEDRUN_SO_FINISH_SERPENT 		= "The Serpent |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
 	--MoL
 	SI_SPEEDRUN_MOL_BEGIN_ZHAJ 			= "Zhaj'Hassa",
-	SI_SPEEDRUN_MOL_FINISH_ZHAJ 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Zhaj'Hassa",
+	SI_SPEEDRUN_MOL_FINISH_ZHAJ 		= "Zhaj'Hassa |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_MOL_BEGIN_TWINS 		= "Twins",
-	SI_SPEEDRUN_MOL_FINISH_TWINS 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Twins",
+	SI_SPEEDRUN_MOL_FINISH_TWINS 		= "Twins |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_MOL_BEGIN_RAKKHAT 		= "Rakkhat",
-	SI_SPEEDRUN_MOL_FINISH_RAKKHAT 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Rakkhat",
+	SI_SPEEDRUN_MOL_FINISH_RAKKHAT 		= "Rakkhat |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
 	--HoF
 	SI_SPEEDRUN_HOF_BEGIN_DYNO 			= "Hunter Killer",
-	SI_SPEEDRUN_HOF_FINISH_DYNO 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Hunter Killer",
+	SI_SPEEDRUN_HOF_FINISH_DYNO 		= "Hunter Killer |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_HOF_BEGIN_FACTOTUM 		= "Factotum",
-	SI_SPEEDRUN_HOF_FINISH_FACTOTUM 	= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Factotum",
+	SI_SPEEDRUN_HOF_FINISH_FACTOTUM 	= "Factotum |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_HOF_BEGIN_SPIDER 		= "Archcustodian",
-	SI_SPEEDRUN_HOF_FINISH_SPIDER 		= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Archcustodian",
+	SI_SPEEDRUN_HOF_FINISH_SPIDER 		= "Archcustodian |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_HOF_BEGIN_COMMITEE 		= "Committee",
-	SI_SPEEDRUN_HOF_FINISH_COMMITEE 	= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Committee",
+	SI_SPEEDRUN_HOF_FINISH_COMMITEE 	= "Committee |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_HOF_BEGIN_ASSEMBLY 		= "Assembly",
-	SI_SPEEDRUN_HOF_FINISH_ASSEMBLY 	= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Assembly",
+	SI_SPEEDRUN_HOF_FINISH_ASSEMBLY 	= "Assembly |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
 	--AS
 	SI_SPEEDRUN_AS_BEGIN_OLMS 			= "Olms",
@@ -58,7 +58,7 @@
 	SI_SPEEDRUN_AS_75_PERCENT 			= "75% HP",
 	SI_SPEEDRUN_AS_50_PERCENT 			= "50% HP",
 	SI_SPEEDRUN_AS_25_PERCENT 			= "25% HP",
-	SI_SPEEDRUN_AS_KILL_OLMS 			= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Olms",
+	SI_SPEEDRUN_AS_KILL_OLMS 			= "Olms |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
 	--CR
 	SI_SPEEDRUN_CR_BEGIN_ZMAJA 			= "Z'Maja",
@@ -66,15 +66,15 @@
 	SI_SPEEDRUN_CR_RELEQUEN_APPEAR 		= "Relequen",
 	SI_SPEEDRUN_CR_GALENWE_APPEAR 		= "Galenwe",
 	SI_SPEEDRUN_CR_SHADOW_APPEAR 		= "Shadow Appear",
-	SI_SPEEDRUN_CR_KILL_SHADOW 			= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Shadow",
+	SI_SPEEDRUN_CR_KILL_SHADOW 			= "Shadow |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	
 	--SS
 	SI_SPEEDRUN_SS_BEGIN_FIRST			= "First Boss",
-	SI_SPEEDRUN_SS_KILL_FIRST			= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t First Boss",
+	SI_SPEEDRUN_SS_KILL_FIRST			= "First Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_SS_BEGIN_SECOND			= "Second Boss",
-	SI_SPEEDRUN_SS_KILL_SECOND			= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Second Boss",
+	SI_SPEEDRUN_SS_KILL_SECOND			= "Second Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 	SI_SPEEDRUN_SS_BEGIN_LAST			= "Last Boss",
-	SI_SPEEDRUN_SS_KILL_LAST			= "|t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t Last Boss",
+	SI_SPEEDRUN_SS_KILL_LAST			= "Last Boss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
 	--ARENAS
 	SI_SPEEDRUN_ARENA_FIRST 			= "First Stage",
