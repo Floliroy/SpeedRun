@@ -102,10 +102,20 @@ function Speedrun.CreateRaidSegment(id)
     --Reset segment control
     Speedrun.segmentTimer = {}
 
-    local raid = Speedrun.raidList[id]
-    SpeedRun_Timer_Container_Raid:SetText(zo_strformat(SI_ZONE_NAME, GetZoneNameById(id)))
+    local formatID = id
+    if type(formatID) == "string" then --for vMA
+        formatID = tonumber(string.sub(formatID,1,3))
+        if Speedrun.raidList[id] == nil then
+            Speedrun.raidList[id] = Speedrun.raidList[formatID]
+            Speedrun.raidList[id].timerSteps = {}
+            Speedrun.savedVariables.raidList = Speedrun.raidList
+        end
+    end
 
-    for i, x in ipairs(Speedrun.stepList[id]) do
+    local raid = Speedrun.raidList[id]
+    SpeedRun_Timer_Container_Raid:SetText(zo_strformat(SI_ZONE_NAME, GetZoneNameById(formatID)))
+
+    for i, x in ipairs(Speedrun.stepList[formatID]) do
 
         local segmentRow
         if WM:GetControlByName("SpeedRun_Segment", i) then

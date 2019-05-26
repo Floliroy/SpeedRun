@@ -114,6 +114,9 @@
 	SI_SPEEDRUN_THREE					= "Three",
 	SI_SPEEDRUN_SIMULATE_NAME 			= "Simulate",
 	SI_SPEEDRUN_SIMULATE_DESC 			= "You will simulate your best possible score if you do all your best time for all step point without any deaths.",
+	SI_SPEEDRUN_RESET_NAME				= "Reset Data",
+	SI_SPEEDRUN_RESET_DESC				= "You will reset all of yours saved data for this trial and do a ReloadUI.",
+	SI_SPEEDRUN_RESET_WARNING			= "Be very careful. If you reset your saved data you will not be able to recover them.\nWill also reload your UI.",
 
 	--Simulate function
 	SI_SPEEDRUN_SIMULATE_FUNCTION 		= "Your score with a time of <<1>> would be <<2>>.",

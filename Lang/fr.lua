@@ -113,6 +113,9 @@ SafeAddString(SI_SPEEDRUN_TWO					, "Deux", 1)
 SafeAddString(SI_SPEEDRUN_THREE					, "Trois", 1)
 SafeAddString(SI_SPEEDRUN_SIMULATE_NAME 		, "Simuler", 1)
 SafeAddString(SI_SPEEDRUN_SIMULATE_DESC 		, "Vous simulerez votre meilleur score possible si vous faites les meilleurs temps possible pour toutes vos étapes et sans morts.", 1)
+SafeAddString(SI_SPEEDRUN_RESET_NAME			, "Reset Data", 1)
+SafeAddString(SI_SPEEDRUN_RESET_DESC			, "Vous allez réinitialiser toutes vos données enregistrées pour ce raid et ferez un ReloadUI.", 1)
+SafeAddString(SI_SPEEDRUN_RESET_WARNING			, "Soyez très prudent. Si vous réinitialisez vos données enregistrées, vous ne pourrez pas les récupérer.\nRechargera également votre UI.", 1)
 
 --Simulate function
 SafeAddString(SI_SPEEDRUN_SIMULATE_FUNCTION 	, "Votre score avec un temps de <<1>> serait <<2>>.", 1)

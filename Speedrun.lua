@@ -56,10 +56,18 @@ Speedrun.Default.raidList = Speedrun.raidList
 end]]
 
 function Speedrun.GetSavedTimer(raidID,step)
+    local formatID = raidID
+    if raidID == 677 then --for vMA
+        formatID = raidID .. GetUnitName("player")
+        if Speedrun.raidList[formatID] == nil or Speedrun.raidList[formatID] == {} then
+            formatID = raidID
+        end
+    end
+    
     if tonumber(Speedrun.customTimerSteps[raidID][step]) then
         return tonumber(Speedrun.customTimerSteps[raidID][step])*1000
     else
-        return Speedrun.raidList[raidID].timerSteps[step]
+        return Speedrun.raidList[formatID].timerSteps[step]
     end
 end
 
@@ -95,6 +103,10 @@ function Speedrun.FormatRaidScore(score)
 end
 
 function Speedrun.GetScore(timer, vitality, raidID)
+    if type(raidID) == "string" then --for vMA
+        raidID = tonumber(string.sub(raidID,1,3))
+    end
+
     if raidID == 638 then --AA
         return (124300 + (1000 * vitality)) * (1 + (900 - timer) / 10000)
     elseif raidID == 636 then --HRC
@@ -361,7 +373,7 @@ function Speedrun.RegisterTrialsEvents()
     elseif Speedrun.raidID == 1082 then --BRP
         EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBRP)
 
-    elseif Speedrun.raidID == 677 or Speedrun.raidID == 635 then --arenas
+    elseif type(Speedrun.raidID) == "string" or Speedrun.raidID == 635 then --arenas
         EVENT_MANAGER:RegisterForEvent(Speedrun.name .. "BossDead", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.BossDead)
 
     else --Other Raids
@@ -399,6 +411,9 @@ end
 
 function Speedrun.OnPlayerActivated()
     local zoneID = GetZoneId(GetUnitZoneIndex("player"))
+    if zoneID == 677 then --for vMA
+        zoneID = zoneID .. GetUnitName("player")
+    end
     if Speedrun.IsInTrialZone() then  
         if Speedrun.raidID ~= zoneID then
             Speedrun.Reset()
@@ -467,7 +482,7 @@ function Speedrun:Initialize()
     --EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_TARGET_CHANGED, Speedrun.Test)
 
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Loaded", EVENT_ADD_ON_LOADED)
-    --SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
+    SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
 end
 
 function Speedrun.OnAddOnLoaded(event, addonName)

@@ -52,10 +52,33 @@ function Speedrun.Simulate(raidID)
     d(zo_strformat(SI_SPEEDRUN_SIMULATE_FUNCTION, Speedrun.GetTime(totalTime), score))
 end
 
+function Speedrun.ResetData(raidID)
+    local formatID = raidID
+    if raidID == 677 then  --for vMA
+        formatID = raidID .. GetUnitName("player")
+        if Speedrun.raidList[formatID] == nil or Speedrun.raidList[formatID] == {} then
+            formatID = raidID
+        end
+    end
+    if Speedrun.raidList[formatID].timerSteps then
+        Speedrun.raidList[formatID].timerSteps = {}
+        Speedrun.savedVariables.raidList = Speedrun.raidList
+        ReloadUI("ingame")
+    end
+end
+
 function Speedrun.CreateOptionTable(raidID, step)
+    local formatID = raidID 
+    if raidID == 677 then  --for vMA
+        formatID = raidID .. GetUnitName("player")
+        if Speedrun.raidList[formatID] == nil or Speedrun.raidList[formatID] == {} then
+            formatID = raidID
+        end
+    end
+
     return {type = "editbox",
             name = zo_strformat(SI_SPEEDRUN_STEP_NAME, Speedrun.stepList[raidID][step]),
-            tooltip = Speedrun.GetTooltip(Speedrun.raidList[raidID].timerSteps[step]),
+            tooltip = Speedrun.GetTooltip(Speedrun.raidList[formatID].timerSteps[step]),
             default = "",
             getFunc = function() return tostring(Speedrun.customTimerSteps[raidID][step]) end,
             setFunc = function(newValue)
@@ -116,11 +139,22 @@ function Speedrun.CreateRaidMenu(raidID)
 
     table.insert(raidMenu, {    type = "button",
                                 name = zo_strformat(SI_SPEEDRUN_SIMULATE_NAME),
-                                tooltip = zo_strformat(SI_SPEEDRUN_SIMULATE_DEC),
+                                tooltip = zo_strformat(SI_SPEEDRUN_SIMULATE_DESC),
                                 func = function()
                                     Speedrun.Simulate(raidID)
                                 end,
                                 width = "half",
+    })
+
+    table.insert(raidMenu, {    type = "button",
+                                name = zo_strformat(SI_SPEEDRUN_RESET_NAME),
+                                tooltip = zo_strformat(SI_SPEEDRUN_RESET_DESC),
+                                func = function()
+                                    Speedrun.ResetData(raidID)
+                                end,
+                                width = "half",
+                                isDangerous = true,
+                                warning = zo_strformat(SI_SPEEDRUN_RESET_WARNING),
     })
 
     return {    type = "submenu",
