@@ -185,7 +185,7 @@ function Speedrun.UpdateSegment(step, raid)
         SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
     end
     SpeedRun_Advanced_PreviousSegment:SetText(Speedrun.FormatRaidTimer(previousSegementDif))
-    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.currentRaidTimer[step]))
+    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.currentRaidTimer[Speedrun.Step]))
 
     local segment = Speedrun.segments[Speedrun.Step]:GetNamedChild('_Diff')
     segment:SetText(Speedrun.FormatRaidTimer(difference, true))
