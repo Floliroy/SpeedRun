@@ -204,7 +204,7 @@ function Speedrun.MainCloudrest()
     for i = 1, MAX_BOSSES do
         if DoesUnitExist("boss" .. i) then
             --Zmaja got more than 64Million HP
-            local currentTargetHP, maxTargetHP, effmaxTargetHP
+            local currentTargetHP, maxTargetHP, effmaxTargetHP = 1, 1, 1
             if Speedrun.Step == 1 then
                 currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("reticleover", POWERTYPE_HEALTH)
             else
