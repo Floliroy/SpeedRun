@@ -73,7 +73,7 @@ end
 function Speedrun.UpdateCurrentScore()
     local timer
     if bestPossibleTime then 
-        if Speedrun.segmentTimer[Speedrun.Step] == Speedrun.segmentTimer[Speedrun.Step + 1] then
+        if Speedrun.segmentTimer[Speedrun.Step] == Speedrun.segmentTimer[Speedrun.Step + 1] or Speedrun.segmentTimer[Speedrun.Step + 1] == nil  then
             timer = GetRaidDuration()/1000
         else
             timer = bestPossibleTime/1000
@@ -132,6 +132,9 @@ function Speedrun.CreateRaidSegment(id)
                 Speedrun.segmentTimer[i] = Speedrun.GetSavedTimer(raid.id, i) + Speedrun.segmentTimer[i - 1]
             end
             segmentRow:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.segmentTimer[i], true))
+
+            bestPossibleTime = Speedrun.segmentTimer[i]
+            SpeedRun_Advanced_BestPossible_Value:SetText(Speedrun.FormatRaidTimer(Speedrun.segmentTimer[i], true))
         else
             if i == 1 then
                 Speedrun.segmentTimer[i] = 0
@@ -139,6 +142,9 @@ function Speedrun.CreateRaidSegment(id)
                 Speedrun.segmentTimer[i] = 0 + Speedrun.segmentTimer[i - 1]
             end
             segmentRow:GetNamedChild('_Best'):SetText("NA:NA")
+
+            bestPossibleTime = 0
+            SpeedRun_Advanced_BestPossible_Value:SetText("NA:NA")
         end
 
         if i == 1 then
@@ -149,7 +155,7 @@ function Speedrun.CreateRaidSegment(id)
         segmentRow:SetHidden(false)
         Speedrun.segments[i] = segmentRow;
     end
-
+    
     Speedrun.SetUIHidden(false)
     --d(SpeedRun_Timer_Container:GetWidth())
     SpeedRun_Timer_Container_Title:SetHorizontalAlignment(TEXT_ALIGN_CENTER)

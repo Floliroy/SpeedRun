@@ -425,6 +425,7 @@ end
 function Speedrun.OnTrialStarted()
     Speedrun.Reset()
     Speedrun.RegisterTrialsEvents()
+    Speedrun.UpdateCurrentScore()
 end
 
 function Speedrun.OnPlayerActivated()
