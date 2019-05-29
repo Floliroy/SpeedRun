@@ -6,7 +6,7 @@ Speedrun = Speedrun or {}
 local Speedrun = Speedrun
 
 Speedrun.name = "Speedrun"
-Speedrun.version = "0.1.1"
+Speedrun.version = "0.1.3"
 
 
 Speedrun.segments = {}
@@ -218,17 +218,20 @@ function Speedrun.MainCloudrest()
 
                     Speedrun.lastBossName = GetUnitName("boss" .. i)
                     Speedrun.savedVariables.lastBossName = Speedrun.lastBossName
-
-                elseif (percentageHP <= 0.75 and Speedrun.Step == 2) then
+                end
+                if (percentageHP <= 0.75 and Speedrun.Step == 2) then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
-                elseif (percentageHP <= 0.5 and Speedrun.Step == 3) then
+                end
+                if (percentageHP <= 0.5 and Speedrun.Step == 3) then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
-                elseif (percentageHP <= 0.25 and Speedrun.Step == 4) then
+                end
+                if (percentageHP <= 0.25 and Speedrun.Step == 4) then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
-                elseif (GetUnitName("boss" .. i) ~= Speedrun.lastBossName and Speedrun.Step == 5) then
+                end
+                if (GetUnitName("boss" .. i) ~= Speedrun.lastBossName and Speedrun.Step == 5) then
                     --ZMaja Shadow
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                 end
@@ -263,16 +266,20 @@ function Speedrun.MainAsylum()
                 if (Speedrun.Step == 1 and maxTargetHP >= 99000000) then --start fight with boss
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
-                elseif (percentageHP <= 0.9 and Speedrun.Step == 2) then
+                end
+                if (percentageHP <= 0.9 and Speedrun.Step == 2) then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
-                elseif (percentageHP <= 0.75 and Speedrun.Step == 3) then
+                end
+                if (percentageHP <= 0.75 and Speedrun.Step == 3) then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
-                elseif (percentageHP <= 0.5 and Speedrun.Step == 4) then
+                end
+                if (percentageHP <= 0.5 and Speedrun.Step == 4) then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
 
-                elseif (percentageHP <= 0.25 and Speedrun.Step == 5) then
+                end
+                if (percentageHP <= 0.25 and Speedrun.Step == 5) then
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                 end
             else
@@ -404,7 +411,9 @@ function Speedrun.OnTrialFailed()
 end
 
 Speedrun.OnTrialComplete = function(eventCode, trialName, score, totalTime)
-    Speedrun.UpdateWaypointNew(totalTime)
+    if Speedrun.raidID == 636 or Speedrun.raidID == 1000 or Speedrun.raidID == 1051 or Speedrun.raidID == 1082 then
+        Speedrun.UpdateWaypointNew(totalTime)
+    end
     SpeedRun_Score_Label:SetText(Speedrun.FormatRaidScore(score))
     SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration()+1000, true))
 
@@ -491,7 +500,7 @@ function Speedrun:Initialize()
     --EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_TARGET_CHANGED, Speedrun.Test)
 
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Loaded", EVENT_ADD_ON_LOADED)
-    SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
+    --SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
 end
 
 function Speedrun.OnAddOnLoaded(event, addonName)
