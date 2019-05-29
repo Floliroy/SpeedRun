@@ -6,7 +6,7 @@ Speedrun = Speedrun or {}
 local Speedrun = Speedrun
 
 Speedrun.name = "Speedrun"
-Speedrun.version = "0.1.1"
+Speedrun.version = "0.1.2"
 
 
 Speedrun.segments = {}
@@ -59,7 +59,7 @@ function Speedrun.GetSavedTimer(raidID,step)
     local formatID = raidID
     if raidID == 677 then --for vMA
         formatID = raidID .. GetUnitName("player")
-        if Speedrun.raidList[formatID] == nil or Speedrun.raidList[formatID] == {} then
+        if (Speedrun.raidList[formatID] == nil or Speedrun.raidList[formatID] == {}) then
             formatID = raidID
         end
     end
@@ -162,7 +162,7 @@ function Speedrun.UpdateWaypointNew(raidDuration)
             timerWaypoint = Speedrun.currentRaidTimer[waypoint]
         end
 
-        if raid.timerSteps[waypoint] == nil or raid.timerSteps[waypoint] <= 0 or raid.timerSteps[waypoint] > timerWaypoint then
+        if (raid.timerSteps[waypoint] == nil or raid.timerSteps[waypoint] <= 0 or raid.timerSteps[waypoint] > timerWaypoint) then
             raid.timerSteps[waypoint] = timerWaypoint
             Speedrun.savedVariables.raidList = Speedrun.raidList
         end
@@ -234,7 +234,7 @@ function Speedrun.MainCloudrest()
                 end
             else
                 currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-                if currentTargetHP > 0 and Speedrun.Step < 6 then
+                if (currentTargetHP > 0 and Speedrun.Step < 6) then
                     Speedrun.currentRaidTimer = {}
                     Speedrun.savedVariables.currentRaidTimer = Speedrun.currentRaidTimer
                     Speedrun.lastBossName = ""
@@ -491,7 +491,7 @@ function Speedrun:Initialize()
     --EVENT_MANAGER:RegisterForEvent(Speedrun.name, EVENT_TARGET_CHANGED, Speedrun.Test)
 
     EVENT_MANAGER:UnregisterForEvent(Speedrun.name .. "Loaded", EVENT_ADD_ON_LOADED)
-    SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
+    --SLASH_COMMANDS["/speedrun"] = function() Speedrun.UpdateWaypointNew(GetRaidDuration()) end
 end
 
 function Speedrun.OnAddOnLoaded(event, addonName)

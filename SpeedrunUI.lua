@@ -64,7 +64,7 @@ end
 function Speedrun.UpdateGlobalTimer()
     SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration(), true))
 
-    if bestPossibleTime == nil or Speedrun.segmentTimer[Speedrun.Step] == Speedrun.segmentTimer[Speedrun.Step + 1] then 
+    if (bestPossibleTime == nil or Speedrun.segmentTimer[Speedrun.Step] == Speedrun.segmentTimer[Speedrun.Step + 1]) then 
         Speedrun.UpdateCurrentScore()
     end
 
@@ -159,7 +159,7 @@ end
 function Speedrun.UpdateSegment(step, raid)
     --TODO Divide into multiple function
     local difference
-    if Speedrun.segmentTimer[step] ~= nil and Speedrun.segmentTimer[step] ~= Speedrun.segmentTimer[step + 1]  then
+    if (Speedrun.segmentTimer[step] ~= nil and Speedrun.segmentTimer[step] ~= Speedrun.segmentTimer[step + 1])  then
         difference = Speedrun.currentRaidTimer[step] - Speedrun.segmentTimer[step]
     else
         difference = 0
