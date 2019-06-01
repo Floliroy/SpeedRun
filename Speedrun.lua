@@ -6,7 +6,7 @@ Speedrun = Speedrun or {}
 local Speedrun = Speedrun
 
 Speedrun.name = "Speedrun"
-Speedrun.version = "0.1.3"
+Speedrun.version = "0.1.4"
 
 
 Speedrun.segments = {}
@@ -237,20 +237,20 @@ function Speedrun.MainCloudrest()
                 end
             else
                 currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
-                if (currentTargetHP > 0 and Speedrun.Step < 6) then
+                if (currentTargetHP > 0 and Speedrun.Step <= 6) then
                     Speedrun.currentRaidTimer = {}
                     Speedrun.savedVariables.currentRaidTimer = Speedrun.currentRaidTimer
                     Speedrun.lastBossName = ""
                     Speedrun.savedVariables.lastBossName = Speedrun.lastBossName
                     Speedrun.Step = 1
                     Speedrun.savedVariables.Step = Speedrun.Step
-                elseif currentTargetHP <= 0 then
+                elseif (currentTargetHP <= 0 and Speedrun.Step < 5) then
                     Speedrun.isBossDead = false -- not in HM
                     Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
                 end
             end
-        elseif Speedrun.isBossDead == true then
-            Speedrun.Reset()
+        --elseif Speedrun.isBossDead == true then
+        --    Speedrun.Reset()
         end
     end
 end
@@ -283,7 +283,7 @@ function Speedrun.MainAsylum()
                     Speedrun.UpdateWaypointNew(GetRaidDuration())
                 end
             else
-                if currentTargetHP > 0 and Speedrun.Step < 6 then
+                if (currentTargetHP > 0 and Speedrun.Step <= 6) then
                     Speedrun.currentRaidTimer = {}
                     Speedrun.savedVariables.currentRaidTimer = Speedrun.currentRaidTimer
                     Speedrun.Step = 1
@@ -293,8 +293,8 @@ function Speedrun.MainAsylum()
                     Speedrun.savedVariables.isBossDead = Speedrun.isBossDead
                 end
             end
-        elseif Speedrun.isBossDead == true then
-            Speedrun.Reset()
+        --elseif Speedrun.isBossDead == true then
+        --    Speedrun.Reset()
         end
     end
 end
