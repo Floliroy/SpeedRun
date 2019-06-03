@@ -315,6 +315,17 @@ function Speedrun.LastArchive()
 end
 
 Speedrun.BossDead = function(eventCode, scoreUpdateReason, scoreAmount, totalScore)
+    if Speedrun.raidID == 635 then
+        if scoreUpdateReason == RAID_POINT_REASON_BONUS_ACTIVITY_MEDIUM then
+            Speedrun.UpdateWaypointNew(GetRaidDuration())
+        elseif scoreUpdateReason == RAID_POINT_REASON_BONUS_ACTIVITY_LOW  then
+            d("Need To Trigger on Low: " .. scoreUpdateReason)
+        elseif scoreUpdateReason == RAID_POINT_REASON_BONUS_ACTIVITY_HIGH  then
+            d("Need To Trigger on High: " .. scoreUpdateReason)
+        end
+        return
+    end
+
     if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE then
         --finish arena
         Speedrun.UpdateWaypointNew(GetRaidDuration())
