@@ -6,7 +6,7 @@ Speedrun = Speedrun or {}
 local Speedrun = Speedrun
 
 Speedrun.name = "Speedrun"
-Speedrun.version = "0.1.4"
+Speedrun.version = "0.1.5"
 
 
 Speedrun.segments = {}
@@ -32,6 +32,7 @@ Speedrun.Default = {
     speedrun_container_OffsetX = 500,
     speedrun_container_OffsetY = 500,
     isMovable = true,
+    uiIsHidden = true,
 
     --variables
     currentRaidTimer = {},
@@ -498,7 +499,8 @@ function Speedrun:Initialize()
     Speedrun.addsOnCR = Speedrun.savedVariables.addsOnCR
     Speedrun.hmOnSS = Speedrun.savedVariables.hmOnSS
     Speedrun.isMovable = Speedrun.Default.isMovable
-
+    Speedrun.uiIsHidden = Speedrun.savedVariables.uiIsHidden
+    
     --Settings
     Speedrun.CreateSettingsWindow()
 

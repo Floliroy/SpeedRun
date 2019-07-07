@@ -97,6 +97,8 @@ SafeAddString(SI_SPEEDRUN_ENABLE_NAME 			, "Activé", 1)
 SafeAddString(SI_SPEEDRUN_ENABLE_DESC 			, "Non fonctionnel pour le moment, il sera toujours activé", 1)
 SafeAddString(SI_SPEEDRUN_LOCK_NAME 			, "UI Vérouillé", 1)
 SafeAddString(SI_SPEEDRUN_LOCK_DESC 			, "Déverouillez l'UI pour repositionner la fenêtre sur votre écran", 1)
+SafeAddString(SI_SPEEDRUN_ENABLEUI_NAME         , "Activer l'UI", 1)
+SafeAddString(SI_SPEEDRUN_ENABLEUI_DESC         , "Active l'UI de Speedrun, ne désactive pas les fonctions de l'extensions elle-même", 1)
 
 --Raids
 SafeAddString(SI_SPEEDRUN_RAID_DESC 			, "Vous pouvez utiliser un temps personnalisé ou laisser l'option vide pour utiliser votre meilleur temps personnel (la tooltip vous indiquera votre meilleur temps personnel).\nAssurez vous d'entrer un temps en secondes (1 min = 60 sec).", 1)

@@ -61,6 +61,15 @@ function Speedrun.SetUIHidden(hide)
     SpeedRun_Advanced:SetHidden(hide)
 end
 
+function Speedrun.SetUIHidden(hide)
+    if Speedrun.savedVariables.uiIsHidden == true then
+        SpeedRun_Timer_Container:SetHidden(hide)
+        SpeedRun_TotalTimer_Title:SetHidden(hide)
+        SpeedRun_Score_Label:SetHidden(hide)
+        SpeedRun_Advanced:SetHidden(hide)
+    end
+end
+
 function Speedrun.UpdateGlobalTimer()
     SpeedRun_TotalTimer_Title:SetText(Speedrun.FormatRaidTimer(GetRaidDuration(), true))
 

@@ -205,6 +205,17 @@ function Speedrun.CreateSettingsWindow()
                 Speedrun.ToggleMovable()
             end,
         },
+        {   type = "checkbox",
+            name = zo_strformat(SI_SPEEDRUN_ENABLEUI_NAME),
+            tooltip = zo_strformat(SI_SPEEDRUN_ENABLEUI_DESC),
+            default = true,
+            getFunc = function() return Speedrun.uiIsHidden end,
+            setFunc = function(newValue)
+                Speedrun.uiIsHidden = newValue
+                Speedrun.savedVariables.uiIsHidden = newValue
+                Speedrun.SetUIHidden(newValue)
+            end,
+        },
         {   type = "divider",
         },
         Speedrun.CreateRaidMenu(638),

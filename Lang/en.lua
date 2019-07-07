@@ -98,6 +98,8 @@
 	SI_SPEEDRUN_ENABLE_DESC 			= "Not working for now, it will always be enable",
 	SI_SPEEDRUN_LOCK_NAME 				= "Lock UI",
 	SI_SPEEDRUN_LOCK_DESC 				= "Lock UI to reposition the window on your screen",
+	SI_SPEEDRUN_ENABLEUI_NAME           = "Enable UI",
+	SI_SPEEDRUN_ENABLEUI_DESC           = "Enable the Speedrun UI, doesn't disable the addon functions itself",
 
 	--Raids
 	SI_SPEEDRUN_RAID_DESC 				= "You can use custom step point time or leave it blank to use your best personnal (tooltip will tell you what is your best personnal).\nMake sure to type time in seconds (1 min = 60 sec).",
