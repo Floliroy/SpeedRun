@@ -327,7 +327,7 @@ Speedrun.BossDead = function(eventCode, scoreUpdateReason, scoreAmount, totalSco
         return
     end
 
-    if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE then
+    if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS or (scoreUpdateReason == RAID_POINT_REASON_SOLO_ARENA_COMPLETE and type(Speedrun.raidID) == "string") then
         --finish arena
         Speedrun.UpdateWaypointNew(GetRaidDuration())
         Speedrun.isBossDead = true
