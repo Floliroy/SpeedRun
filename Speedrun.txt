@@ -1,5 +1,5 @@
 ## Title: Speed|cdf4242Run|r
-## APIVersion: 100027
+## APIVersion: 100028
 ## Author: Floliroy, Panaa
 ## Version: 0.1.6.1
 ## DependsOn: LibAddonMenu-2.0
