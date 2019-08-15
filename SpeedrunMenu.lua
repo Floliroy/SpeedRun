@@ -1,7 +1,7 @@
 Speedrun = Speedrun or {}
 local Speedrun = Speedrun
 
-local LAM2 = LibStub:GetLibrary("LibAddonMenu-2.0")
+local LAM2 = LibAddonMenu2
 
 function Speedrun.GetTime(seconds)
     if seconds then

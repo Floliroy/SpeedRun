@@ -2,7 +2,7 @@
 ## APIVersion: 100027
 ## Author: Floliroy, Panaa
 ## Version: 0.1.6
-## DependsOn: LibStub LibAddonMenu-2.0
+## DependsOn: LibAddonMenu-2.0
 ## SavedVariables: SpeedrunVariables
 
 ; This Add-on is not created by, affiliated with or sponsored by ZeniMax Media Inc. or its affiliates. 
