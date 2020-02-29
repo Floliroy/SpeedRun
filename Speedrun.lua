@@ -6,7 +6,7 @@ Speedrun = Speedrun or {}
 local Speedrun = Speedrun
 
 Speedrun.name = "Speedrun"
-Speedrun.version = "0.1.6.2"
+Speedrun.version = "0.1.6.3"
 
 
 Speedrun.segments = {}
