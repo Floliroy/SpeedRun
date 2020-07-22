@@ -80,7 +80,7 @@ SafeAddString(SI_SPEEDRUN_KA_BEGIN_YANDIR		, "Yandir", 1)
 SafeAddString(SI_SPEEDRUN_KA_KILL_YANDIR		, "Yandir |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
 SafeAddString(SI_SPEEDRUN_KA_BEGIN_VROL			, "Vrol", 1)
 SafeAddString(SI_SPEEDRUN_KA_KILL_VROL			, "Vrol |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
-SafeAddString(SI_SPEEDRUN_KA_BEGIN_FALGRAVN		, "Falgravn",
+SafeAddString(SI_SPEEDRUN_KA_BEGIN_FALGRAVN		, "Falgravn", 1)
 SafeAddString(SI_SPEEDRUN_KA_KILL_FALGRAVN		, "Falgravn |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
 
 --ARENAS
