@@ -76,6 +76,14 @@
 	SI_SPEEDRUN_SS_BEGIN_LAST			= "Nahviintaas",
 	SI_SPEEDRUN_SS_KILL_LAST			= "Nahviintaas |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
+	--KA
+	SI_SPEEDRUN_KA_BEGIN_YANDIR			= "Yandir",
+	SI_SPEEDRUN_KA_KILL_YANDIR			= "Yandir |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_KA_BEGIN_VROL			= "Vrol",
+	SI_SPEEDRUN_KA_KILL_VROL			= "Vrol |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_KA_BEGIN_FALGRAVN		= "Falgravn",
+	SI_SPEEDRUN_KA_KILL_FALGRAVN		= "Falgravn |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+
 	--ARENAS
 	SI_SPEEDRUN_ARENA_FIRST 			= "First Stage",
 	SI_SPEEDRUN_ARENA_SECOND 			= "Second Stage",

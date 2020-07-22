@@ -6,7 +6,7 @@ Speedrun = Speedrun or {}
 local Speedrun = Speedrun
 
 Speedrun.name = "Speedrun"
-Speedrun.version = "0.1.6.3"
+Speedrun.version = "0.1.7"
 
 
 Speedrun.segments = {}
@@ -143,6 +143,8 @@ function Speedrun.GetScore(timer, vitality, raidID)
         elseif Speedrun.hmOnSS == 4 then
             return (207250 + (1000 * vitality)) * (1 + (1800 - timer) / 10000)
         end
+    elseif raidID == 1196 then --KA
+        return (205950 + (1000 * vitality)) * (1 + (1200 - timer) / 10000)
     else
         return 0
     end

@@ -45,6 +45,11 @@ Speedrun.raidList = {
         id = 1121,
         timerSteps = {},
     },
+    [1196] = {
+        name = "KA",
+        id = 1196,
+        timerSteps = {},
+    },
     [1082] = {
         name = "BRP",
         id = 1082,
@@ -131,6 +136,14 @@ Speedrun.customTimerSteps = {
         [6] = ""
     },
     [1121] = { --SS
+        [1] = "",
+        [2] = "",
+        [3] = "",
+        [4] = "",
+        [5] = "",
+        [6] = ""
+    },
+    [1196] = { --KA
         [1] = "",
         [2] = "",
         [3] = "",
@@ -248,6 +261,14 @@ Speedrun.stepList = {
         [4] = zo_strformat(SI_SPEEDRUN_SS_KILL_SECOND),
         [5] = zo_strformat(SI_SPEEDRUN_SS_BEGIN_LAST),
         [6] = zo_strformat(SI_SPEEDRUN_SS_KILL_LAST),
+    },
+    [1196] = { --KA
+        [1] = zo_strformat(SI_SPEEDRUN_KA_BEGIN_YANDIR),
+        [2] = zo_strformat(SI_SPEEDRUN_KA_KILL_YANDIR),
+        [3] = zo_strformat(SI_SPEEDRUN_KA_BEGIN_VROL),
+        [4] = zo_strformat(SI_SPEEDRUN_KA_KILL_VROL),
+        [5] = zo_strformat(SI_SPEEDRUN_KA_BEGIN_FALGRAVN),
+        [6] = zo_strformat(SI_SPEEDRUN_KA_KILL_FALGRAVN),
     },
     [1082] = { --BRP
         [1] = zo_strformat(SI_SPEEDRUN_ARENA_FIRST),

@@ -75,6 +75,14 @@ SafeAddString(SI_SPEEDRUN_SS_KILL_SECOND		, "Second Boss |t20:20:esoui\\art\\ico
 SafeAddString(SI_SPEEDRUN_SS_BEGIN_LAST			, "Nahviintaas", 1)
 SafeAddString(SI_SPEEDRUN_SS_KILL_LAST			, "Nahviintaas |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
 
+--KA
+SafeAddString(SI_SPEEDRUN_KA_BEGIN_YANDIR		, "Yandir", 1)
+SafeAddString(SI_SPEEDRUN_KA_KILL_YANDIR		, "Yandir |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
+SafeAddString(SI_SPEEDRUN_KA_BEGIN_VROL			, "Vrol", 1)
+SafeAddString(SI_SPEEDRUN_KA_KILL_VROL			, "Vrol |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
+SafeAddString(SI_SPEEDRUN_KA_BEGIN_FALGRAVN		, "Falgravn",
+SafeAddString(SI_SPEEDRUN_KA_KILL_FALGRAVN		, "Falgravn |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t", 1)
+
 --ARENAS
 SafeAddString(SI_SPEEDRUN_ARENA_FIRST 			, "Première Arène", 1)
 SafeAddString(SI_SPEEDRUN_ARENA_SECOND 			, "Deuxième Arène", 1)
