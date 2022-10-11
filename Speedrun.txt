@@ -1,6 +1,6 @@
 ## Title: Speed|cdf4242Run|r
 ## APIVersion: 101032
-## Author: Floliroy, Panaa, @nogetrandom [PC EU]
+## Author: @Floliroy, @Panaa, @nogetrandom [PC EU]
 ## Version: 0.1.9.5
 ## DependsOn: LibAddonMenu-2.0>=32 LibCustomMenu
 ## SavedVariables: SpeedrunVariables
@@ -18,6 +18,14 @@ Lib/HowToTitle/Titles/others.lua
 
 Lang/en.lua
 Lang/$(language).lua
+
+Arena/brp.lua
+Arena/vh.lua
+
+Trial/aa.lua
+Trial/as.lua
+Trial/cr.lua
+Trial/hrc.lua
 
 SpeedrunData.lua
 SpeedrunDefaults.lua
