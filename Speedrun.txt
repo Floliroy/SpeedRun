@@ -1,8 +1,8 @@
 ## Title: Speed|cdf4242Run|r
-## APIVersion: 100035
-## Author: Floliroy, Panaa, @nogetrandom [PC-EU]
-## Version: 0.1.8.6
-## DependsOn: LibAddonMenu-2.0 LibCustomMenu
+## APIVersion: 101032
+## Author: Floliroy, Panaa, @nogetrandom [PC EU]
+## Version: 0.1.9.5
+## DependsOn: LibAddonMenu-2.0>=32 LibCustomMenu
 ## SavedVariables: SpeedrunVariables
 
 ; This Add-on is not created by, affiliated with or sponsored by ZeniMax Media Inc. or its affiliates.

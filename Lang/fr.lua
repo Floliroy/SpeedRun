@@ -101,7 +101,6 @@ SafeAddString(SI_SPEEDRUN_ARENA_COMPLETE 		, "Terminé", 1)
 ----------------------
 --Global
 SafeAddString(SI_SPEEDRUN_GLOBAL_DESC 			 , "Ici vous pouvez définir un temps personnalisé pour chaque étape des différentes épreuves.\nSi vous laissez les cases vides alors l'addon prendra en compte votre meilleur temps personnel.\nVous pouvez aussi simuler votre meilleur score possible (meilleurs temps pour chaque étape et aucune mort).", 1)
-safeAddString(SI_SPEEDRUN_AUTHOR_DESC				 , "Cet Addon est toujours en version beta et est actuellement mis à jour par un gamer avec un QI inférieur à 70 n'ayant jamais suivi de cours de programmation. Vos retours et vos suggestions sont les bienvenues.",)
 SafeAddString(SI_SPEEDRUN_ENABLE_NAME 			 , "Activé", 1)
 SafeAddString(SI_SPEEDRUN_ENABLE_DESC 			 , "Ne fonctionne pas pour le moment, sera toujours actif", 1)
 SafeAddString(SI_SPEEDRUN_LOCK_NAME 			   , "Verrouiller l'UI", 1)
@@ -109,12 +108,12 @@ SafeAddString(SI_SPEEDRUN_LOCK_DESC 			   , "Déverouiller la fenêtre pour la r
 SafeAddString(SI_SPEEDRUN_ENABLEUI_NAME      , "Afficher l'UI", 1)
 SafeAddString(SI_SPEEDRUN_ENABLEUI_DESC      , "Active / Désactive l'UI de Speedrun, ne désactive pas les fonctions de l'extensions, seulement son affichage", 1)
 
-SafeAddString(SI_SPEEDRUN_FOODBUFF_ENABLE					=	"Rappel de nourriture",)
-SafeAddString(SI_SPEEDRUN_FOODBUFF_ENABLE_DESC		= "Vous alerte quand votre nourriture est sur le point d'expirer",)
-SafeAddString(SI_SPEEDRUN_FOODBUFF_INTERVAL				= "Intervalle d'alerte",)
-SafeAddString(SI_SPEEDRUN_FOODBUFF_INTERVAL_DESC  =	"À quelle fréquence l'alerte apparaît (en seconde)",)
-SafeAddString(SI_SPEEDRUN_FOODBUFF_TIMER					= "'<<1>>' se termine dans |cbd0000<<2>>|r minutes !",)
-SafeAddString(SI_SPEEDRUN_NO_FOODBUFF							= "|cdf4242Vous n'avez pas de nourriture active|r",)
+-- SafeAddString(SI_SPEEDRUN_FOODBUFF_ENABLE					=	"Rappel de nourriture", 1)
+-- SafeAddString(SI_SPEEDRUN_FOODBUFF_ENABLE_DESC		= "Vous alerte quand votre nourriture est sur le point d'expirer", 1)
+-- SafeAddString(SI_SPEEDRUN_FOODBUFF_INTERVAL				= "Intervalle d'alerte", 1)
+-- SafeAddString(SI_SPEEDRUN_FOODBUFF_INTERVAL_DESC  =	"À quelle fréquence l'alerte apparaît (en seconde)", 1)
+-- SafeAddString(SI_SPEEDRUN_FOODBUFF_TIMER					= "'<<1>>' se termine dans |cbd0000<<2>>|r minutes !", 1)
+-- SafeAddString(SI_SPEEDRUN_NO_FOODBUFF							= "|cdf4242Vous n'avez pas de nourriture active|r", 1)
 
 --Raids
 SafeAddString(SI_SPEEDRUN_STEP_NAME 			   , "Étape <<1>> (sec)", 1)
