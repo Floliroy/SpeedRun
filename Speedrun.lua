@@ -614,6 +614,12 @@ end
 
 function Speedrun.OnPlayerActivated( eventCode, initial )
   Speedrun.IsActivated(initial)
+  -- TODO: Remove Next iteration
+  -- Deprecation
+  d( Speedrun.prefix .. "|cffffffHide group|r Feature will be discontinued in the next update for more information check in the Speedrun settings.")
+
+  d( Speedrun.prefix .. "|cffffffFood reminder|r Feature will be discontinued in the next update for more information check in the Speedrun settings.")
+    -- END  Remove Next iteration
 
   if cV.isTracking == false then return end
 
@@ -823,7 +829,6 @@ function Speedrun:Initialize()
   Speedrun.CreateSettingsWindow()
   -- Check settings for tracking
   Speedrun.Tracking(cV.isTracking)
-
   -- if writCreator then cV.writHidePets = WritCreater:GetSettings().petBegone end
 
   EM:RegisterForEvent(Speedrun.name .. "Activated", EVENT_PLAYER_ACTIVATED, Speedrun.OnPlayerActivated)

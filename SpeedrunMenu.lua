@@ -1003,6 +1003,10 @@ function Speedrun.CreateSettingsWindow()
   end
 
   local optionsData = {
+    {
+			type = "description",
+			text = "|cFF2200WARNING! FoodReminder, Hidegroup and other utility commands will be discontinued from speedrun in the next update, the main goal of this addons was to provide a 'Livesplit like experience'. Theses features have nothing to do with speedruns in general, and i recommand you find other addons to provide you that. I'll take claims at @Panaa or Panaa#0001 on discord.|r",
+		},
     { type = "divider" },
 
     { type    = "checkbox",   name = "Enable Tracking",          --zo_strformat(SI_SPEEDRUN_ENABLE_NAME),

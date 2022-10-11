@@ -84,7 +84,6 @@ local function OnSubzoneChanged()
     end, 200)
   end
 end
-
 function Speedrun.SlashCommand(string)
   local command = string.lower(string)
   -- Debug Options ----------------------------------------------------------
@@ -173,6 +172,11 @@ function Speedrun:dbg( debugLevel, ... )
     local message = zo_strformat( ...)
     d( Speedrun.prefix .. message )
   end
+end
+
+function Speedrun.DiscontinuedAnnouncements(setting, message)
+  if not setting then return end
+  Speedrun:dbg(0, "|cffffff<<1>>|r Feature will be discontinued in the next update for more information check in the Speedrun settings.", d)
 end
 
 function Speedrun:post( ... )
