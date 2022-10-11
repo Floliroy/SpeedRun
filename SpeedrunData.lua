@@ -513,110 +513,110 @@ Speedrun.Data = {
 						name = "No Bonus",
 						id = RAID_POINT_REASON_MIN_VALUE,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[1] = {
 						name = "Small adds:",
 						id = RAID_POINT_REASON_KILL_NORMAL_MONSTER,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[2] = {
 						name = "Large adds:",
 						id = RAID_POINT_REASON_KILL_BANNERMEN,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[3] = {
 						name = "Elite adds:",
 						id = RAID_POINT_REASON_KILL_CHAMPION,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[4] = {
 						name = "Miniboss",
 						id = RAID_POINT_REASON_KILL_MINIBOSS,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[5] = {
 						name = "Boss",
 						id = RAID_POINT_REASON_KILL_BOSS,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[6] = {
 						name = "Bonus Low (increased difficulty)",
 						id = RAID_POINT_REASON_BONUS_ACTIVITY_LOW,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[7] = {
 						name = "Bonus Medium (increased difficulty)",
 						id = RAID_POINT_REASON_BONUS_ACTIVITY_MEDIUM,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[8] = {
 						name = "Bonus High (HM)",
 						id = RAID_POINT_REASON_BONUS_ACTIVITY_HIGH,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[9] = {
 						name = "Revives & Resurrections",
 						id = RAID_POINT_REASON_LIFE_REMAINING,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[10] = {
 						name = "Bonus Point One",
 						id = RAID_POINT_REASON_BONUS_POINT_ONE,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[11] = {
 						name = "Bonus Point Two",
 						id = RAID_POINT_REASON_BONUS_POINT_TWO,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[12] = {
 						name = "Bonus Point Three",
 						id = RAID_POINT_REASON_BONUS_POINT_THREE,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[13] = {
 						name = "Remaining Sigils Bonus x1",
 						id = RAID_POINT_REASON_SOLO_ARENA_PICKUP_ONE,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[14] = {
 						name = "Remaining Sigils Bonus x2",
 						id = RAID_POINT_REASON_SOLO_ARENA_PICKUP_TWO,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[15] = {
 						name = "Remaining Sigils Bonus x3",
 						id = RAID_POINT_REASON_SOLO_ARENA_PICKUP_THREE,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[16] = {
 						name = "Remaining Sigils Bonus x4",
 						id = RAID_POINT_REASON_SOLO_ARENA_PICKUP_FOUR,
 						times = 0,
-						total = 0,
+						total = 0
 				},
 				[17] = {
 						name = "Completion Bonus (Stage / Trial)",
 						id = RAID_POINT_REASON_MAX_VALUE,
 						times = 0,
-						total = 0,
-				},
+						total = 0
+				}
 		},
 
 		--------------------
@@ -630,7 +630,18 @@ Speedrun.Data = {
 				},
 		},
 
-		sidebossNames = {},
+		sidebossNames = {
+				[1227] = {
+						["xobutar"]            = true,
+						["Зобутар Сиятельный"] = true,
+						["優雅なるゾブタル"]    = true,
+
+						["leptfire"]           = true,
+
+
+						["mynar"]              = true,
+				},
+		},
 }
 -- {"oaxiltso" = true, string.lower("Оазилцо")  = true, string.lower("オアジルツォ")			= true},
 -- [2] = {"bahsei"   = true, string.lower("Bестница") = true, string.lower("炎の使者バーセイ")	= true},
