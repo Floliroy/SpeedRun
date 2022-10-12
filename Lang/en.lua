@@ -83,6 +83,26 @@
 	SI_SPEEDRUN_KA_BEGIN_FALGRAVN				= "Falgravn",
 	SI_SPEEDRUN_KA_KILL_FALGRAVN				= "Falgravn |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
+	--RG
+	SI_SPEEDRUN_RG_BEGIN_OAX					= "Oaxiltso",
+	SI_SPEEDRUN_RG_KILL_OAX						= "Oaxiltso |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_RG_BEGIN_BAHSEI					= "Flame-Herald Bahsei",
+	SI_SPEEDRUN_RG_KILL_BAHSEI					= "Flame-Herald Bahsei |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_RG_BEGIN_XALVAKKA				= "Xalvakka",
+	SI_SPEEDRUN_RG_KILL_XALVAKKA				= "Xalvakka |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+
+	--DSR
+	SI_SPEEDRUN_DSR_BEGIN_TWIN					= "Lylanar & Turlassil",
+	SI_SPEEDRUN_DSR_KILL_TWIN					= "Lylanar & Turlassil |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_DSR_BEGIN_FIRSTMINI				= "First Miniboss",
+	SI_SPEEDRUN_DSR_FINISH_FIRSTMINI 			= "First Miniboss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_DSR_BEGIN_SECONDMINI			= "Second Miniboss",
+	SI_SPEEDRUN_DSR_FINISH_SECONDMINI 			= "Second Miniboss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_DSR_BEGIN_REEF					= "Reef Guardian",
+	SI_SPEEDRUN_DSR_KILL_REEF					= "Reef Guardian |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_DSR_BEGIN_TALERIA				= "Tideborn Taleria",
+	SI_SPEEDRUN_DSR_KILL_TALERIA				= "Tideborn Taleria |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+
 	--ARENAS
 	SI_SPEEDRUN_ARENA_FIRST 						= "First Stage",
 	SI_SPEEDRUN_ARENA_SECOND 						= "Second Stage",
@@ -106,12 +126,7 @@
 	SI_SPEEDRUN_LOCK_DESC 							= "Unlock window to reposition it",
 	SI_SPEEDRUN_ENABLEUI_NAME           = "Enable UI",
 	SI_SPEEDRUN_ENABLEUI_DESC           = "Enable the display of Speedrun's UI. This won't disable the addon itself, only the display",
-	-- SI_SPEEDRUN_FOODBUFF_ENABLE					=	"Food Buff Reminder",
-	-- SI_SPEEDRUN_FOODBUFF_ENABLE_DESC		= "Alerts you when your food buff is about to expire",
-	-- SI_SPEEDRUN_FOODBUFF_INTERVAL				= "Alert Interval",
-	-- SI_SPEEDRUN_FOODBUFF_INTERVAL_DESC  =	"How often the alert will apear (in seconds)",
-	-- SI_SPEEDRUN_FOODBUFF_TIMER					= "'<<1>>' Will Expire In |cbd0000<<2>>|r Minutes!",
-	-- SI_SPEEDRUN_NO_FOODBUFF							= "|cdf4242You have no food buff active|r",
+
 	--Raids
 	SI_SPEEDRUN_STEP_NAME 							= "<<1>> (sec)",
 	SI_SPEEDRUN_STEP_DESC_EXIST 				= "Your best personnal time is <<1>> sec.\nEquivalent to <<2>>.",

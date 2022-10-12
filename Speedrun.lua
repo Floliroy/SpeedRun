@@ -7,7 +7,7 @@ local EM = EVENT_MANAGER
 local sV
 local cV
 Speedrun.name               = "Speedrun"
-Speedrun.version            = "0.1.9.5"
+Speedrun.version            = "0.2.0.0"
 Speedrun.activeProfile      = ""
 Speedrun.raidID             = 0
 Speedrun.zone               = 0
@@ -154,7 +154,8 @@ function Speedrun.GetScore(timer, vitality, raidID)
   elseif raidID == 1227 then return (205450 + (1000 * vitality)) * (1 + (5400 - timer) / 10000)
     -- RG
   elseif raidID == 1263 then return (232200 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
-
+    -- DSR 
+  elseif raidID == 1344 then return (265860 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
   else return 0 end
 end
 
@@ -371,6 +372,7 @@ function Speedrun.OnCombatEnd()
 end
 
 function Speedrun.BossFightBegin()
+  if ( Speedrun.Step == 1 or Speedrun.Step == 2) and Speedrun.raidID == 1344 then return end
   for i = 1, MAX_BOSSES do
     local current, max, effmax = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
     if IsUnitInCombat("player") and (current < max) then
@@ -412,7 +414,10 @@ function Speedrun.MainBoss()
       end
 
       if Speedrun.currentBossName == Speedrun.lastBossName then return end
-
+      -- for Lylanar & Turlassil (to set time when in combat with the adds since they are relevant to the boss fight)
+      if Speedrun.raidID == 1344 and Speedrun.Step == 1 then
+        if IsUnitInCombat("player") then Speedrun.UpdateWaypointNew(GetRaidDuration()) return end
+      end
       local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
 
       if Speedrun.isBossDead == true and currentTargetHP > 0 then
@@ -433,7 +438,7 @@ function Speedrun.MainBoss()
 end
 
 local function BossMainZoneCheck(zone)
-  local mbZones = { [638] = true, [639] = true, [725] = true, [975] = true, [1121] = true, [1196] = true, [1263] = true }
+  local mbZones = { [638] = true, [639] = true, [725] = true, [975] = true, [1121] = true, [1196] = true, [1263] = true, [1344] = true }
   if mbZones[zone] then return true end
   return false
 end
@@ -597,13 +602,16 @@ function Speedrun.RegisterTrialsEvents()
   elseif Speedrun.raidID == 636 then
     EM:RegisterForUpdate(	Speedrun.name .. "HelRaCitadel", 1000, Speedrun.MainHRC)
 
+  --DSR
+  elseif Speedrun.raidID == 1344 then 
+    EM:RegisterForEvent( Speedrun.name .. "MiniBossDead", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.MiniBossDead)
+
   -- other raids
   else
     EM:RegisterForEvent( Speedrun.name .. "Combat", EVENT_PLAYER_COMBAT_STATE, Speedrun.MainBoss)
     EM:RegisterForEvent( Speedrun.name .. "BossChange", EVENT_BOSSES_CHANGED, Speedrun.MainBoss)
     EM:RegisterForEvent( Speedrun.name .. "BossDead", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.BossDead)
   end
-
   EM:RegisterForUpdate(	Speedrun.name .. "Update", 900, Speedrun.UpdateWindowPanel)
   EM:RegisterForEvent( 	Speedrun.name .. "VitalityLost", EVENT_RAID_REVIVE_COUNTER_UPDATE, Speedrun.UpdateCurrentVitality)
   EM:RegisterForEvent( 	Speedrun.name .. "ScoreUpdate", EVENT_RAID_TRIAL_SCORE_UPDATE, Speedrun.ScoreUpdate)

@@ -91,6 +91,17 @@
     SI_SPEEDRUN_RG_BEGIN_XALVAKKA				= "Xalvakka",
     SI_SPEEDRUN_RG_KILL_XALVAKKA				= "Xalvakka |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
  
+    --DSR
+    SI_SPEEDRUN_DSR_BEGIN_TWIN					= "Lylanar & Turlassil",
+    SI_SPEEDRUN_DSR_KILL_TWIN					= "Lylanar & Turlassil |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+    SI_SPEEDRUN_DSR_BEGIN_FIRSTMINI				= "Premier Miniboss",
+    SI_SPEEDRUN_DSR_FINISH_FIRSTMINI 			= "Premier Miniboss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+    SI_SPEEDRUN_DSR_BEGIN_SECONDMINI			= "Second Miniboss",
+    SI_SPEEDRUN_DSR_FINISH_SECONDMINI 			= "Second Miniboss |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+    SI_SPEEDRUN_DSR_BEGIN_REEF					= "Le Gardien du Récif",
+    SI_SPEEDRUN_DSR_KILL_REEF					= "Le Gardien du Récif |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+    SI_SPEEDRUN_DSR_BEGIN_TALERIA				= "Taleria Née-des-Marées",
+    SI_SPEEDRUN_DSR_KILL_TALERIA				= "Taleria Née-des-Marées |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
     --ARENAS
     SI_SPEEDRUN_ARENA_FIRST 			= "Première Arène",
     SI_SPEEDRUN_ARENA_SECOND 			= "Deuxième Arène",
@@ -116,6 +127,7 @@
     SI_SPEEDRUN_ENABLEUI_NAME      = "Afficher l'UI",
     SI_SPEEDRUN_ENABLEUI_DESC      = "Active / Désactive l'UI de Speedrun, ne désactive pas les fonctions de l'extensions, seulement son affichage",
  
+
     --Raids
     SI_SPEEDRUN_STEP_NAME 			   = "Étape <<1>> sec",
     SI_SPEEDRUN_STEP_DESC_EXIST 	 = "Votre meilleur temps est <<1>> sec.\nÉquivalent à <<2>>.",
