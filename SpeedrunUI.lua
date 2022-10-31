@@ -1,11 +1,11 @@
-Speedrun              = Speedrun or {}
-local Speedrun        = Speedrun
-local WM              = GetWindowManager()
-local EM              = EVENT_MANAGER
-local LAM             = LibAddonMenu2
+Speedrun             = Speedrun or {}
+local Speedrun       = Speedrun
+local WM             = GetWindowManager()
+local EM             = EVENT_MANAGER
+local LAM            = LibAddonMenu2
 local sV
 local cV
-local defaultDisplay  = {
+local defaultDisplay = {
   [1] = "BOSS 1",
   [2] = "BOSS 1 |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
   [3] = "BOSS 2",
@@ -13,11 +13,11 @@ local defaultDisplay  = {
   [5] = "BOSS 3",
   [6] = "BOSS 3 |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 }
-local profilesIcon    = "|cffdf80|t20:20:esoui\\art\\contacts\\social_status_online.dds|t|r"
-local colorEnabled    = {.6, .57, .46, 1}
-local colorDisabled   = {.3, .3 , .2 , 1}
-local normalIcon      = "/esoui/art/lfg/gamepad/lfg_menuicon_normaldungeon.dds"
-local vetIcon         = "/esoui/art/lfg/gamepad/lfg_menuicon_veteranldungeon.dds"
+local profilesIcon   = "|cffdf80|t20:20:esoui\\art\\contacts\\social_status_online.dds|t|r"
+local colorEnabled   = { .6, .57, .46, 1 }
+local colorDisabled  = { .3, .3, .2, 1 }
+local normalIcon     = "/esoui/art/lfg/gamepad/lfg_menuicon_normaldungeon.dds"
+local vetIcon        = "/esoui/art/lfg/gamepad/lfg_menuicon_veteranldungeon.dds"
 
 -- esoui\art\lfg\gamepad\lfg_roleicon_dps.dds
 -- esoui\art\lfg\gamepad\lfg_roleicon_dps_down.dds
@@ -57,7 +57,7 @@ local function AddTooltipLine(control, tooltipControl, tooltip)
   if tooltipTextType == "string" then
     if tooltip == "" then ZO_Options_OnMouseExit(control) return end
 
-  elseif tooltipTextType == "number" then	tooltip = GetString(tooltip)
+  elseif tooltipTextType == "number" then tooltip = GetString(tooltip)
   elseif tooltipTextType == "function" then tooltip = tooltip()
   else ZO_Options_OnMouseExit(control) return end
 
@@ -103,21 +103,21 @@ do
     RequestJumpToHouse(38)
   end
 
-  function Speedrun.Submenu( button, upInside )
+  function Speedrun.Submenu(button, upInside)
     if not upInside then return end
 
-    local sV            = Speedrun.savedVariables
-    local cV            = Speedrun.savedSettings
+    local sV = Speedrun.savedVariables
+    local cV = Speedrun.savedSettings
 
-    local lockString    = sV.unlockUI    and "Lock UI"      or "Unlock UI"
+    local lockString    = sV.unlockUI and "Lock UI" or "Unlock UI"
     local hgString      = cV.groupHidden and "Unhide Group" or "Hide Group"
     local profileString = "Load Profile"
     local homeString    = "Port Home"
     local menuString    = "Open Settings"
 
     local portOptions = {
-      { label = "Inside",  callback = function() portHome(false) end },
-      { label = "Outside", callback = function() portHome(true)  end }
+      { label = "Inside", callback = function() portHome(false) end },
+      { label = "Outside", callback = function() portHome(true) end }
     }
 
     Speedrun.UpdateProfileList()
@@ -137,7 +137,7 @@ do
   end
 
   function Speedrun.UpdateProfileList()
-    Speedrun.profileNames	= {}
+    Speedrun.profileNames = {}
     local profileList     = {}
     local profileNames    = Speedrun:GetProfileNames()
 
@@ -147,7 +147,8 @@ do
       if profileNames[i] ~= Speedrun.activeProfile then
         local profile = profileNames[i]
         local function callbackfunc() loadProfile(profile) end
-        table.insert(Speedrun.profileNames, {label = profile, callback = callbackfunc})
+
+        table.insert(Speedrun.profileNames, { label = profile, callback = callbackfunc })
       end
     end
   end
@@ -187,7 +188,7 @@ function Speedrun.ResetUI()
   SpeedRun_Score_Label:SetText(" ")
 
   if Speedrun.segments then
-    for i,x in ipairs(Speedrun.segments) do
+    for i, x in ipairs(Speedrun.segments) do
       local name = WM:GetControlByName(x:GetName())
       x:SetHidden(true)
       name:GetNamedChild("_Name"):SetText(" ")
@@ -302,7 +303,6 @@ function Speedrun.UpdateAlpha()
   SpeedRun_Adds:SetAlpha(alpha)
 end
 
-
 function Speedrun.ShowInMenu()
   local hide = not Speedrun.inMenu
   SpeedRun_Timer_Container:SetHidden(hide)
@@ -328,7 +328,7 @@ function Speedrun.UpdateDifficultySwitch()
   local isVet = Speedrun.ResolveTrialDiffculty()
 
   -- was changed from normal to veteran
-  if isVet then	SpeedRun_Panel_Difficulty_Switch:SetTexture(vetIcon)
+  if isVet then SpeedRun_Panel_Difficulty_Switch:SetTexture(vetIcon)
     -- was changed from veteran to normal
   else SpeedRun_Panel_Difficulty_Switch:SetTexture(normalIcon) end
 
@@ -336,8 +336,8 @@ function Speedrun.UpdateDifficultySwitch()
   SpeedRun_Panel_Difficulty_Switch:SetColor(unpack(canChange))
 
   if ZO_GroupListVeteranDifficultySettings then
-    ZO_GroupListVeteranDifficultySettings.veteranModeButton:SetState(isVet and BSTATE_PRESSED or BSTATE_NORMAL )
-    ZO_GroupListVeteranDifficultySettings.normalModeButton:SetState (isVet and BSTATE_NORMAL  or BSTATE_PRESSED)
+    ZO_GroupListVeteranDifficultySettings.veteranModeButton:SetState(isVet and BSTATE_PRESSED or BSTATE_NORMAL)
+    ZO_GroupListVeteranDifficultySettings.normalModeButton:SetState(isVet and BSTATE_NORMAL or BSTATE_PRESSED)
   end
 end
 
@@ -385,7 +385,7 @@ function Speedrun.ToggleSimpleUI()
 end
 
 function Speedrun.ResetSegments()
-  for i,x in ipairs(Speedrun.segments) do
+  for i, x in ipairs(Speedrun.segments) do
     local name = WM:GetControlByName(x:GetName())
     x:SetHidden(true)
     x:SetHeight(0)
@@ -527,7 +527,7 @@ function Speedrun.CreateRaidSegment(id, same)
   Speedrun.ResetSegments()
 
   SpeedRun_Timer_Container_Profile:SetText(Speedrun.GetActiveProfileDisplay())
-  SpeedRun_Timer_Container_Raid:SetText("|ce6b800" .. zo_strformat(SI_ZONE_NAME, GetZoneNameById(id)).. "|r")
+  SpeedRun_Timer_Container_Raid:SetText("|ce6b800" .. zo_strformat(SI_ZONE_NAME, GetZoneNameById(id)) .. "|r")
 
   for i, x in ipairs(Speedrun.Data.stepList[id]) do
     local segmentRow
@@ -596,9 +596,11 @@ function Speedrun.CreateRaidSegment(id, same)
   Speedrun.SetUIHidden(not sV.showUI)
 
   if (id == 677 or id == 1227) and cV.individualArenaTimers then
-    Speedrun:dbg(1, "|cffdf80<<1>>'s|r individual |ce6b800<<2>> |cfffffftimers loaded|r.", GetUnitName('player'), GetZoneNameById(id))
+    Speedrun:dbg(1, "|cffdf80<<1>>'s|r individual |ce6b800<<2>> |cfffffftimers loaded|r.", GetUnitName('player'),
+      GetZoneNameById(id))
   else
-    Speedrun:dbg(1, "<<1>> |ce6b800<<2>> |cfffffftimers loaded|r.", Speedrun.GetActiveProfileDisplay(), GetZoneNameById(id))
+    Speedrun:dbg(1, "<<1>> |ce6b800<<2>> |cfffffftimers loaded|r.", Speedrun.GetActiveProfileDisplay(),
+      GetZoneNameById(id))
   end
 end
 
@@ -609,7 +611,7 @@ function Speedrun.UpdateSegment(step, raid)
   -- end
 
   local difference
-  if (Speedrun.segmentTimer[step] ~= nil and Speedrun.segmentTimer[step] ~= Speedrun.segmentTimer[step + 1])  then
+  if (Speedrun.segmentTimer[step] ~= nil and Speedrun.segmentTimer[step] ~= Speedrun.segmentTimer[step + 1]) then
     difference = Speedrun.currentRaidTimer[step] - Speedrun.segmentTimer[step]
   else difference = 0 end
 
@@ -618,7 +620,8 @@ function Speedrun.UpdateSegment(step, raid)
   if step > 1 then
     if Speedrun.GetSavedTimer(Speedrun.raidID, step) then
       if Speedrun.currentRaidTimer[step - 1] ~= nil then
-        previousSegementDif = Speedrun.currentRaidTimer[step] - Speedrun.currentRaidTimer[step - 1] - Speedrun.GetSavedTimer(Speedrun.raidID, step)
+        previousSegementDif = Speedrun.currentRaidTimer[step] - Speedrun.currentRaidTimer[step - 1] -
+            Speedrun.GetSavedTimer(Speedrun.raidID, step)
       else
         previousSegementDif = 0
       end
@@ -643,7 +646,8 @@ function Speedrun.UpdateSegment(step, raid)
   SpeedRun_Advanced_PreviousSegment:SetText(Speedrun.FormatRaidTimer(previousSegementDif))
 
   if Speedrun.Step and Speedrun.currentRaidTimer[Speedrun.Step] and Speedrun.segments[Speedrun.Step] then
-    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.currentRaidTimer[Speedrun.Step]))
+    Speedrun.segments[Speedrun.Step]:GetNamedChild('_Best'):SetText(Speedrun.FormatRaidTimer(Speedrun.currentRaidTimer[
+      Speedrun.Step]))
   end
 
   local segment = Speedrun.segments[Speedrun.Step]:GetNamedChild('_Diff')

@@ -1,6 +1,5 @@
-
-Speedrun = Speedrun or {}
-local Speedrun = Speedrun
+Speedrun        = Speedrun or {}
+local Speedrun  = Speedrun
 local sV
 local cV
 local lastPrint = ""
@@ -24,7 +23,9 @@ function Speedrun.MainVH()
 
         if ((Speedrun.currentBossName == Speedrun.lastBossName) or not IsUnitInCombat("player")) then return end
 
-        if (string.find("leptfire", Speedrun.currentBossName) or string.find("xobutar", Speedrun.currentBossName) or string.find("mynar", Speedrun.currentBossName)) then
+        if (
+            string.find("leptfire", Speedrun.currentBossName) or string.find("xobutar", Speedrun.currentBossName) or
+                string.find("mynar", Speedrun.currentBossName)) then
           if Speedrun.isSideBoss == false then
             Speedrun.isSideBoss = true
             sideBoss            = boss
@@ -57,7 +58,8 @@ function Speedrun.SideBoss()
 
   if current <= 0 then
     EM:UnregisterForUpdate(Speedrun.name .. "SideBoss")
-    Speedrun:dbg(1, "|cdf4242<<1>>|r killed at |cffff00<<2>>|r", sideBoss, Speedrun.FormatTimerForChatUpdate(GetRaidDuration()))
+    Speedrun:dbg(1, "|cdf4242<<1>>|r killed at |cffff00<<2>>|r", sideBoss,
+      Speedrun.FormatTimerForChatUpdate(GetRaidDuration()))
     Speedrun.lastBossName = Speedrun.currentBossName
     sV.lastBossName       = Speedrun.lastBossName
   end
