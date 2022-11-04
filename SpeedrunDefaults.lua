@@ -8,68 +8,68 @@ local cV
 -- Account wide
 Speedrun.Default_Account = {
   --table
-  scores                  = {},
-  lastScores              = {},
-  profiles                = {},
+  scores     = {},
+  lastScores = {},
+  profiles   = {},
 
   --UI
-  speedrun_panel_offsetX  = 500,
-  speedrun_panel_offsetY  = 500,
-  showPanelAlways         = true,
-  unlockUI                = true,
-  showUI                  = true,
-  showAdvanced            = true,
-  showAdds                = true,
-  changeAlpha             = false,
-  combatAlpha             = 100,
-  uiSimple                = false,
+  speedrun_panel_offsetX = 500,
+  speedrun_panel_offsetY = 500,
+  showPanelAlways        = true,
+  unlockUI               = true,
+  showUI                 = true,
+  showAdvanced           = true,
+  showAdds               = true,
+  changeAlpha            = false,
+  combatAlpha            = 100,
+  uiSimple               = false,
 
   --trial variables
-  segmentTimer            = {},
-  currentRaidTimer        = {},
-  lastRaidTimer           = {},
-  lastBossName            = "",
-  currentBossName         = "",
-  raidID                  = 0,
-  lastRaidID              = 0,
-  Step                    = 1,
-  arenaRound              = 1,
-  isBossDead              = true,
-  isComplete              = false,
-  totalTime               = 10,
-  totalScore              = 0,
-  finalScore              = 0,
-  timeStarted             = 0,
-  trialState              = -1,
+  segmentTimer     = {},
+  currentRaidTimer = {},
+  lastRaidTimer    = {},
+  lastBossName     = "",
+  currentBossName  = "",
+  raidID           = 0,
+  lastRaidID       = 0,
+  Step             = 1,
+  arenaRound       = 1,
+  isBossDead       = true,
+  isComplete       = false,
+  totalTime        = 10,
+  totalScore       = 0,
+  finalScore       = 0,
+  timeStarted      = 0,
+  trialState       = -1,
 
   -- other settings
-  printDiffChange         = true,
-  printStepUpdate         = false,
+  printDiffChange = true,
+  printStepUpdate = false,
 
-  hgTrialOnly             = false,
-  changeNameplates        = false,
-  changeHealthBars        = false,
-  nameplatesHidden        = "",
-  healthBarsHidden        = "",
-  nameplatesHiddenHL      = "",
-  healthBarsHiddenHL      = "",
-  nameplates              = GetSetting(SETTING_TYPE_NAMEPLATES, NAMEPLATE_TYPE_GROUP_MEMBER_NAMEPLATES),
-  healthBars              = GetSetting(SETTING_TYPE_NAMEPLATES, NAMEPLATE_TYPE_GROUP_MEMBER_HEALTHBARS),
-  nameplatesHL            = GetSetting(SETTING_TYPE_NAMEPLATES, NAMEPLATE_TYPE_GROUP_MEMBER_NAMEPLATES_HIGHLIGHT),
-  healthBarsHL            = GetSetting(SETTING_TYPE_NAMEPLATES, NAMEPLATE_TYPE_GROUP_MEMBER_HEALTHBARS_HIGHLIGHT),
+  hgTrialOnly        = false,
+  changeNameplates   = false,
+  changeHealthBars   = false,
+  nameplatesHidden   = "",
+  healthBarsHidden   = "",
+  nameplatesHiddenHL = "",
+  healthBarsHiddenHL = "",
+  nameplates         = GetSetting(SETTING_TYPE_NAMEPLATES, NAMEPLATE_TYPE_GROUP_MEMBER_NAMEPLATES),
+  healthBars         = GetSetting(SETTING_TYPE_NAMEPLATES, NAMEPLATE_TYPE_GROUP_MEMBER_HEALTHBARS),
+  nameplatesHL       = GetSetting(SETTING_TYPE_NAMEPLATES, NAMEPLATE_TYPE_GROUP_MEMBER_NAMEPLATES_HIGHLIGHT),
+  healthBarsHL       = GetSetting(SETTING_TYPE_NAMEPLATES, NAMEPLATE_TYPE_GROUP_MEMBER_HEALTHBARS_HIGHLIGHT),
 
-  interactBlockAny        = false,
-  interactBlockTrial      = false,
-  interactBlockPvP        = false,
+  interactBlockAny   = false,
+  interactBlockTrial = false,
+  interactBlockPvP   = false,
 
-  food                    = {
-    show        = false,
-    size        = 30,
-    time        = 120,
-    timeCombat  = 120,
-    x           = 0,
-    y           = 0,
-    expireStay  = false
+  food = {
+    show       = false,
+    size       = 30,
+    time       = 120,
+    timeCombat = 120,
+    x          = 0,
+    y          = 0,
+    expireStay = false
   }
 }
 -- Character
@@ -93,211 +93,223 @@ Speedrun.Default_Character = {
 ---- Default Tables -------
 ---------------------------
 local defaultProfile = {
-  raidList          = {},
-  customTimerSteps  = {},
-  addsOnCR          = true,
-  hmOnSS            = 4
+  raidList         = {},
+  customTimerSteps = {},
+  addsOnCR         = true,
+  hmOnSS           = 4,
+  hmOnDSR          = 4
 }
 local defaultScoreFactors = {
-  vitality      = 0,
-  bestTime      = nil,
-  bestScore     = 0,
-  scoreReasons  = {}
+  vitality     = 0,
+  bestTime     = nil,
+  bestScore    = 0,
+  scoreReasons = {}
 }
 local defaultRaidList = {
-  [638]   = {
-    name          = "AA",
-    id            = 638,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [638]  = {
+    name         = "AA",
+    id           = 638,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [636]   = {
-    name          = "HRC",
-    id            = 636,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [636]  = {
+    name         = "HRC",
+    id           = 636,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [639]   = {
-    name          = "SO",
-    id            = 639,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [639]  = {
+    name         = "SO",
+    id           = 639,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [725]   = {
-    name          = "MoL",
-    id            = 725,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [725]  = {
+    name         = "MoL",
+    id           = 725,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [975]   = {
-    name          = "HoF",
-    id            = 975,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [975]  = {
+    name         = "HoF",
+    id           = 975,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [1000]  = {
-    name          = "AS",
-    id            = 1000,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [1000] = {
+    name         = "AS",
+    id           = 1000,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [1051]  = {
-    name          = "CR",
-    id            = 1051,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [1051] = {
+    name         = "CR",
+    id           = 1051,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [1121]  = {
-    name          = "SS",
-    id            = 1121,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [1121] = {
+    name         = "SS",
+    id           = 1121,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [1196]  = {
-    name          = "KA",
-    id            = 1196,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [1196] = {
+    name         = "KA",
+    id           = 1196,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [1263]  = {
-    name          = "RG",
-    id            = 1263,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [1263] = {
+    name         = "RG",
+    id           = 1263,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [1082]  = {
-    name          = "BRP",
-    id            = 1082,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [1344] = {
+    name = "DSR",
+    id = 1344,
+    timerSteps = {},
+    scoreFactors = {
+      vitality = 0,
+      bestTime = nil,
+      bestScore = 0,
+      scoreReasons = {},
+    },
+  },
+  [1082] = {
+    name         = "BRP",
+    id           = 1082,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [635]   = {
-    name          = "DSA",
-    id            = 635,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [635]  = {
+    name         = "DSA",
+    id           = 635,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [677]   = {
-    name          = "MA",
-    id            = 677,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [677]  = {
+    name         = "MA",
+    id           = 677,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [1227]  = {
-    name          = "VH",
-    id            = 1227,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [1227] = {
+    name         = "VH",
+    id           = 1227,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   }
 }
 local defaultCustomTimerSteps = {
-  [638]   = { --AA
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = "",
-    [7]  = "",
-    [8]  = ""
+  [638]  = { --AA
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = "",
+    [7] = "",
+    [8] = ""
   },
-  [636]   = { --HRC
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = ""
+  [636]  = { --HRC
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = ""
   },
-  [639]   = { --SO
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = "",
-    [7]  = "",
-    [8]  = ""
+  [639]  = { --SO
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = "",
+    [7] = "",
+    [8] = ""
   },
-  [725]   = { --MoL
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = ""
+  [725]  = { --MoL
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = ""
   },
-  [975]   = { --HoF
+  [975]  = { --HoF
     [1]  = "",
     [2]  = "",
     [3]  = "",
@@ -309,47 +321,58 @@ local defaultCustomTimerSteps = {
     [9]  = "",
     [10] = ""
   },
-  [1000]  = { --AS
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = ""
+  [1000] = { --AS
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = ""
   },
-  [1051]  = { --CR
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = ""
+  [1051] = { --CR
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = ""
   },
-  [1121]  = { --SS
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = ""
+  [1121] = { --SS
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = ""
   },
-  [1196]  = { --KA
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = ""
+  [1196] = { --KA
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = ""
   },
-  [1263]  = { --RG
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = ""
+  [1263] = { --RG
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = ""
   },
-  [1082]  = { --BRP
+
+  [1344] = { --DSR
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = "",
+    [7] = "",
+    [8] = "",
+  },
+  [1082] = { --BRP
     [1]  = "",
     [2]  = "",
     [3]  = "",
@@ -376,18 +399,18 @@ local defaultCustomTimerSteps = {
     [24] = "",
     [25] = ""
   },
-  [677]   = { --MA
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = "",
-    [7]  = "",
-    [8]  = "",
-    [9]  = ""
+  [677]  = { --MA
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = "",
+    [7] = "",
+    [8] = "",
+    [9] = ""
   },
-  [635]   = { --DSA
+  [635]  = { --DSA
     [1]  = "",
     [2]  = "",
     [3]  = "",
@@ -399,14 +422,14 @@ local defaultCustomTimerSteps = {
     [9]  = "",
     [10] = ""
   },
-  [1227]  = { --Vateshran Hollows
-    [1]  = "",
-    [2]  = "",
-    [3]  = "",
-    [4]  = "",
-    [5]  = "",
-    [6]  = "",
-    [7]  = ""
+  [1227] = { --Vateshran Hollows
+    [1] = "",
+    [2] = "",
+    [3] = "",
+    [4] = "",
+    [5] = "",
+    [6] = "",
+    [7] = ""
   }
 }
 local defaultScores = {
@@ -520,26 +543,26 @@ local defaultScores = {
   },
 }
 local defaultArenaList = {
-  [677]   = {
-    name          = "MA",
-    id            = 677,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [677]  = {
+    name         = "MA",
+    id           = 677,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   },
-  [1227]  = {
-    name          = "VH",
-    id            = 1227,
-    timerSteps    = {},
-    scoreFactors  = {
-      vitality      = 0,
-      bestTime      = nil,
-      bestScore     = 0,
-      scoreReasons  = {}
+  [1227] = {
+    name         = "VH",
+    id           = 1227,
+    timerSteps   = {},
+    scoreFactors = {
+      vitality     = 0,
+      bestTime     = nil,
+      bestScore    = 0,
+      scoreReasons = {}
     }
   }
 }
@@ -599,11 +622,11 @@ local soloCustomList = {
 ---- Functions ----
 -------------------
 function Speedrun:GenerateDefaults()
-  Speedrun.Default_Account.scores               = Speedrun.GetDefaultScores()
-  Speedrun.Default_Character.arenaList          = Speedrun.GetDefaultArenaList()
-  Speedrun.Default_Character.customTimerSteps   = Speedrun.GetDefaultArenaCustomSteps()
-  defaultProfile.raidList                       = Speedrun.GetDefaultRaidList()
-  defaultProfile.customTimerSteps               = Speedrun.GetDefaultCustomTimerSteps()
+  Speedrun.Default_Account.scores             = Speedrun.GetDefaultScores()
+  Speedrun.Default_Character.arenaList        = Speedrun.GetDefaultArenaList()
+  Speedrun.Default_Character.customTimerSteps = Speedrun.GetDefaultArenaCustomSteps()
+  defaultProfile.raidList                     = Speedrun.GetDefaultRaidList()
+  defaultProfile.customTimerSteps             = Speedrun.GetDefaultCustomTimerSteps()
 end
 
 function Speedrun.LoadVariables()
@@ -647,51 +670,56 @@ function Speedrun.LoadVariables()
   Speedrun.trialState       = sV.trialState
   Speedrun.addsOnCR         = sV.profiles[Speedrun.activeProfile].addsOnCR
   Speedrun.hmOnSS           = sV.profiles[Speedrun.activeProfile].hmOnSS
+  Speedrun.hmOnDSR          = sV.profiles[Speedrun.activeProfile].hmOnDSR
 end
+
 --------------------
 ---- Player Data ---
 --------------------
 function Speedrun.LoadRaidlist(profile)
-  Speedrun.raidList[635] 	= sV.profiles[profile].raidList[635]
-  Speedrun.raidList[636] 	= sV.profiles[profile].raidList[636]
-  Speedrun.raidList[638] 	= sV.profiles[profile].raidList[638]
-  Speedrun.raidList[639] 	= sV.profiles[profile].raidList[639]
-  Speedrun.raidList[725] 	= sV.profiles[profile].raidList[725]
-  Speedrun.raidList[975] 	= sV.profiles[profile].raidList[975]
-  Speedrun.raidList[1000]	= sV.profiles[profile].raidList[1000]
-  Speedrun.raidList[1051]	= sV.profiles[profile].raidList[1051]
-  Speedrun.raidList[1082]	= sV.profiles[profile].raidList[1082]
-  Speedrun.raidList[1121]	= sV.profiles[profile].raidList[1121]
-  Speedrun.raidList[1196]	= sV.profiles[profile].raidList[1196]
-  Speedrun.raidList[1263]	= sV.profiles[profile].raidList[1263]
+  Speedrun.raidList[635]  = sV.profiles[profile].raidList[635]
+  Speedrun.raidList[636]  = sV.profiles[profile].raidList[636]
+  Speedrun.raidList[638]  = sV.profiles[profile].raidList[638]
+  Speedrun.raidList[639]  = sV.profiles[profile].raidList[639]
+  Speedrun.raidList[725]  = sV.profiles[profile].raidList[725]
+  Speedrun.raidList[975]  = sV.profiles[profile].raidList[975]
+  Speedrun.raidList[1000] = sV.profiles[profile].raidList[1000]
+  Speedrun.raidList[1051] = sV.profiles[profile].raidList[1051]
+  Speedrun.raidList[1082] = sV.profiles[profile].raidList[1082]
+  Speedrun.raidList[1121] = sV.profiles[profile].raidList[1121]
+  Speedrun.raidList[1196] = sV.profiles[profile].raidList[1196]
+  Speedrun.raidList[1263] = sV.profiles[profile].raidList[1263]
+  Speedrun.raidList[1344] = sV.profiles[profile].raidList[1344]
+
   if cV.individualArenaTimers then
-    Speedrun.raidList[677] 	= cV.arenaList[677]
-    Speedrun.raidList[1227]	= cV.arenaList[1227]
+    Speedrun.raidList[677]  = cV.arenaList[677]
+    Speedrun.raidList[1227] = cV.arenaList[1227]
   else
-    Speedrun.raidList[677] 	= sV.profiles[profile].raidList[677]
-    Speedrun.raidList[1227]	= sV.profiles[profile].raidList[1227]
+    Speedrun.raidList[677]  = sV.profiles[profile].raidList[677]
+    Speedrun.raidList[1227] = sV.profiles[profile].raidList[1227]
   end
 end
 
 function Speedrun.LoadCustomTimers(profile)
-  Speedrun.customTimerSteps[635] 	= sV.profiles[profile].customTimerSteps[635]
-  Speedrun.customTimerSteps[636] 	= sV.profiles[profile].customTimerSteps[636]
-  Speedrun.customTimerSteps[638] 	= sV.profiles[profile].customTimerSteps[638]
-  Speedrun.customTimerSteps[639] 	= sV.profiles[profile].customTimerSteps[639]
-  Speedrun.customTimerSteps[725] 	= sV.profiles[profile].customTimerSteps[725]
-  Speedrun.customTimerSteps[975] 	= sV.profiles[profile].customTimerSteps[975]
-  Speedrun.customTimerSteps[1000]	= sV.profiles[profile].customTimerSteps[1000]
-  Speedrun.customTimerSteps[1051]	= sV.profiles[profile].customTimerSteps[1051]
-  Speedrun.customTimerSteps[1082]	= sV.profiles[profile].customTimerSteps[1082]
-  Speedrun.customTimerSteps[1121]	= sV.profiles[profile].customTimerSteps[1121]
-  Speedrun.customTimerSteps[1196]	= sV.profiles[profile].customTimerSteps[1196]
-  Speedrun.customTimerSteps[1263]	= sV.profiles[profile].customTimerSteps[1263]
+  Speedrun.customTimerSteps[635]  = sV.profiles[profile].customTimerSteps[635]
+  Speedrun.customTimerSteps[636]  = sV.profiles[profile].customTimerSteps[636]
+  Speedrun.customTimerSteps[638]  = sV.profiles[profile].customTimerSteps[638]
+  Speedrun.customTimerSteps[639]  = sV.profiles[profile].customTimerSteps[639]
+  Speedrun.customTimerSteps[725]  = sV.profiles[profile].customTimerSteps[725]
+  Speedrun.customTimerSteps[975]  = sV.profiles[profile].customTimerSteps[975]
+  Speedrun.customTimerSteps[1000] = sV.profiles[profile].customTimerSteps[1000]
+  Speedrun.customTimerSteps[1051] = sV.profiles[profile].customTimerSteps[1051]
+  Speedrun.customTimerSteps[1082] = sV.profiles[profile].customTimerSteps[1082]
+  Speedrun.customTimerSteps[1121] = sV.profiles[profile].customTimerSteps[1121]
+  Speedrun.customTimerSteps[1196] = sV.profiles[profile].customTimerSteps[1196]
+  Speedrun.customTimerSteps[1263] = sV.profiles[profile].customTimerSteps[1263]
+  Speedrun.customTimerSteps[1344] = sV.profiles[profile].customTimerSteps[1344]
   if cV.individualArenaTimers then
-    Speedrun.customTimerSteps[677] 	= cV.customTimerSteps[677]
-    Speedrun.customTimerSteps[1227]	= cV.customTimerSteps[1227]
+    Speedrun.customTimerSteps[677]  = cV.customTimerSteps[677]
+    Speedrun.customTimerSteps[1227] = cV.customTimerSteps[1227]
   else
-    Speedrun.customTimerSteps[677] 	= sV.profiles[profile].customTimerSteps[677]
-    Speedrun.customTimerSteps[1227]	= sV.profiles[profile].customTimerSteps[1227]
+    Speedrun.customTimerSteps[677]  = sV.profiles[profile].customTimerSteps[677]
+    Speedrun.customTimerSteps[1227] = sV.profiles[profile].customTimerSteps[1227]
   end
 end
 
@@ -717,7 +745,8 @@ function Speedrun.SaveCustomStep(raid, step, timer)
     end
 
   else
-    Speedrun:dbg(0, "Error in saving custom timer for: <<1>> <<2>> step <<3>>", Speedrun.GetActiveProfileDisplay(), GetZoneNameById(raid), step)
+    Speedrun:dbg(0, "Error in saving custom timer for: <<1>> <<2>> step <<3>>", Speedrun.GetActiveProfileDisplay(),
+      GetZoneNameById(raid), step)
   end
 end
 
@@ -761,18 +790,20 @@ function Speedrun.GetCustomTimerStepsTrial(raid, profile)
 
   return steps
 end
+
 --------------------
 --- Default Data ---
 --------------------
 function Speedrun.GetDefaultProfile()
-  local profile = {
-    raidList          = {},
-    customTimerSteps  = {},
-    addsOnCR          = true,
-    hmOnSS            = 4,
+  local profile            = {
+    raidList         = {},
+    customTimerSteps = {},
+    addsOnCR         = true,
+    hmOnSS           = 4,
+    hmOnDSR          = 4,
   }
-  profile.raidList          = Speedrun.GetDefaultRaidList()
-  profile.customTimerSteps  = Speedrun.GetDefaultCustomTimerSteps()
+  profile.raidList         = Speedrun.GetDefaultRaidList()
+  profile.customTimerSteps = Speedrun.GetDefaultCustomTimerSteps()
   return profile
 end
 
@@ -826,7 +857,8 @@ end
 
 function Speedrun.GetDefaultTrial(id)
   if not defaultRaidList[id] then
-    Speedrun:dbg(0, "Failed to add individual timers for:\nProfile <<1>>\nArena [<<2>>]\nCharacter [<<3>>]", Speedrun.GetActiveProfileDisplay(), GetZoneNameById(id), GetUnitName("player"))
+    Speedrun:dbg(0, "Failed to add individual timers for:\nProfile <<1>>\nArena [<<2>>]\nCharacter [<<3>>]",
+      Speedrun.GetActiveProfileDisplay(), GetZoneNameById(id), GetUnitName("player"))
     return
   end
 
@@ -851,10 +883,10 @@ function Speedrun.TrialCheck(id)
       if cV.individualArenaTimers then
         Speedrun.raidList[id] = cV.arenaList[id]
       else
-        Speedrun.raidList[id]	= sV.profiles[Speedrun.activeProfile].raidList[id]
+        Speedrun.raidList[id] = sV.profiles[Speedrun.activeProfile].raidList[id]
       end
     else
-      Speedrun.raidList[id]	= sV.profiles[Speedrun.activeProfile].raidList[id]
+      Speedrun.raidList[id] = sV.profiles[Speedrun.activeProfile].raidList[id]
     end
   end
 
@@ -882,21 +914,24 @@ function Speedrun.ImportVariables()
 
   if profile == "Default" then
     if (sV.profileVersion < 1 and sV.raidList == nil and sV.customTimerSteps == nil) then
-      sV.profiles[Speedrun.profileToImportTo] = Speedrun.GetDefaultProfile() return
+      sV.profiles[Speedrun.profileToImportTo] = Speedrun.GetDefaultProfile()
+      return
     end
   else
     if (sV.raidList == nil and sV.customTimerSteps == nil) then
-      Speedrun:dbg(0, "No data from old list found! Import aborted.") return
+      Speedrun:dbg(0, "No data from old list found! Import aborted.")
+      return
     end
   end
 
-  local savedData             = Speedrun.GetDefaultProfile()
-  local raidListData          = sV.raidList ~= nil and true or false
-  local customTimerStepsData  = sV.customTimerSteps ~= nil and true or false
-  local addsOnCRData          = sV.addsOnCR ~= nil and true or false
-  local hmOnSSData            = sV.hmOnSS ~= nil and true or false
+  local savedData            = Speedrun.GetDefaultProfile()
+  local raidListData         = sV.raidList ~= nil and true or false
+  local customTimerStepsData = sV.customTimerSteps ~= nil and true or false
+  local addsOnCRData         = sV.addsOnCR ~= nil and true or false
+  local hmOnSSData           = sV.hmOnSS ~= nil and true or false
+  local hmOnDSRData          = sV.hmOnDSR ~= nil and true or false
 
-  local MA =  677 .. GetUnitName("player")
+  local MA = 677 .. GetUnitName("player")
   local VH = 1227 .. GetUnitName("player")
 
   if raidListData == true then
@@ -941,38 +976,41 @@ function Speedrun.ImportVariables()
   end
 
   if addsOnCRData == true then savedData.addsOnCR = sV.addsOnCR end
-  if hmOnSSData   == true then savedData.hmOnSS   = sV.hmOnSS end
+  if hmOnSSData == true then savedData.hmOnSS = sV.hmOnSS end
+  if hmOnDSRData == true then savedData.hmOnDSR = sV.hmOnDSR end
 
-  sV.profiles[Speedrun.profileToImportTo].raidList          = savedData.raidList
-  sV.profiles[Speedrun.profileToImportTo].customTimerSteps  = savedData.customTimerSteps
-  sV.profiles[Speedrun.profileToImportTo].addsOnCR          = savedData.addsOnCR
-  sV.profiles[Speedrun.profileToImportTo].hmOnSS            = savedData.hmOnSS
+  sV.profiles[Speedrun.profileToImportTo].raidList         = savedData.raidList
+  sV.profiles[Speedrun.profileToImportTo].customTimerSteps = savedData.customTimerSteps
+  sV.profiles[Speedrun.profileToImportTo].addsOnCR         = savedData.addsOnCR
+  sV.profiles[Speedrun.profileToImportTo].hmOnSS           = savedData.hmOnSS
+  sV.profiles[Speedrun.profileToImportTo].hmOnDSR          = savedData.hmOnDSR
 
-  sV.customTimerSteps         = nil
-  sV.addsOnCR                 = nil
-  sV.hmOnSS                   = nil
-  sV.debugMode                = nil
-  sV.isTracking               = nil
-  Speedrun.profileToImportTo  = ""
-  sV.profileVersion           = 1
+  sV.customTimerSteps        = nil
+  sV.addsOnCR                = nil
+  sV.hmOnSS                  = nil
+  sV.hmOnDSR                 = nil
+  sV.debugMode               = nil
+  sV.isTracking              = nil
+  Speedrun.profileToImportTo = ""
+  sV.profileVersion          = 1
 end
 
 local function CheckCharacterVars(key)
   local vars = {
-    ["version"] 							= key["version"],
-    ["charVersion"] 					= key["charVersion"],
-    ["debugMode"] 						= key["debugMode"],
-    ["groupHidden"] 					= key["groupHidden"],
+    ["version"]               = key["version"],
+    ["charVersion"]           = key["charVersion"],
+    ["debugMode"]             = key["debugMode"],
+    ["groupHidden"]           = key["groupHidden"],
     -- ["hgTrialOnly"]           = key["hgTrialOnly"],
     -- ["interactBlockAny"]			= key["interactBlockAny"],
     -- ["interactBlockTrial"]		= key["interactBlockTrial"],
     -- ["interactBlockPvP"]			= key["interactBlockPvP"],
-    ["activeProfile"] 				= key["activeProfile"],
-    ["isTracking"] 						= key["isTracking"],
-    ["arenaList"] 						= key["arenaList"],
-    ["customTimerSteps"] 			= key["customTimerSteps"],
+    ["activeProfile"]         = key["activeProfile"],
+    ["isTracking"]            = key["isTracking"],
+    ["arenaList"]             = key["arenaList"],
+    ["customTimerSteps"]      = key["customTimerSteps"],
     ["individualArenaTimers"] = key["individualArenaTimers"],
-    ["$LastCharacterName"] 		= key["$LastCharacterName"],
+    ["$LastCharacterName"]    = key["$LastCharacterName"],
   }
   for k, v in pairs(key) do
     if key[k] then
@@ -1111,41 +1149,25 @@ function Speedrun.UpdateSettings(sv, cv)
         if profile.customTimerSteps[VH] then profile.customTimerSteps[VH] = nil end
       end
     end
-    cV.arenaList[677].timerSteps 	= soloList.MA
+    cV.arenaList[677].timerSteps  = soloList.MA
     cV.arenaList[1227].timerSteps = soloList.VH
-    cV.customTimerSteps[677] 			= soloCustomList.MA
-    cV.customTimerSteps[1227] 		= soloCustomList.VH
-    cV.charVersion 								= 1
-    sV.profileVersion 						= 3
+    cV.customTimerSteps[677]      = soloCustomList.MA
+    cV.customTimerSteps[1227]     = soloCustomList.VH
+    cV.charVersion                = 1
+    sV.profileVersion             = 3
     Speedrun.RefreshCharacterVariables()
   end
 
   if sV.speedrun_container_offsetX then
-    if ((sV.speedrun_panel_offsetX == Speedrun.Default_Account.speedrun_panel_offsetX) and (sV.speedrun_panel_offsetY == Speedrun.Default_Account.speedrun_panel_offsetY)) then
-      if ((sV.speedrun_container_offsetX ~= Speedrun.Default_Account.speedrun_container_offsetX) and (sV.speedrun_container_offsetY ~= Speedrun.Default_Account.speedrun_container_offsetY)) then
+    if (
+        (sV.speedrun_panel_offsetX == Speedrun.Default_Account.speedrun_panel_offsetX) and
+            (sV.speedrun_panel_offsetY == Speedrun.Default_Account.speedrun_panel_offsetY)) then
+      if (
+          (sV.speedrun_container_offsetX ~= Speedrun.Default_Account.speedrun_container_offsetX) and
+              (sV.speedrun_container_offsetY ~= Speedrun.Default_Account.speedrun_container_offsetY)) then
         sV.speedrun_panel_offsetX = sV.speedrun_container_offsetX
         sV.speedrun_panel_offsetY = sV.speedrun_container_offsetY
       end
     end
   end
 end
-
-function Speedrun.StressTestedCheck()
-  local st = false
-
-  for i = 1, 5 do
-    local gID = GetGuildId(i)
-    if gID == 579086 then
-      st = true
-    end
-  end
-
-  if st == true then
-    if Speedrun.Default_Account.valenFinallyGotGH == nil then
-      Speedrun.Default_Account.valenFinallyGotGH = false
-    end
-    Speedrun.StressTestedConfirmed()
-  end
-  return st
-end
--- /script for i=1,5 do d("["..i.."] = "..GetGuildId(i)) end

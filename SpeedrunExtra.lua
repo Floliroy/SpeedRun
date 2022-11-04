@@ -1,64 +1,64 @@
-Speedrun                  = Speedrun or {}
-local Speedrun            = Speedrun
+Speedrun                 = Speedrun or {}
+local Speedrun           = Speedrun
 local sV
 local cV
-Speedrun.slash            = "/speed" or "/SPEED"
-Speedrun.prefix           = "|cffffffSpeed|r|cdf4242Run|r: "
-Speedrun.trialDifficulty  = 1
-Speedrun.groupIsHidden    = false
-Speedrun.npChanged        = false
-Speedrun.hbChanged        = false
-Speedrun.npHlChanged      = false
-Speedrun.hbHlChanged      = false
-Speedrun.isLocalChange    = false
-local LS                  = LoadingScreen_Base
-local EM                  = EVENT_MANAGER
-local SM                  = SCENE_MANAGER
+Speedrun.slash           = "/speed" or "/SPEED"
+Speedrun.prefix          = "|cffffffSpeed|r|cdf4242Run|r: "
+Speedrun.trialDifficulty = 1
+Speedrun.groupIsHidden   = false
+Speedrun.npChanged       = false
+Speedrun.hbChanged       = false
+Speedrun.npHlChanged     = false
+Speedrun.hbHlChanged     = false
+Speedrun.isLocalChange   = false
+local LS                 = LoadingScreen_Base
+local EM                 = EVENT_MANAGER
+local SM                 = SCENE_MANAGER
 
 --[[  Loading Screen  ]]
-local changes             = 0
-local isLoading           = false
-local hasChanged          = false
-local portStart           = 0
-local portFailed          = false
-local loadingStart        = 0
-local loadingEnd          = 0
-local deactivated         = false
-local normals             = 0
-local vets                = 0
-local lastDiffChange      = 0
+local changes        = 0
+local isLoading      = false
+local hasChanged     = false
+local portStart      = 0
+local portFailed     = false
+local loadingStart   = 0
+local loadingEnd     = 0
+local deactivated    = false
+local normals        = 0
+local vets           = 0
+local lastDiffChange = 0
 --[[  Hide Group  ]]
-local subzone             = ""
-local inPortalZone        = false
-local portalZones         = {
+local subzone        = ""
+local inPortalZone   = false
+local portalZones    = {
   -- effects related to portal enter / exit
   --         enter   inside  exit
   [1051] = { 103489, 108045, 105218 }, -- 105218 }, --{ 103489, 105218 },
-  [1121] = { 121213,         121254 },
-  [1263] = { 153423,         105218 }
+  [1121] = { 121213, 121254 },
+  [1263] = { 153423, 105218 }
 }
 
-local necromodeOn         = false
-local inPortal            = false
-local changedInPortal     = false
-local changedOutOfPortal  = false
-local portalTime          = 0
+local necromodeOn        = false
+local inPortal           = false
+local changedInPortal    = false
+local changedOutOfPortal = false
+local portalTime         = 0
 
-local isReset             = false
-local isBoss              = false
-local bChanges            = {}
-local atBoss              = false
-local inBossFight         = false
-local bossFightStart      = 0
-local bosses              = {}
-local currentBosses       = 0
-local bossesReset         = false
+local isReset        = false
+local isBoss         = false
+local bChanges       = {}
+local atBoss         = false
+local inBossFight    = false
+local bossFightStart = 0
+local bosses         = {}
+local currentBosses  = 0
+local bossesReset    = false
 
-local shouldChange        = false
-local hasChanged          = false
+local shouldChange = false
+local hasChanged   = false
 
-local hasEffect           = false
-local died                = false
+local hasEffect = false
+local died      = false
 -------------------------
 ---- Functions    -------
 -------------------------
@@ -105,9 +105,10 @@ function Speedrun.SlashCommand(string)
     cV.debugMode = 3
 
   elseif command == "time" then
-    d(Speedrun.prefix .. "Game time - start = <<1>>. Duration = <<2>>.", GetGameTimeSeconds() - Speedrun.timeStarted, GetRaidDuration() / 1000)
+    d(Speedrun.prefix .. "Game time - start = <<1>>. Duration = <<2>>.", GetGameTimeSeconds() - Speedrun.timeStarted,
+      GetRaidDuration() / 1000)
 
-  -- UI Options -------------------------------------------------------------
+    -- UI Options -------------------------------------------------------------
   elseif command == "move" or command == "lock" then
     Speedrun.ToggleUILocked()
 
@@ -124,14 +125,14 @@ function Speedrun.SlashCommand(string)
   elseif command == "hg" or command == "hidegroup" then
     Speedrun.HideGroupToggle()
 
-  -- Adds -------------------------------------------------------------------
+    -- Adds -------------------------------------------------------------------
   elseif command == "score" then
     Speedrun.PrintScoreReasons()
 
   elseif command == "lastscore" then
     Speedrun.PrintLastScoreReasons()
 
-  -- Travel -----------------------------------------------------------------
+    -- Travel -----------------------------------------------------------------
   elseif command == "home" then
     RequestJumpToHouse(GetHousingPrimaryHouse(), false)
 
@@ -141,9 +142,10 @@ function Speedrun.SlashCommand(string)
   elseif (command == "bisse" and GetDisplayName() == "@Mille_W") then
     JumpToSpecificHouse("@nogetrandom", 70)
 
-  -- Default ----------------------------------------------------------------
+    -- Default ----------------------------------------------------------------
   else
-    d(Speedrun.prefix .. " Command not recognized!\n[ |cffffff/speed|r (|cffffffcommand|r) ] options are:\n[ |cffffffshow|r or |cffffffhide|r ]: To toggle UI.\n[ |cffffffmove|r or |cfffffflock|r ]: Both will toggle the UI's current lock state.\n[ |cfffffftrack (|cffffff0|r - |cffffff3|r) ]: Chat notification.\n(|cffffff0|r): Only settings change confirmations.\n(|cffffff1|r): Trial checkpoint updates.\n(|cffffff2|r): Checkpoint and internal function updates.\n(|cffffff3|r): Everything the addon is set to register (|cff0000Spam Warning|r).\n[ |cffffffhg|r ] or [ |cffffffhidegroup|r ]: Toggle function on/off.\n[ |cffffffscore|r ]: List current trial score variables in chat.\n[ |cfffffflastscore|r ]: List previous trial score variables in chat (only stores 1 trial, and only if completed).")
+    d(Speedrun.prefix ..
+      " Command not recognized!\n[ |cffffff/speed|r (|cffffffcommand|r) ] options are:\n[ |cffffffshow|r or |cffffffhide|r ]: To toggle UI.\n[ |cffffffmove|r or |cfffffflock|r ]: Both will toggle the UI's current lock state.\n[ |cfffffftrack (|cffffff0|r - |cffffff3|r) ]: Chat notification.\n(|cffffff0|r): Only settings change confirmations.\n(|cffffff1|r): Trial checkpoint updates.\n(|cffffff2|r): Checkpoint and internal function updates.\n(|cffffff3|r): Everything the addon is set to register (|cff0000Spam Warning|r).\n[ |cffffffhg|r ] or [ |cffffffhidegroup|r ]: Toggle function on/off.\n[ |cffffffscore|r ]: List current trial score variables in chat.\n[ |cfffffflastscore|r ]: List previous trial score variables in chat (only stores 1 trial, and only if completed).")
   end
 end
 
@@ -164,20 +166,27 @@ function Speedrun.LoadUtils()
   Speedrun.RegisterDifficultyChange()
 
   -- if GetDisplayName() == "@nogetrandom" then
-    -- EM:RegisterForEvent(Speedrun.name .. "Subzone",  EVENT_CURRENT_SUBZONE_LIST_CHANGED, OnSubzoneChanged)
+  -- EM:RegisterForEvent(Speedrun.name .. "Subzone",  EVENT_CURRENT_SUBZONE_LIST_CHANGED, OnSubzoneChanged)
   -- end
 end
 
-function Speedrun:dbg( debugLevel, ... )
+function Speedrun:dbg(debugLevel, ...)
   if debugLevel <= Speedrun.savedSettings.debugMode then
-    local message = zo_strformat( ...)
-    d( Speedrun.prefix .. message )
+    local message = zo_strformat(...)
+    d(Speedrun.prefix .. message)
   end
 end
 
-function Speedrun:post( ... )
-  local message = zo_strformat( ... )
-  d( message )
+function Speedrun.DiscontinuedAnnouncements(setting, message)
+  if not setting then return end
+  Speedrun:dbg(0,
+    "|cffffff<<1>>|r Feature will be discontinued in the next update for more information check in the Speedrun settings."
+    , d)
+end
+
+function Speedrun:post(...)
+  local message = zo_strformat(...)
+  d(message)
 end
 
 local lastUpdate = ""
@@ -234,7 +243,7 @@ function Speedrun.RegisterDifficultyChange()
 
     local diff = isDifficult and 2 or 1
     -- if diff ~= Speedrun.trialDifficulty then
-      Speedrun.UpdateDifficulty(diff)
+    Speedrun.UpdateDifficulty(diff)
     -- end
 
     -- Speedrun:dbg(2, "Changed by |cffffff<<1>>|r(|cffffff<<3>>|r) to |cffffff<<2>>|r.", GetUnitDisplayName(unitTag), isDifficult and "Veteran" or "Normal", unitTag)
@@ -262,12 +271,12 @@ function Speedrun.RegisterDifficultyChange()
 
   EM:RegisterForEvent(Speedrun.name .. "Deactivated", EVENT_PLAYER_DEACTIVATED, OnDeactivated)
 
-  EM:RegisterForEvent( Speedrun.name .. "IsVet1",      EVENT_VETERAN_DIFFICULTY_CHANGED, OnVeteranDifficultyChanged)
-  EM:RegisterForEvent( Speedrun.name .. "IsVet2",      EVENT_GROUP_VETERAN_DIFFICULTY_CHANGED, OnGroupVeteranDifficultyChanged)
-  EM:RegisterForEvent( Speedrun.name .. "JoinedGroup", EVENT_GROUP_MEMBER_JOINED, OnGroupJoined)
+  EM:RegisterForEvent(Speedrun.name .. "IsVet1", EVENT_VETERAN_DIFFICULTY_CHANGED, OnVeteranDifficultyChanged)
+  EM:RegisterForEvent(Speedrun.name .. "IsVet2", EVENT_GROUP_VETERAN_DIFFICULTY_CHANGED, OnGroupVeteranDifficultyChanged)
+  EM:RegisterForEvent(Speedrun.name .. "JoinedGroup", EVENT_GROUP_MEMBER_JOINED, OnGroupJoined)
   EM:AddFilterForEvent(Speedrun.name .. "JoinedGroup", EVENT_GROUP_MEMBER_JOINED, REGISTER_FILTER_UNIT_TAG, "player")
-  EM:RegisterForEvent( Speedrun.name .. "LeftGroup",   EVENT_GROUP_MEMBER_LEFT, OnGroupLeft)
-  EM:AddFilterForEvent(Speedrun.name .. "LeftGroup",   EVENT_GROUP_MEMBER_LEFT, REGISTER_FILTER_UNIT_TAG, "player")
+  EM:RegisterForEvent(Speedrun.name .. "LeftGroup", EVENT_GROUP_MEMBER_LEFT, OnGroupLeft)
+  EM:AddFilterForEvent(Speedrun.name .. "LeftGroup", EVENT_GROUP_MEMBER_LEFT, REGISTER_FILTER_UNIT_TAG, "player")
 end
 
 -- SetVeteranDifficulty(boolean isVeteranDifficulty)
@@ -279,7 +288,7 @@ local function ShouldHideGroup()
   return true
 end
 
-function Speedrun.IsActivated( _, initial )
+function Speedrun.IsActivated(_, initial)
 
   if initial then
     zo_callLater(function()
@@ -288,8 +297,8 @@ function Speedrun.IsActivated( _, initial )
   end
 
   Speedrun.ChaosIsABellend()
-  Speedrun.groupIsHidden  = false
-  shouldChange            = true
+  Speedrun.groupIsHidden = false
+  shouldChange           = true
   Speedrun.ConfigureHideGroup()
 
   zo_callLater(function()
@@ -301,13 +310,14 @@ function Speedrun.IsActivated( _, initial )
     -- Speedrun:dbg(2, "Was Deactivated")
 
     loadingEnd = GetGameTimeMilliseconds()
-    local time = string.format("%.2f",(loadingEnd - loadingStart) / 1000)
+    local time = string.format("%.2f", (loadingEnd - loadingStart) / 1000)
     Speedrun:dbg(2, "Load Time: <<1>> sec.", time)
     if changes == 0 then
       Speedrun:dbg(2, "No changes.")
     else
       if sV.printDiffChange == true then
-        Speedrun:dbg(0, "Instances have been reset. Difficulty is currently set to: |cffffff<<1>>|r.", Speedrun.GetDifficulty(true))
+        Speedrun:dbg(0, "Instances have been reset. Difficulty is currently set to: |cffffff<<1>>|r.",
+          Speedrun.GetDifficulty(true))
       end
       Speedrun:dbg(2, "Normal = <<1>>. Vet = <<2>>", normals, vets)
     end
@@ -505,7 +515,7 @@ end
 --   --   end
 -- end
 
-local function RefreshHideGroupForNecroMode( delay )
+local function RefreshHideGroupForNecroMode(delay)
   SetCrownCrateNPCVisible(true)
   Speedrun.groupIsHidden = true
 
@@ -515,7 +525,9 @@ local function RefreshHideGroupForNecroMode( delay )
   end, delay)
 end
 
-local function OnNecroEffectChanged( eventCode, change, effectSlot, effectName, unitTag, beginTime, endTime, stackCount, iconName, buffType, effectType, abilityType, statusEffectType, unitName, unitId, abilityId, sourceType )
+local function OnNecroEffectChanged(eventCode, change, effectSlot, effectName, unitTag, beginTime, endTime, stackCount,
+                                    iconName, buffType, effectType, abilityType, statusEffectType, unitName, unitId,
+                                    abilityId, sourceType)
   if abilityId == 105218 or abilityId == 103489 then
     if change ~= EFFECT_RESULT_FADED then
       Speedrun:dbg(2, "[<<1>>] change = <<2>> at: <<3>>.", effectName, tostring(change), GetGameTimeSeconds())
@@ -529,19 +541,19 @@ local function OnNecroEffectChanged( eventCode, change, effectSlot, effectName, 
     if not hasEffect then
       hasEffect = true
       Speedrun:dbg(2, "[<<1>>] Gained at: <<2>>. Hiding Group", effectName, GetGameTimeSeconds())
-      RefreshHideGroupForNecroMode( 1500 )
+      RefreshHideGroupForNecroMode(1500)
     end
 
   elseif change == EFFECT_RESULT_FADED then
     if hasEffect then
       hasEffect = false
       Speedrun:dbg(2, "[<<1>>] Faded at: <<2>>.", effectName, GetGameTimeSeconds())
-      RefreshHideGroupForNecroMode( 1500 )
+      RefreshHideGroupForNecroMode(1500)
     end
   end
 end
 
-local function OnPortalDeath( eventCode, unitTag, isDead )
+local function OnPortalDeath(eventCode, unitTag, isDead)
   if not AreUnitsEqual("player", unitTag) or not hasEffect then return end
 
   local dead = IsUnitDead("player")
@@ -549,19 +561,19 @@ local function OnPortalDeath( eventCode, unitTag, isDead )
   if dead then
     died = true
     Speedrun:dbg(2, "[<<1>>] at: <<2>>.", dead and "Dead" or "Alive", GetGameTimeSeconds())
-    RefreshHideGroupForNecroMode( 5000 )
+    RefreshHideGroupForNecroMode(5000)
 
   elseif died and not dead then
     died = false
     Speedrun:dbg(2, "[<<1>>] at: <<2>>.", dead and "Dead" or "Alive", GetGameTimeSeconds())
-    RefreshHideGroupForNecroMode( 5000 )
+    RefreshHideGroupForNecroMode(5000)
   end
 end
 
 -- debug function for finding solution to trial portals
 -- EVENT_PLAYER_COMBAT_STATE seemed to be the better option for non-portal situations.
 -- will keep testing for finding better triggers
-local function NecroBossChanged( eventCode, forceReset )
+local function NecroBossChanged(eventCode, forceReset)
   if cV.debugMode < 2 then return end
 
   local exist = DoesUnitExist("boss1")
@@ -570,7 +582,8 @@ local function NecroBossChanged( eventCode, forceReset )
     local r = forceReset
     if isReset ~= r then
       isReset = r
-      Speedrun:dbg(2, "Necro Mode Boss Changed: <<1>>, <<2>>", DoesUnitExist("boss1") and "true" or "false", r and "true" or "false")
+      Speedrun:dbg(2, "Necro Mode Boss Changed: <<1>>, <<2>>", DoesUnitExist("boss1") and "true" or "false",
+        r and "true" or "false")
     end
   end
 
@@ -585,7 +598,7 @@ local function NecroBossChanged( eventCode, forceReset )
   end
 end
 
-local function ToggleInPortal( time )
+local function ToggleInPortal(time)
   SetCrownCrateNPCVisible(true)
   Speedrun.groupIsHidden = true
   portalTime             = time + 500
@@ -738,7 +751,7 @@ end
 local function RegisterNecroEvents()
   -- if hide group is enabled: turn it off when entering combat.
   -- turn it on again when needed.
-  EM:RegisterForEvent( Speedrun.name .. "NecroCombat", EVENT_PLAYER_COMBAT_STATE, function()
+  EM:RegisterForEvent(Speedrun.name .. "NecroCombat", EVENT_PLAYER_COMBAT_STATE, function()
 
     local inCombat = IsUnitInCombat("player")
 
@@ -750,25 +763,26 @@ local function RegisterNecroEvents()
     end
 
     -- for testing how to work around portals in trials
-    if currentBosses >= 1 and not inCombat then  -- can only be true in CR, SS and RG
+    if currentBosses >= 1 and not inCombat then -- can only be true in CR, SS and RG
       Speedrun:dbg(2, "Portal Trasition at: <<1>>.", GetGameTimeMilliseconds())
     end
-  end )
+  end)
 
-  local zone =  GetZoneId(GetUnitZoneIndex("player"))
+  local zone = GetZoneId(GetUnitZoneIndex("player"))
 
   -- if setting is on: hide group on death before being brought back to the group
   if zone == 1051 or zone == 1263 then
     -- CR and RG (you don't get ported out on death in SS, so ignore)
-    EM:RegisterForEvent(   Speedrun.name .. "PortalDeath", EVENT_UNIT_DEATH_STATE_CHANGED, OnPortalDeath )
-    EM:AddFilterForEvent(  Speedrun.name .. "PortalDeath", EVENT_UNIT_DEATH_STATE_CHANGED, REGISTER_FILTER_COMBAT_UNIT_TYPE, COMBAT_UNIT_TYPE_PLAYER )
+    EM:RegisterForEvent(Speedrun.name .. "PortalDeath", EVENT_UNIT_DEATH_STATE_CHANGED, OnPortalDeath)
+    EM:AddFilterForEvent(Speedrun.name .. "PortalDeath", EVENT_UNIT_DEATH_STATE_CHANGED, REGISTER_FILTER_COMBAT_UNIT_TYPE
+      , COMBAT_UNIT_TYPE_PLAYER)
   end
 
   -- very messy testing. no good answers yet
   if GetDisplayName() ~= "@nogetrandom" then return end
 
-  EM:UnregisterForEvent(  Speedrun.name .. "NecroBossChanged", EVENT_BOSSES_CHANGED )
-  EM:UnregisterForUpdate( Speedrun.name .. "NecroBossUpdate" )
+  EM:UnregisterForEvent(Speedrun.name .. "NecroBossChanged", EVENT_BOSSES_CHANGED)
+  EM:UnregisterForUpdate(Speedrun.name .. "NecroBossUpdate")
 
   for id, effect in pairs(portalZones) do
     for i = 1, #portalZones[id] do
@@ -786,7 +800,7 @@ local function RegisterNecroEvents()
         if e then
           EM:RegisterForEvent(Speedrun.name .. "NecroEffectChanged" .. e, EVENT_EFFECT_CHANGED, OnNecroEffectChanged)
           EM:AddFilterForEvent(Speedrun.name .. "NecroEffectChanged" .. e, EVENT_EFFECT_CHANGED,
-          REGISTER_FILTER_ABILITY_ID, e)
+            REGISTER_FILTER_ABILITY_ID, e)
           -- REGISTER_FILTER_UNIT_TAG_PREFIX, "player",
 
           -- EM:RegisterForEvent(  Speedrun.name .. "Portal" .. e, EVENT_COMBAT_EVENT, NecroModePortal )
@@ -800,14 +814,14 @@ local function RegisterNecroEvents()
   end
 
   if inPortalZone then
-    EM:RegisterForEvent( Speedrun.name .. "NecroBossChanged", EVENT_BOSSES_CHANGED, NecroBossChanged)
-    EM:RegisterForUpdate( Speedrun.name .. "NecroBossUpdate", 50, NecroBossUpdate )
+    EM:RegisterForEvent(Speedrun.name .. "NecroBossChanged", EVENT_BOSSES_CHANGED, NecroBossChanged)
+    EM:RegisterForUpdate(Speedrun.name .. "NecroBossUpdate", 50, NecroBossUpdate)
   end
 end
 
 function Speedrun.UpdateNecroMode()
-  EM:UnregisterForEvent( Speedrun.name .. "PortalDeath", EVENT_UNIT_DEATH_STATE_CHANGED )
-  EM:UnregisterForEvent( Speedrun.name .. "NecroCombat", EVENT_PLAYER_COMBAT_STATE )
+  EM:UnregisterForEvent(Speedrun.name .. "PortalDeath", EVENT_UNIT_DEATH_STATE_CHANGED)
+  EM:UnregisterForEvent(Speedrun.name .. "NecroCombat", EVENT_PLAYER_COMBAT_STATE)
 
   if cV.hgNecro then
     RegisterNecroEvents()
@@ -820,7 +834,7 @@ function Speedrun.UpdateNecroMode()
         for id, effect in pairs(portalZones) do
           for i = 1, #portalZones[id] do
             local e = portalZones[id][i]
-            if e then EM:UnregisterForEvent( Speedrun.name .. "Portal" .. e, EVENT_COMBAT_EVENT ) end
+            if e then EM:UnregisterForEvent(Speedrun.name .. "Portal" .. e, EVENT_COMBAT_EVENT) end
           end
         end
       end
@@ -941,7 +955,8 @@ function Speedrun.GetTrialMaxVitality(raidID)
   if raidID == 638 or raidID == 636 or raidID == 639 or raidID == 1082 or raidID == 635 then
     vitality = 24
 
-  elseif raidID == 725 or raidID == 975 or raidID == 1000 or raidID == 1051 or raidID == 1121 or raidID == 1196 or raidID == 1263 then
+  elseif raidID == 725 or raidID == 975 or raidID == 1000 or raidID == 1051 or raidID == 1121 or raidID == 1196 or
+      raidID == 1263 or raidID == 1344 then
     vitality = 36
 
   elseif raidID == 677 or raidID == 1227 then
@@ -985,7 +1000,7 @@ function Speedrun.BestPossible(raidID)
 
   local t = timer > 0 and (timer / 1000) or 0
 
-  local score = math.floor(Speedrun.GetScore(t, vitality, raidID))	--= 0
+  local score = math.floor(Speedrun.GetScore(t, vitality, raidID)) --= 0
 
   if score <= 0 then return "0" end
 
@@ -999,17 +1014,17 @@ end
 -- functions for debugging and maybe useful for new functions
 function Speedrun.SetLastTrial()
   Speedrun.ResetLastTrial()
-  sV.lastScores 		= Speedrun.scores
-  sV.lastRaidID 		= sV.raidID
-  sV.lastRaidTimer 	= Speedrun.currentRaidTimer
-  Speedrun.scores		= Speedrun.GetDefaultScores()
-  sV.scores 				= Speedrun.scores
+  sV.lastScores    = Speedrun.scores
+  sV.lastRaidID    = sV.raidID
+  sV.lastRaidTimer = Speedrun.currentRaidTimer
+  Speedrun.scores  = Speedrun.GetDefaultScores()
+  sV.scores        = Speedrun.scores
 end
 
 function Speedrun.GetLastTrial(score, id, timer)
   local t = {}
-  if score then t.score = sV.lastScores    end
-  if id    then t.id    = sV.lastRaidID    end
+  if score then t.score = sV.lastScores end
+  if id then t.id = sV.lastRaidID end
   if timer then t.timer = sV.lastRaidTimer end
   return t
 end
@@ -1027,7 +1042,8 @@ function Speedrun.PrintLastScoreReasons()
     local lastScore = sV.lastScores[k]
     if lastScore.id ~= RAID_POINT_REASON_LIFE_REMAINING then
       if lastScore.times > 0 then
-        Speedrun:post('|cdf4242' .. lastScore.name .. '|r' .. ' x ' .. lastScore.times .. ' = ' .. lastScore.total .. ' points.')
+        Speedrun:post('|cdf4242' ..
+          lastScore.name .. '|r' .. ' x ' .. lastScore.times .. ' = ' .. lastScore.total .. ' points.')
       end
     else
       zo_callLater(function()
@@ -1079,16 +1095,17 @@ local function GetActiveFoodBuff(abilityId)
   end
   if DoesAbilityExist(abilityId) then
     if GetAbilityTargetDescription(abilityId) ~= GetString(SI_TARGETTYPE2)
-    or GetAbilityEffectDescription(abilityId) ~= ""
-    or GetAbilityRadius(abilityId) > 0
-    or GetAbilityAngleDistance(abilityId) > 0
-    or GetAbilityDuration(abilityId) < 600000 then
+        or GetAbilityEffectDescription(abilityId) ~= ""
+        or GetAbilityRadius(abilityId) > 0
+        or GetAbilityAngleDistance(abilityId) > 0
+        or GetAbilityDuration(abilityId) < 600000 then
       return false
     end
     local cost, mechanic = GetAbilityCost(abilityId)
     local channeled, castTime = GetAbilityCastInfo(abilityId)
     local minRangeCM, maxRangeCM = GetAbilityRange(abilityId)
-    if cost > 0 or mechanic > 0 or channeled or castTime > 0 or minRangeCM > 0 or maxRangeCM > 0 or GetAbilityDescription(abilityId) == "" then
+    if cost > 0 or mechanic > 0 or channeled or castTime > 0 or minRangeCM > 0 or maxRangeCM > 0 or
+        GetAbilityDescription(abilityId) == "" then
       return false
     end
     return true
@@ -1141,7 +1158,7 @@ local function CheckFoodBuffs()
         --   end
         -- end
 
-        local formatedTime       = ZO_FormatTime(bufffood_remaining, TIME_FORMAT_STYLE_COLONS, TIME_FORMAT_PRECISION_SECONDS)
+        local formatedTime = ZO_FormatTime(bufffood_remaining, TIME_FORMAT_STYLE_COLONS, TIME_FORMAT_PRECISION_SECONDS)
 
         if bufffood_remaining <= 600 then
           l:SetText(zo_strformat("Your |cffff99<<1>>|r food expires in |cbd0000<<2>>|r minutes!", name, formatedTime))
