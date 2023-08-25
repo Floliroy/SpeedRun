@@ -116,6 +116,28 @@ Speedrun.Data = {
 								scoreReasons = {},
 						},
 		    },
+				[1344] = {
+		        name = "DSR",
+		        id = 1344,
+						timerSteps = {},
+						scoreFactors = {
+								vitality = 0,
+								bestTime = nil,
+								bestScore = 0,
+								scoreReasons = {},
+						},
+		    },
+			[1427] = {
+		        name = "SE",
+		        id = 1427,
+						timerSteps = {},
+						scoreFactors = {
+								vitality = 0,
+								bestTime = nil,
+								bestScore = 0,
+								scoreReasons = {},
+						},
+		    },
 		    [1082] = {
 		        name = "BRP",
 		        id = 1082,
@@ -259,7 +281,27 @@ Speedrun.Data = {
 		        [5] = "",
 		        [6] = ""
 		    },
-				[1263] = { --RG
+			[1263] = { --RG
+		        [1] = "",
+		        [2] = "",
+		        [3] = "",
+		        [4] = "",
+		        [5] = "",
+		        [6] = ""
+		    },
+			[1344] = { --DSR
+		        [1] = "",
+		        [2] = "",
+		        [3] = "",
+		        [4] = "",
+		        [5] = "",
+		        [6] = "",
+		        [7] = "",
+		        [8] = "",
+		        [9] = "",
+		        [10] = ""
+		    },
+			[1427] = { --SE
 		        [1] = "",
 		        [2] = "",
 		        [3] = "",
@@ -436,13 +478,34 @@ Speedrun.Data = {
 		        [6] = zo_strformat(SI_SPEEDRUN_KA_KILL_FALGRAVN),
 		        -- [7] = "",
 		    },
-				[1263] = { --KA
+			[1263] = { --RG
 		        [1] = "Oaxiltso",
 		        [2] = "Oaxiltso |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 		        [3] = "Flame-Herald Bahsei",
 		        [4] = "Flame-Herald Bahsei |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 		        [5] = "Xalvakka",
 		        [6] = "Xalvakka |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+		    },
+			[1344] = { --DSR
+		        [1] = zo_strformat(SI_SPEEDRUN_DSR_BEGIN_TWINS),
+		        [2] = zo_strformat(SI_SPEEDRUN_DSR_FINISH_TWINS),
+		        [3] = zo_strformat(SI_SPEEDRUN_DSR_BEGIN_MINI1),
+		        [4] = zo_strformat(SI_SPEEDRUN_DSR_FINISH_MINI1),
+		        [5] = zo_strformat(SI_SPEEDRUN_DSR_BEGIN_MINI2),
+		        [6] = zo_strformat(SI_SPEEDRUN_DSR_FINISH_MINI2),
+		        [7] = zo_strformat(SI_SPEEDRUN_DSR_BEGIN_GUARDIAN),
+		        [8] = zo_strformat(SI_SPEEDRUN_DSR_FINISH_GUARDIAN),
+		        [9] = zo_strformat(SI_SPEEDRUN_DSR_BEGIN_TALERIA),
+		        [10] = zo_strformat(SI_SPEEDRUN_DSR_FINISH_TALERIA),
+			},
+			[1427] = { --SE
+		        [1] = zo_strformat(SI_SPEEDRUN_SE_BEGIN_EXARCH),
+		        [2] = zo_strformat(SI_SPEEDRUN_SE_FINISH_EXARCH),
+		        [3] = zo_strformat(SI_SPEEDRUN_SE_BEGIN_TWELVANE),
+		        [4] = zo_strformat(SI_SPEEDRUN_SE_FINISH_TWELVANE),
+		        [5] = zo_strformat(SI_SPEEDRUN_SE_BEGIN_ANSUUL),
+		        [6] = zo_strformat(SI_SPEEDRUN_SE_FINISH_ANSUUL),
+		        -- [7] = "",
 		    },
 		    [1082] = { --BRP
 		        [1] = "1.1",
@@ -640,6 +703,10 @@ Speedrun.Data = {
 
 
 						["mynar"]              = true,
+				},
+				[1427] = {
+					["gewundender herablasser"]	= true,
+					["Spiral Descender"] 		= true
 				},
 		},
 }

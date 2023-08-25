@@ -1,4 +1,4 @@
-﻿local strings = {
+local strings = {
 	SI_SPEEDRUN_LANG = "en",
 	----------------------
 	---- Data Tables -----
@@ -83,6 +83,26 @@
 	SI_SPEEDRUN_KA_BEGIN_FALGRAVN				= "Falgravn",
 	SI_SPEEDRUN_KA_KILL_FALGRAVN				= "Falgravn |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
 
+	--DSR
+	SI_SPEEDRUN_DSR_BEGIN_TWINS					= "Fire and Ice",
+	SI_SPEEDRUN_DSR_FINISH_TWINS				= "Fire and Ice |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_DSR_BEGIN_MINI1					= "First Mini",
+	SI_SPEEDRUN_DSR_FINISH_MINI1				= "First Mini |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_DSR_BEGIN_MINI2					= "Second Mini",
+	SI_SPEEDRUN_DSR_FINISH_MINI2				= "Second Mini |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_DSR_BEGIN_GUARDIAN				= "Reef Guardian",
+	SI_SPEEDRUN_DSR_FINISH_GUARDIAN				= "Reef Guardian |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_DSR_BEGIN_TALERIA				= "Taleria",
+	SI_SPEEDRUN_DSR_FINISH_TALERIA				= "Taleria |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+
+	--SE
+	SI_SPEEDRUN_SE_BEGIN_EXARCH					= "Yaseyla",
+	SI_SPEEDRUN_SE_FINISH_EXARCH				= "Yaseyla |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_SE_BEGIN_TWELVANE				= "Chimera",
+	SI_SPEEDRUN_SE_FINISH_TWELVANE				= "Chimera |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+	SI_SPEEDRUN_SE_BEGIN_ANSUUL					= "Ansuul",
+	SI_SPEEDRUN_SE_FINISH_ANSUUL				= "Ansuul |t20:20:esoui\\art\\icons\\poi\\poi_groupboss_incomplete.dds|t",
+
 	--ARENAS
 	SI_SPEEDRUN_ARENA_FIRST 						= "First Stage",
 	SI_SPEEDRUN_ARENA_SECOND 						= "Second Stage",
@@ -120,6 +140,8 @@
 	SI_SPEEDRUN_ADDS_CR_DESC 						= "Select if you're killing adds on side platforms (without killing mini bosses) before engaging Z'maja.",
 	SI_SPEEDRUN_HM_SS_NAME							= "Hard Modes",
 	SI_SPEEDRUN_HM_SS_DESC							= "Set how many of the bosses you're going to engage on Hard Mode in Sunspire.",
+	SI_SPEEDRUN_HM_DSR_NAME							= "Hard Modes",
+	SI_SPEEDRUN_HM_DSR_DESC							= "Set how many of the bosses you're going to engage on Hard Mode in Dreadsail Reef.",
 	SI_SPEEDRUN_ZERO										= "Zero",
 	SI_SPEEDRUN_ONE											= "One",
 	SI_SPEEDRUN_TWO											= "Two",

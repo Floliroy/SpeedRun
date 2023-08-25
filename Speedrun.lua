@@ -7,7 +7,7 @@ local EM = EVENT_MANAGER
 local sV
 local cV
 Speedrun.name               = "Speedrun"
-Speedrun.version            = "0.1.9.5"
+Speedrun.version            = "0.1.9.6"
 Speedrun.activeProfile      = ""
 Speedrun.raidID             = 0
 Speedrun.zone               = 0
@@ -154,6 +154,14 @@ function Speedrun.GetScore(timer, vitality, raidID)
   elseif raidID == 1227 then return (205450 + (1000 * vitality)) * (1 + (5400 - timer) / 10000)
     -- RG
   elseif raidID == 1263 then return (232200 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
+    -- DSR
+  elseif raidID == 1344 then
+    if Speedrun.hmOnDSR == 1 then return (145830 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
+    elseif Speedrun.hmOnDSR == 2 then return (185830 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
+    elseif Speedrun.hmOnDSR == 3 then return (225830 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
+    elseif Speedrun.hmOnDSR == 4 then return (265830 + (1000 * vitality)) * (1 + (2700 - timer) / 10000) end
+    -- SE false scoring
+  elseif raidID == 1427 then return (232200 + (1000 * vitality)) * (1 + (2700 - timer) / 10000)
 
   else return 0 end
 end
@@ -640,7 +648,7 @@ function Speedrun.BossFightBegin()
     if IsUnitInCombat("player") and (current < max) then
       EM:UnregisterForUpdate(Speedrun.name .. "BossFight")
       Speedrun.UpdateWaypointNew(GetRaidDuration())
-      -- Speedrun:dbg(2, "|cffffff<<1>>|r Started at: |cffffff<<2>>|r!", GetUnitName("boss" .. i), Speedrun.FormatTimerForChatUpdate(GetRaidDuration()))
+      --Speedrun:dbg(2, "|cffffff<<1>>|r Started at: |cffffff<<2>>|r!", GetUnitName("boss" .. i), Speedrun.FormatTimerForChatUpdate(GetRaidDuration())) --test
     end
   end
 end
@@ -675,7 +683,11 @@ function Speedrun.MainBoss()
         if (string.find(Speedrun.currentBossName, "snakes") or string.find(Speedrun.currentBossName, "titan")) then return end
       end
 
-      if Speedrun.currentBossName == Speedrun.lastBossName then return end
+      if Speedrun.raidID == 1427 then
+        if (string.find(Speedrun.currentBossName, "herablasser") or string.find(Speedrun.currentBossName, "descender") or string.find(Speedrun.currentBossName, "descensor") or string.find(Speedrun.currentBossName, "vice spiral")) then return end
+      end
+
+      if Speedrun.currentBossName == Speedrun.lastBossName then return end -- test for SE
 
       local currentTargetHP, maxTargetHP, effmaxTargetHP = GetUnitPower("boss" .. i, POWERTYPE_HEALTH)
 
@@ -697,7 +709,7 @@ function Speedrun.MainBoss()
 end
 
 local function BossMainZoneCheck(zone)
-  local mbZones = { [638] = true, [639] = true, [725] = true, [975] = true, [1121] = true, [1196] = true, [1263] = true }
+  local mbZones = { [638] = true, [639] = true, [725] = true, [975] = true, [1121] = true, [1196] = true, [1263] = true, [1344] = true, [1427] = true }
   if mbZones[zone] then return true end
   return false
 end
@@ -705,12 +717,21 @@ end
 Speedrun.BossDead = function(eventCode, scoreUpdateReason, scoreAmount, totalScore)
 
   local timer
+    if Speedrun.raidID == 1344 then -- track dsr minibosses
+    if scoreUpdateReason == RAID_POINT_REASON_KILL_MINIBOSS then
+      timer = (GetRaidDuration() - Speedrun.fightBegin) / 1000
+      Speedrun:dbg(2, "|cffffff<<1>>|r fight time: |cffffff<<2>>|r!", Speedrun.currentBossName, Speedrun.FormatTimerForChatUpdate(timer))
 
-  -- if scoreUpdateReason == RAID_POINT_REASON_KILL_MINIBOSS then
-  --   timer = (GetRaidDuration() - Speedrun.fightBegin) / 1000
-  --   Speedrun:dbg(2, "|cffffff<<1>>|r fight time: |cffffff<<2>>|r!", Speedrun.currentBossName, Speedrun.FormatTimerForChatUpdate(timer))
-  --   return
-  -- end
+      Speedrun.lastBossName     = Speedrun.currentBossName
+      sV.lastBossName           = Speedrun.lastBossName
+      Speedrun.currentBossName  = ""
+      sV.currentBossName        = Speedrun.currentBossName
+      Speedrun.isBossDead       = true
+      sV.isBossDead             = Speedrun.isBossDead
+      Speedrun.UpdateWaypointNew(GetRaidDuration())
+      return
+    end
+    end
 
   if scoreUpdateReason == RAID_POINT_REASON_KILL_BOSS then
 
@@ -746,7 +767,7 @@ end
 
 Speedrun.OnTrialComplete = function(eventCode, trialName, score, totalTime)
   -- for mini-trials and HRC
-  if Speedrun.raidID == 636 or Speedrun.raidID == 1000 or Speedrun.raidID == 1082 or Speedrun.raidID == 677 or Speedrun.raidID == 1227 then
+  if Speedrun.raidID == 636 or Speedrun.raidID == 1000 or Speedrun.raidID == 1082 or Speedrun.raidID == 677 or Speedrun.raidID == 1227 or Speedrun.raidID == 1427 then --test fir SE
     Speedrun.UpdateWaypointNew(totalTime)
   end
   -- for CR

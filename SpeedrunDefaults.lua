@@ -96,7 +96,8 @@ local defaultProfile = {
   raidList          = {},
   customTimerSteps  = {},
   addsOnCR          = true,
-  hmOnSS            = 4
+  hmOnSS            = 4,
+  hmOnDSR          = 4
 }
 local defaultScoreFactors = {
   vitality      = 0,
@@ -207,6 +208,28 @@ local defaultRaidList = {
   [1263]  = {
     name          = "RG",
     id            = 1263,
+    timerSteps    = {},
+    scoreFactors  = {
+      vitality      = 0,
+      bestTime      = nil,
+      bestScore     = 0,
+      scoreReasons  = {}
+    }
+  },
+  [1344]  = {
+    name          = "DSR",
+    id            = 1344,
+    timerSteps    = {},
+    scoreFactors  = {
+      vitality      = 0,
+      bestTime      = nil,
+      bestScore     = 0,
+      scoreReasons  = {}
+    }
+  },
+  [1427]  = {
+    name          = "SE",
+    id            = 1427,
     timerSteps    = {},
     scoreFactors  = {
       vitality      = 0,
@@ -342,6 +365,26 @@ local defaultCustomTimerSteps = {
     [6]  = ""
   },
   [1263]  = { --RG
+    [1]  = "",
+    [2]  = "",
+    [3]  = "",
+    [4]  = "",
+    [5]  = "",
+    [6]  = ""
+  },
+  [1344]   = { --DSR
+    [1]  = "",
+    [2]  = "",
+    [3]  = "",
+    [4]  = "",
+    [5]  = "",
+    [6]  = "",
+    [7]  = "",
+    [8]  = "",
+    [9]  = "",
+    [10] = ""
+  },
+  [1427]  = { --SE
     [1]  = "",
     [2]  = "",
     [3]  = "",
@@ -647,6 +690,8 @@ function Speedrun.LoadVariables()
   Speedrun.trialState       = sV.trialState
   Speedrun.addsOnCR         = sV.profiles[Speedrun.activeProfile].addsOnCR
   Speedrun.hmOnSS           = sV.profiles[Speedrun.activeProfile].hmOnSS
+  Speedrun.hmOnDSR          = sV.profiles[Speedrun.activeProfile].hmOnDSR
+
 end
 --------------------
 ---- Player Data ---
@@ -664,6 +709,8 @@ function Speedrun.LoadRaidlist(profile)
   Speedrun.raidList[1121]	= sV.profiles[profile].raidList[1121]
   Speedrun.raidList[1196]	= sV.profiles[profile].raidList[1196]
   Speedrun.raidList[1263]	= sV.profiles[profile].raidList[1263]
+  Speedrun.raidList[1344]	= sV.profiles[profile].raidList[1344]
+  Speedrun.raidList[1427]	= sV.profiles[profile].raidList[1427]
   if cV.individualArenaTimers then
     Speedrun.raidList[677] 	= cV.arenaList[677]
     Speedrun.raidList[1227]	= cV.arenaList[1227]
@@ -686,6 +733,8 @@ function Speedrun.LoadCustomTimers(profile)
   Speedrun.customTimerSteps[1121]	= sV.profiles[profile].customTimerSteps[1121]
   Speedrun.customTimerSteps[1196]	= sV.profiles[profile].customTimerSteps[1196]
   Speedrun.customTimerSteps[1263]	= sV.profiles[profile].customTimerSteps[1263]
+  Speedrun.customTimerSteps[1344]	= sV.profiles[profile].customTimerSteps[1344]
+  Speedrun.customTimerSteps[1427]	= sV.profiles[profile].customTimerSteps[1427]
   if cV.individualArenaTimers then
     Speedrun.customTimerSteps[677] 	= cV.customTimerSteps[677]
     Speedrun.customTimerSteps[1227]	= cV.customTimerSteps[1227]
@@ -770,6 +819,7 @@ function Speedrun.GetDefaultProfile()
     customTimerSteps  = {},
     addsOnCR          = true,
     hmOnSS            = 4,
+    hmOnDSR          = 4,
   }
   profile.raidList          = Speedrun.GetDefaultRaidList()
   profile.customTimerSteps  = Speedrun.GetDefaultCustomTimerSteps()
@@ -895,6 +945,8 @@ function Speedrun.ImportVariables()
   local customTimerStepsData  = sV.customTimerSteps ~= nil and true or false
   local addsOnCRData          = sV.addsOnCR ~= nil and true or false
   local hmOnSSData            = sV.hmOnSS ~= nil and true or false
+  local hmOnDSRData          = sV.hmOnDSR ~= nil and true or false
+
 
   local MA =  677 .. GetUnitName("player")
   local VH = 1227 .. GetUnitName("player")
@@ -942,15 +994,18 @@ function Speedrun.ImportVariables()
 
   if addsOnCRData == true then savedData.addsOnCR = sV.addsOnCR end
   if hmOnSSData   == true then savedData.hmOnSS   = sV.hmOnSS end
+  if hmOnDSRData == true then savedData.hmOnDSR = sV.hmOnDSR end
 
   sV.profiles[Speedrun.profileToImportTo].raidList          = savedData.raidList
   sV.profiles[Speedrun.profileToImportTo].customTimerSteps  = savedData.customTimerSteps
   sV.profiles[Speedrun.profileToImportTo].addsOnCR          = savedData.addsOnCR
   sV.profiles[Speedrun.profileToImportTo].hmOnSS            = savedData.hmOnSS
+  sV.profiles[Speedrun.profileToImportTo].hmOnDSR            = savedData.hmOnDSR
 
   sV.customTimerSteps         = nil
   sV.addsOnCR                 = nil
   sV.hmOnSS                   = nil
+  sV.hmOnDSR                 = nil
   sV.debugMode                = nil
   sV.isTracking               = nil
   Speedrun.profileToImportTo  = ""
