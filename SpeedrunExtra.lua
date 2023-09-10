@@ -941,7 +941,7 @@ function Speedrun.GetTrialMaxVitality(raidID)
   if raidID == 638 or raidID == 636 or raidID == 639 or raidID == 1082 or raidID == 635 then
     vitality = 24
 
-  elseif raidID == 725 or raidID == 975 or raidID == 1000 or raidID == 1051 or raidID == 1121 or raidID == 1196 or raidID == 1263 then
+  elseif raidID == 725 or raidID == 975 or raidID == 1000 or raidID == 1051 or raidID == 1121 or raidID == 1196 or raidID == 1263 or raidID == 1344 or raidID == 1427 then
     vitality = 36
 
   elseif raidID == 677 or raidID == 1227 then

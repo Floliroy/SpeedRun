@@ -26,7 +26,9 @@ local trialMenuTimers       = {
   [1121]  = {},
   [1196]  = {},
   [1227]  = {},
-  [1263]  = {}
+  [1263]  = {},
+  [1344]  = {},
+  [1427]  = {}
 }
 local trialSubmenus         = {
   [635]  = {},
@@ -42,7 +44,9 @@ local trialSubmenus         = {
   [1121] = {},
   [1196] = {},
   [1227] = {},
-  [1263] = {}
+  [1263] = {},
+  [1344] = {},
+  [1427] = {}
 }
 local NAMEPLATE_CHOICE_NEVER                = NAMEPLATE_CHOICE_NEVER
 local NAMEPLATE_CHOICE_ALWAYS               = NAMEPLATE_CHOICE_ALWAYS
@@ -328,6 +332,7 @@ function Speedrun.RefreshProfileSettings()
   Speedrun:dbg(2, "Updating Menu")
   Speedrun.addsOnCR	= sV.profiles[Speedrun.activeProfile].addsOnCR
   Speedrun.hmOnSS 	= sV.profiles[Speedrun.activeProfile].hmOnSS
+  Speedrun.hmOnDSR	= sV.profiles[Speedrun.activeProfile].hmOnDSR
   Speedrun.LoadRaidlist(Speedrun.activeProfile)
   Speedrun.LoadCustomTimers(Speedrun.activeProfile)
   Speedrun.UpdateDropdowns()
@@ -583,6 +588,33 @@ function Speedrun.CreateRaidMenu(raidID)
             if name == selected then
               Speedrun.hmOnSS = index
               sV.profiles[Speedrun.activeProfile].hmOnSS = Speedrun.hmOnSS
+              break
+            end
+          end
+        end,
+      }
+    )
+  end
+  if raidID == 1344 then
+    local choices = {
+      [1] = zo_strformat(SI_SPEEDRUN_ZERO),
+      [2] = zo_strformat(SI_SPEEDRUN_ONE),
+      [3] = zo_strformat(SI_SPEEDRUN_TWO),
+      [4] = zo_strformat(SI_SPEEDRUN_THREE),
+    }
+
+    table.insert(raidMenu,
+      { type = "dropdown",
+        name    = zo_strformat(SI_SPEEDRUN_HM_DSR_NAME),
+        tooltip = zo_strformat(SI_SPEEDRUN_HM_DSR_DESC),
+        choices = choices,
+        default = choices[4],
+        getFunc = function() return choices[Speedrun.hmOnDSR] end,
+        setFunc = function(selected)
+          for index, name in ipairs(choices) do
+            if name == selected then
+              Speedrun.hmOnDSR = index
+              sV.profiles[Speedrun.activeProfile].hmOnDSR = Speedrun.hmOnDSR
               break
             end
           end
@@ -1260,6 +1292,8 @@ function Speedrun.CreateSettingsWindow()
         Speedrun.CreateRaidMenu(1121),
         Speedrun.CreateRaidMenu(1196),
         Speedrun.CreateRaidMenu(1263),
+        Speedrun.CreateRaidMenu(1344),
+        Speedrun.CreateRaidMenu(1427),
       },
       reference = "Speedrun_Trial_Menu"
     },
